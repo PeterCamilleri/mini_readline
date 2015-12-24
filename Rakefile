@@ -28,7 +28,12 @@ Rake::TestTask.new do |t|
   t.verbose = false
 end
 
-desc "Test mini_readline with a Simple Interactive Ruby Environment."
+desc "Run a scan for smelly code!"
+task :reek do |t|
+  `reek --no-color lib > reek.txt`
+end
+
+desc "Test with a Simple Interactive Ruby Environment."
 task :sire do
   require './sire'
   SIRE.new.run_sire

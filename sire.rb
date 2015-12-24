@@ -25,8 +25,7 @@ end
 class SIRE
   #Set up the interactive session.
   def initialize
-    @_done    = false
-    @running = false
+    @_done = false
 
     puts "Welcome to a Simple Interactive Ruby Environment\n"
     puts "Use command 'q' to quit.\n\n"
@@ -45,14 +44,12 @@ class SIRE
     pp result unless line.length == 0
 
   rescue Interrupt => e
-    @_break = true
     puts "\nExecution Interrupted!"
     puts "\n#{e.class} detected: #{e}\n"
     puts e.backtrace
     puts "\n"
 
   rescue Exception => e
-    @_break = true
     puts "\n#{e.class} detected: #{e}\n"
     puts e.backtrace
     puts
@@ -61,7 +58,6 @@ class SIRE
   #Run the interactive session.
   def run_sire
     until @_done
-      @_break = false
       exec_line(Readline.readline('SIRE>', true))
     end
 
