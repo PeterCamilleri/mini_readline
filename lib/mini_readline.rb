@@ -2,6 +2,7 @@
 
 require_relative "mini_readline/version"
 require_relative "mini_readline/read_line"
+require_relative "mini_readline/raw_term"
 
 #The \MiniReadline module. A replacement for the rb_readline gem predicated
 #on the notion/hope that the code shouldn't smell like an abandoned fish

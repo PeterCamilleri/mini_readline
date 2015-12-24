@@ -3,7 +3,9 @@
 #* read_line.rb - The ReadLine class that does the actual work.
 module MiniReadline
 
-  # The \Readline class that does the actual work of getting lines from the user.
+  #The \Readline class that does the actual work of getting lines from the
+  #user. Note that each instance of this class maintains its own copy of
+  #the optional command history.
   class Readline
 
     #Setup the instance of the mini line editor.
