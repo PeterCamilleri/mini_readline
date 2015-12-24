@@ -27,3 +27,15 @@ Rake::TestTask.new do |t|
   t.test_files = FileList['tests/**/*.rb']
   t.verbose = false
 end
+
+desc "Test mini_readline with a Simple Interactive Ruby Environment."
+task :sire do
+  require './sire'
+  SIRE.new.run_sire
+end
+
+desc "What version of mine_readline is this?"
+task :vers do |t|
+  puts
+  puts "mini_readline version = #{MiniReadline::VERSION}"
+end
