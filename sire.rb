@@ -1,7 +1,8 @@
 # coding: utf-8
 # A Simple Interactive Ruby Environment
 
-require_relative 'lib/mini_readline'
+require 'readline' #YUK
+#require_relative 'lib/mini_readline'
 require 'pp'
 
 class Object

@@ -1,5 +1,7 @@
 # coding: utf-8
 
+require_relative 'read_line/history'
+
 #* read_line.rb - The ReadLine class that does the actual work.
 module MiniReadline
 
@@ -11,16 +13,9 @@ module MiniReadline
     #Setup the instance of the mini line editor.
     #<br>Parameters:
     #* history - An array of strings used to contain the history. Use the
-    #  value nil for no history.
-    #<br>Note:
-    #* No other access to @_history is allowed.
+    #  value nil to maintain no history.
     def initialize(history)
-      @_history = history
-    end
-
-    #Get the history associated with this instance.
-    def history
-      @_history || []
+      init_history(history)
     end
 
   end
