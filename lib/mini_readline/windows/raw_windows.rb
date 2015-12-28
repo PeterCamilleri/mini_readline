@@ -22,6 +22,11 @@ module MiniReadline
       @_beep = Win32API.new("user32","MessageBeep",['L'],'L')
     end
 
+    #Output a string
+    def put_string(str)
+      print(str)
+    end
+
     #Sound a beep
     def beep
       @_beep.call(0)

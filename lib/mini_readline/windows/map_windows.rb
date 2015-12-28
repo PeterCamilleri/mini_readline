@@ -6,6 +6,7 @@ module MiniReadline
   #* windows/map_wondows.rb - Character to action mapping for windows.
   class RawTerm
 
+    #Create a hash with a default value of [:unmapped]
     MAP = Hash.new([:unmapped])
 
     #Map the printable characters.
@@ -33,8 +34,8 @@ module MiniReadline
     MAP["\xE0H"] = [:previous_history]
 
     #Down Arrows
-    MAO["\00P"]  = [:next_history]
-    MAO["\E0P"]  = [:next_history]
+    MAP["\00P"]  = [:next_history]
+    MAP["\E0P"]  = [:next_history]
 
     #The Home keys
     MAP["\x00G"] = [:home]

@@ -1,6 +1,7 @@
 # coding: utf-8
 
 require_relative "mini_readline/version"
+require_relative "mini_readline/options"
 require_relative "mini_readline/read_line"
 require_relative "mini_readline/raw_term"
 
