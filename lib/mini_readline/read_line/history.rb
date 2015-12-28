@@ -28,6 +28,7 @@ module MiniReadline
     #Setup the history array of the mini line editor.
     def init_history(history)
       @_history = history
+      goto_end_of_history
     end
 
   end
