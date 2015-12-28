@@ -1,6 +1,6 @@
 # coding: utf-8
 
-#* win_32_api.rb - Support for selected low level Win32 API entry points.
+#* windows/win_32_api.rb - Support for selected low level Win32 API entry points.
 module MiniReadline
 
   if RUBY_VERSION < '1.9.1'
