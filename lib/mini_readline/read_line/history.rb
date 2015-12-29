@@ -3,15 +3,15 @@
 #* read_line/history.rb - Edit history support
 module MiniReadline
 
-  #The \Readline class that does the actual work of getting lines from the
-  #user. Note that each instance of this class maintains its own copy of
-  #the optional command history.
+  #* read_line/history.rb - Support for the edit history.
   class Readline
 
     #Get the history associated with this instance.
     def history
       @_history || []
     end
+
+    private
 
     #Go to the end of the history array.
     def goto_end_of_history
@@ -23,8 +23,6 @@ module MiniReadline
       history[@history_cursor] || ""
     end
 
-    private
-
     #Setup the history array of the mini line editor.
     def init_history(history)
       @_history = history
@@ -32,6 +30,5 @@ module MiniReadline
     end
 
   end
-
 
 end

@@ -25,4 +25,10 @@ class MiniReadlineTester < Minitest::Test
     end
   end
 
+  def test_reading_a_line
+    puts
+    puts "Enter the word: test"
+    assert_equal("test", MiniReadline::readline(">"))
+  end
+
 end

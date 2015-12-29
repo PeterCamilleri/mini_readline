@@ -10,17 +10,21 @@ module MiniReadline
 
     #The classic \Win32API gem is deprecated, so emulate it when needed.
     class Win32API
+      #A hash of DLL files used for one or more API entry points.
       DLL = {}
 
+      #Type mappings.
       TYPEMAP = {"0" => Fiddle::TYPE_VOID,
                  "S" => Fiddle::TYPE_VOIDP,
                  "I" => Fiddle::TYPE_LONG}
 
+      #Calling convention mappings.
       CALL_TYPE_TO_ABI = {:stdcall => 1,
                           :cdecl   => 1,
                           nil      => 1} #Taken from Fiddle::Importer
 
 
+      #Set up an API entry point.
       def initialize(dllname, func, import, _export = "0", calltype = :stdcall)
         @proto = import.join.tr("VPpNnLlIi", "0SSI").chomp('0').split('')
 
