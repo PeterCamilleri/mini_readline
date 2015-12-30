@@ -14,10 +14,15 @@ module MiniReadline
     end
 
     #The main edit buffer
-    attr_reader :edit_buffer
+    attr_accessor :edit_buffer
 
     #The current edit position
-    attr_reader :edit_posn
+    attr_accessor :edit_posn
+
+    #How long is the current string?
+    def length
+      edit_buffer.length
+    end
 
   end
 

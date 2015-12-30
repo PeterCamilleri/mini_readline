@@ -10,21 +10,21 @@ module MiniReadline
 
     #Keep things in sync!
     def synch
+      window_buffer.clear unless check_margins
 
     end
 
+    #Verify/update the window margins. Returns true if they're fine.
+    def check_margins
+      old_margins = [left_margin, right_margin]
 
-    #Verify the window offset
-    def check_window_offset
-      if edit_posn < window_offset
-        window_offset -= scroll_step
-
-      elsif edit_posn >= (window_offset + window_width)
-        window_offset += scroll_step
-
+      if edit_posn < left_margin
+        left_margin  = [edit_posn - scroll_step, 0].max
+      elsif edit_posn > right_margin
+        right_margin = [edit_posn + scroll_step, length].min
       end
-      
-      
+
+       old_margins == [left_margin, right_margin]
     end
 
   end

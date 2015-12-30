@@ -47,7 +47,18 @@ module MiniReadline
     def set_prompt(prompt)
       @options[:base_prompt]   = prompt
       @options[:scroll_prompt] = @options[:alt_prompt] || prompt
+
+      verify_prompt(@options[:base_prompt])
+      verify_prompt(@options[:scroll_prompt])
     end
+
+    #Verify that the prompt will fit!
+    def verify_prompt(str)
+      unless (window_width - str.length) > scroll_step
+        fail "Prompt too long: <#{str}>"
+      end
+    end
+
   end
 
 end

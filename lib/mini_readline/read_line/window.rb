@@ -10,18 +10,29 @@ module MiniReadline
 
     #Determine the edit window limits.
     def setup_window_parms
-      window_width  = @options[:window_width]
       @base_width   = window_width - @options[:base_prompt].length
       @scroll_width = window_width - @options[:scroll_prompt].length
 
-      @window_scrolled, @window_offset, @window_buffer = false, 0, ""
+      @left_margin, @window_buffer = 0, ""
+    end
+
+    #What is the offset of the window's left margin?
+    attr_accessor :left_margin
+
+    #What is the offset of the window's right margin?
+    def right_margin
+      left_margin + active_width - 1
+    end
+
+    #Set the right margin
+    def right_margin=(value)
+      left_margin = value - active_width + 1
     end
 
     #Is the window currently in the scrolled state?
-    attr_reader :window_scrolled
-
-    #What is the windows offset into the edit string?
-    attr_reader :window_offset
+    def window_scrolled?
+      left_margin > 0
+    end
 
     #The shadow copy of what is actually on the screen?
     attr_reader :window_buffer
@@ -32,14 +43,19 @@ module MiniReadline
     #The width of the window with the alternate prompt
     attr_reader :scroll_width
 
-    #How wide is the window now?
+    #What is the full window width?
     def window_width
-      window_scrolled ? @scroll_width : @base_width
+      @options[:window_width]
+    end
+
+    #How wide is the active region of the window now?
+    def active_width
+      window_scrolled? ? scroll_width : base_width
     end
 
     #What is the current prompt?
     def prompt
-      window_scrolled ? @options[:scroll_prompt] : @options[:base_prompt]
+      window_scrolled? ? @options[:scroll_prompt] : @options[:base_prompt]
     end
 
     #What is the scroll step?
