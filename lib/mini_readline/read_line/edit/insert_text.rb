@@ -10,12 +10,11 @@ module MiniReadline
 
     #The insert_text command
     def insert_text(keyboard_args)
-      char = keyboard_args[1]
-      posn = edit_posn
+      @edit_buffer = @edit_buffer[0...@edit_posn] +
+                     keyboard_args[1] +
+                     @edit_buffer[@edit_posn..-1]
 
-      self.edit_buffer = edit_buffer[0...posn] + char + edit_buffer[posn..-1]
-
-      edit_posn = posn + 1
+      @edit_posn += 1
     end
 
   end

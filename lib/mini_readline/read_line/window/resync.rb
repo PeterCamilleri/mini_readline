@@ -9,12 +9,13 @@ module MiniReadline
     private
 
     #Keep things in sync!
-    def synch
+    def resync
       window_buffer.clear unless check_margins
       image = build_screen_image
       first = find_first_change(image)
 
-
+      #A temporary hack for testing only.
+      @term.put_string "\x0D" + image
     end
 
     #Verify/update the window margins. Returns true if they're fine.
@@ -32,7 +33,7 @@ module MiniReadline
 
     #Compute what should be on the screen.
     def build_screen_image
-      (prompt + edit_buffer[left_margin..right_margin]).ljust(window_width)
+      prompt + edit_buffer[left_margin..right_margin]
     end
 
     #Where do the two strings begin to differ? Return the index or nil if the

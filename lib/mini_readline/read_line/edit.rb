@@ -1,6 +1,7 @@
 # coding: utf-8
 
 require_relative 'edit/insert_text'
+require_relative 'edit/enter'
 
 #* read_line/edit.rb - The line editor.
 module MiniReadline
@@ -16,10 +17,10 @@ module MiniReadline
     end
 
     #The main edit buffer
-    attr_accessor :edit_buffer
+    attr_reader :edit_buffer
 
     #The current edit position
-    attr_accessor :edit_posn
+    attr_reader :edit_posn
 
     #How long is the current string?
     def length
@@ -28,9 +29,11 @@ module MiniReadline
 
     #The line editor processing loop.
     def edit_loop
-      @working = true
+      loop do
+        resync
 
-      while @working
+        break unless @working
+
         key_cmd = @term.get_mapped_keystroke
         send(key_cmd[0], key_cmd)
       end

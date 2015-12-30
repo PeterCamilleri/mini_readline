@@ -19,7 +19,7 @@ module MiniReadline
     #  value nil to maintain no history at all.
     def initialize(history)
       init_history(history)
-      @term = RawTerm.new
+      @term = MiniReadline::raw_term
     end
 
     #Read a line from the console with edit and history.
@@ -37,7 +37,8 @@ module MiniReadline
     #Initialize the read line process. This basically process the arguments
     #of the readline method.
     def initialize_readline(prompt, options = {})
-      @options = MiniReadline::BASE_OPTIONS.merge(options)
+      @options, @working = MiniReadline::BASE_OPTIONS.merge(options), true
+
       set_prompt(prompt)
       setup_edit_parms("")
       setup_window_parms
