@@ -35,7 +35,7 @@ module MiniReadline
     end
 
     #The shadow copy of what is actually on the screen?
-    attr_reader :window_buffer
+    attr_accessor :window_buffer
 
     #The width of the window with the base prompt
     attr_reader :base_width

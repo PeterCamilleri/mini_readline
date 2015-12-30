@@ -28,8 +28,8 @@ module MiniReadline
     #* options - A hash of options; Typically :symbol => value
     def readline(prompt, options = {})
       initialize_readline(prompt, options)
-
-      "test"
+      edit_loop
+      edit_buffer
     end
 
     private

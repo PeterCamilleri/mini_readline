@@ -1,5 +1,7 @@
 # coding: utf-8
 
+require_relative 'edit/insert_text'
+
 #* read_line/edit.rb - The line editor.
 module MiniReadline
 
@@ -24,6 +26,15 @@ module MiniReadline
       edit_buffer.length
     end
 
+    #The line editor processing loop.
+    def edit_loop
+      @working = true
+
+      while @working
+        key_cmd = @term.get_mapped_keystroke
+        send(key_cmd[0], key_cmd)
+      end
+    end
   end
 
 
