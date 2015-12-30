@@ -2,6 +2,7 @@
 
 require_relative 'read_line/window'
 require_relative 'read_line/history'
+require_relative 'read_line/edit'
 
 #* read_line.rb - The ReadLine class that does the actual work.
 module MiniReadline
@@ -13,14 +14,18 @@ module MiniReadline
 
     #Setup the instance of the mini line editor.
     #<br>Parameters:
-    #* history - An array of strings used to contain the history. Use the
-    #  value nil to maintain no history.
+    #* history - An array of strings used to contain the history. Use an empty
+    #  array to have a history buffer with no initial entries. Use the
+    #  value nil to maintain no history at all.
     def initialize(history)
       init_history(history)
       @term = RawTerm.new
     end
 
     #Read a line from the console with edit and history.
+    #<br>Parameters:
+    #* prompt - A string used to prompt the user. '>' is popular.
+    #* options - A hash of options; Typically :symbol => value
     def readline(prompt, options = {})
       initialize_readline(prompt, options)
 
@@ -29,10 +34,12 @@ module MiniReadline
 
     private
 
-    #Initialize the read line process.
+    #Initialize the read line process. This basically process the arguments
+    #of the readline method.
     def initialize_readline(prompt, options = {})
       @options = MiniReadline::BASE_OPTIONS.merge(options)
       set_prompt(prompt)
+      setup_edit_parms("")
       setup_window_parms
     end
 
@@ -42,6 +49,5 @@ module MiniReadline
       @options[:scroll_prompt] = @options[:alt_prompt] || prompt
     end
   end
-
 
 end

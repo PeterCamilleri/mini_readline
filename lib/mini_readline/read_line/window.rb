@@ -26,6 +26,12 @@ module MiniReadline
     #The shadow copy of what is actually on the screen?
     attr_reader :window_buffer
 
+    #The width of the window with the base prompt
+    attr_reader :base_width
+
+    #The width of the window with the alternate prompt
+    attr_reader :scroll_width
+
     #How wide is the window now?
     def window_width
       window_scrolled ? @scroll_width : @base_width
@@ -34,6 +40,11 @@ module MiniReadline
     #What is the current prompt?
     def prompt
       window_scrolled ? @options[:scroll_prompt] : @options[:base_prompt]
+    end
+
+    #What is the scroll step?
+    def scroll_step
+       @options[:scroll_step]
     end
 
   end
