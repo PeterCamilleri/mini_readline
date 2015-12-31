@@ -29,6 +29,8 @@ module MiniReadline
       @_getch = Win32API.new("msvcrt", "_getch", [], 'I')
       @_kbhit = Win32API.new("msvcrt", "_kbhit", [], 'I')
       @_beep  = Win32API.new("user32","MessageBeep",['L'],'L')
+
+      build_map
     end
 
     #Output a string

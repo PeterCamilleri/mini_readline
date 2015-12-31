@@ -9,7 +9,9 @@ module MiniReadline
                   :alt_prompt    => "<< ",    #The prompt when scrolled.
                                               #Set to nil for no alt prompt.
 
-                  :no_blanks     => true      #No empty lines in history.
+                  :no_blanks     => true,     #No empty lines in history.
+
+                  :debug         => false     #Used during development.
                  }
 
 end
