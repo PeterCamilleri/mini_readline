@@ -1,7 +1,5 @@
 # coding: utf-8
 
-require 'pp'
-
 #* map_windows.rb - Character mapping for windows systems.
 module MiniReadline
 
