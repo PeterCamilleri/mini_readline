@@ -13,7 +13,7 @@ module MiniReadline
       window_buffer.clear unless check_margins
       image = build_screen_image
       update_screen(image)
-      window_buffer = image.ljust(window_width)
+      window_buffer = image
     end
 
     #Verify/update the window margins. Returns true if they're fine.
@@ -31,17 +31,17 @@ module MiniReadline
 
     #Compute what should be on the screen.
     def build_screen_image
-      prompt + edit_buffer[left_margin..right_margin]
+      prompt + edit_buffer[left_margin..right_margin].ljust(window_width)
     end
 
     #Bring the screen into agreement with the image.
     #<br>Endemic Code Smells
     #* :reek:TooManyStatements - The way things are!
     def update_screen(image)
-      base, changes = 0, ""
+      base, changes = find_first_difference(image), ""
 
-      (0...window_width).each do |index|
-        changes << (image_char = image[index] || ' ')
+      (base...window_width).each do |index|
+        changes << (image_char = image[index])
 
         if image_char != window_buffer[index]
           set_posn(base)
@@ -50,6 +50,15 @@ module MiniReadline
           base = index + 1
         end
       end
+    end
+
+    #Find the first point of difference.
+    def find_first_difference(image)
+      (0...window_width).each do |index|
+        return index if image[index] != window_buffer[index]
+      end
+
+      window_width
     end
 
   end
