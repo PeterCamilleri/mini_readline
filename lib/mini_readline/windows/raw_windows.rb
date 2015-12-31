@@ -13,7 +13,9 @@ module MiniReadline
   class RawTerm
 
     #The sleep interval waiting for a key to be pressed.
-    WAIT_SLEEP = 0.02
+    WAIT_SLEEP      = 0.02
+    CARRIAGE_RETURN = "\x0D"
+    BACK_SPACE      = "\x08"
 
     #Set up the Windows Raw Terminal.
     def initialize
@@ -24,7 +26,11 @@ module MiniReadline
 
     #Output a string
     def put_string(str)
-      print(str)
+      print(scan_string(str))
+    end
+
+    def reset
+      put_string (CARRIAGE_RETURN)
     end
 
     #Sound a beep
@@ -45,6 +51,22 @@ module MiniReadline
     def get_raw_char
       wait_for_key
       @_getch.call.chr
+    end
+
+    #Determine the affect of a string on the cursor.
+    def scan_string(str)
+      str.chars.each do |char|
+        case char
+        when CARRIAGE_RETURN
+          @cursor_posn = 0
+        when BACK_SPACE
+          @cursor_posn -= 1
+        else
+          @cursor_posn += 1
+        end
+      end
+
+      str
     end
 
   end

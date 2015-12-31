@@ -8,7 +8,7 @@ module MiniReadline
 
     private
 
-    #The insert_text command
+    #The insert_text command. We are DONE!
     def enter(_keyboard_args)
       @working = false
     end

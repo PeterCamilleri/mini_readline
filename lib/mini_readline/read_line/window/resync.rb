@@ -45,7 +45,5 @@ module MiniReadline
 
       nil
     end
-
   end
-
 end

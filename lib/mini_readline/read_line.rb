@@ -37,6 +37,7 @@ module MiniReadline
     #Initialize the read line process. This basically process the arguments
     #of the readline method.
     def initialize_readline(prompt, options = {})
+      @term.reset
       @options, @working = MiniReadline::BASE_OPTIONS.merge(options), true
 
       set_prompt(prompt)
