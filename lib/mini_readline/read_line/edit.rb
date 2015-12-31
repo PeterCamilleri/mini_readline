@@ -34,6 +34,7 @@ module MiniReadline
 
         break unless @working
 
+        set_posn(edit_posn - left_margin + prompt.length)
         key_cmd = @term.get_mapped_keystroke
         send(key_cmd[0], key_cmd)
       end

@@ -12,10 +12,11 @@ module MiniReadline
     def resync
       window_buffer.clear unless check_margins
       image = build_screen_image
-      first = find_first_change(image)
+      update_screen(image)
+      window_buffer = image.ljust(window_width)
 
       #A temporary hack for testing only.
-      @term.put_string "\x0D" + image
+      #@term.put_string "\x0D" + image
     end
 
     #Verify/update the window margins. Returns true if they're fine.
@@ -36,14 +37,22 @@ module MiniReadline
       prompt + edit_buffer[left_margin..right_margin]
     end
 
-    #Where do the two strings begin to differ? Return the index or nil if the
-    #new and old screen images are identical.
-    def find_first_change(new_image)
+    #Bring the screen into agreement with the image.
+    def update_screen(image)
+      base, changes = 0, ""
+
       (0...window_width).each do |index|
-        return index if new_image[index] != window_buffer[index]
+        changes << (image_char = image[index] || ' ')
+
+        if image_char != window_buffer[index]
+          set_posn(base)
+          @term.put_string changes
+          changes.clear
+          base = index + 1
+        end
       end
 
-      nil
     end
+
   end
 end

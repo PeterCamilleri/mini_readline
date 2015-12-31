@@ -1,6 +1,7 @@
 # coding: utf-8
 
 require_relative 'window/resync'
+require_relative 'window/set_posn'
 
 #* read_line/window.rb - Edit window support.
 module MiniReadline
@@ -28,7 +29,7 @@ module MiniReadline
 
     #Set the right margin
     def right_margin=(value)
-      left_margin = value - active_width + 1
+      @left_margin = value - active_width + 1
     end
 
     #Is the window currently in the scrolled state?

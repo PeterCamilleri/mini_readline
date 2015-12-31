@@ -29,6 +29,7 @@ module MiniReadline
     def readline(prompt, options = {})
       initialize_readline(prompt, options)
       edit_loop
+      @term.put_string("\n")
       edit_buffer
     end
 

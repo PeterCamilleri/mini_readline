@@ -21,6 +21,9 @@ module MiniReadline
     #Backspace
     BACK_SPACE      = "\x08"
 
+    #Where is the cursor now?
+    attr_reader :cursor_posn
+
     #Set up the Windows Raw Terminal.
     def initialize
       @_getch = Win32API.new("msvcrt", "_getch", [], 'I')
@@ -47,9 +50,6 @@ module MiniReadline
     def beep
       @_beep.call(0)
     end
-
-    #Where is the cursor now?
-    attr_reader :cursor_posn
 
     private
 

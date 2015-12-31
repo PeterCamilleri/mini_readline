@@ -1,1 +1,5 @@
-0 total warnings
+lib/mini_readline/read_line/edit.rb -- 1 warning:
+  [31]:MiniReadline::Readline#edit_loop has approx 6 statements (TooManyStatements)
+lib/mini_readline/read_line/window/resync.rb -- 1 warning:
+  [41]:MiniReadline::Readline#update_screen has approx 7 statements (TooManyStatements)
+2 total warnings
