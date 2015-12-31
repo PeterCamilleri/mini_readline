@@ -9,6 +9,8 @@ module MiniReadline
   class RawTerm
 
     #Build the keystroke mapping hash.
+    #<br>Endemic Code Smells
+    #* :reek:TooManyStatements - The way things are!
     def build_map
       #Create a hash with a default value of [:unmapped]
       @map = Hash.new {|_hash, key| [:unmapped, key]}

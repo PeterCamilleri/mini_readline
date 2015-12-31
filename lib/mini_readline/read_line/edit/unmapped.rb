@@ -8,7 +8,7 @@ module MiniReadline
 
     private
 
-    #The insert_text command. We are DONE!
+    #An unmapped key was pressed. Beep!
     def unmapped(keyboard_args)
       if @options[:debug]
         puts keyboard_args.inspect
