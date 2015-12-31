@@ -3,6 +3,8 @@
 require_relative 'edit/insert_text'
 require_relative 'edit/enter'
 
+require_relative 'edit/left'
+
 require_relative 'edit/unmapped'
 
 #* read_line/edit.rb - The line editor.
