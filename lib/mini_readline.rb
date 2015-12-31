@@ -18,7 +18,7 @@ module MiniReadline
   #The (limited) compatibility module function.
   #<br>Endemic Code Smells
   #* :reek:BooleanParameter -- Required for compatibility
-  def self.readline(prompt, history = true)
+  def self.readline(prompt, history = false)
     @readers[history].readline(prompt)
   end
 end
