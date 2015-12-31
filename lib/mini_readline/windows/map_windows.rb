@@ -40,8 +40,8 @@ module MiniReadline
       @map[pfx+"H"] = [:previous_history]
 
       #Down Arrows
-      @map["\x00P"]  = [:next_history]
-      @map[pfx+"P"]  = [:next_history]
+      @map["\x00P"] = [:next_history]
+      @map[pfx+"P"] = [:next_history]
 
       #The Home keys
       @map["\x00G"] = [:home]
@@ -63,11 +63,7 @@ module MiniReadline
       @map["\x0D"]  = [:enter]
 
       #The Escape key
-      @map["\x1B"]   = [:cancel]
-
-      pp @map
-      puts
-
+      @map["\x1B"]  = [:cancel]
     end
 
     #Get a mapped sequence.
