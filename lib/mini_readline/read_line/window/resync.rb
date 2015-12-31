@@ -14,9 +14,6 @@ module MiniReadline
       image = build_screen_image
       update_screen(image)
       window_buffer = image.ljust(window_width)
-
-      #A temporary hack for testing only.
-      #@term.put_string "\x0D" + image
     end
 
     #Verify/update the window margins. Returns true if they're fine.
@@ -38,6 +35,8 @@ module MiniReadline
     end
 
     #Bring the screen into agreement with the image.
+    #<br>Endemic Code Smells
+    #* :reek:TooManyStatements - The way things are!
     def update_screen(image)
       base, changes = 0, ""
 
@@ -51,7 +50,6 @@ module MiniReadline
           base = index + 1
         end
       end
-
     end
 
   end
