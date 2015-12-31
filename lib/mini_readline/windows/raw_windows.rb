@@ -14,14 +14,18 @@ module MiniReadline
 
     #The sleep interval waiting for a key to be pressed.
     WAIT_SLEEP      = 0.02
+
+    #Carriage return
     CARRIAGE_RETURN = "\x0D"
+
+    #Backspace
     BACK_SPACE      = "\x08"
 
     #Set up the Windows Raw Terminal.
     def initialize
       @_getch = Win32API.new("msvcrt", "_getch", [], 'I')
       @_kbhit = Win32API.new("msvcrt", "_kbhit", [], 'I')
-      @_beep = Win32API.new("user32","MessageBeep",['L'],'L')
+      @_beep  = Win32API.new("user32","MessageBeep",['L'],'L')
     end
 
     #Output a string
@@ -29,14 +33,23 @@ module MiniReadline
       print(scan_string(str))
     end
 
+    #Home the cursor and start at a known state.
     def reset
-      put_string (CARRIAGE_RETURN)
+      put_string CARRIAGE_RETURN
+    end
+
+    #Back up the cursor
+    def back_up(count)
+      put_string BACK_SPACE * count
     end
 
     #Sound a beep
     def beep
       @_beep.call(0)
     end
+
+    #Where is the cursor now?
+    attr_reader :cursor_posn
 
     private
 
@@ -70,6 +83,5 @@ module MiniReadline
     end
 
   end
-
 
 end
