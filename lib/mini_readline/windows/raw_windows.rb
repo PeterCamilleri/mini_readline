@@ -40,12 +40,12 @@ module MiniReadline
                                        ['L','P'], 'L')
 
       @_get_handle = Win32API.new("kernel32", "GetStdHandle",['L'], 'L')
-      @_handle     = @_get_handle.call(STD_OUTPUT_HANDLE)
+      @_out_handle = @_get_handle.call(STD_OUTPUT_HANDLE)
     end
 
     #Output a string
     def put_string(str)
-      scan_string(str) unless @_handle
+      scan_string(str) unless @_out_handle
       print(str)
     end
 
