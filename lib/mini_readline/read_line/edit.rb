@@ -43,7 +43,7 @@ module MiniReadline
 
     #Process a keystroke.
     def process_keystroke
-      set_posn(edit_posn - left_margin + prompt.length)
+      @term.set_posn(edit_posn - left_margin + prompt.length, window_buffer)
       key_cmd = @term.get_mapped_keystroke
       send(key_cmd[0], key_cmd)
     end

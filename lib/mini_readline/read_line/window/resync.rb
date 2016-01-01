@@ -44,7 +44,7 @@ module MiniReadline
         changes << (image_char = image[index])
 
         if image_char != window_buffer[index]
-          set_posn(base)
+          @term.set_posn(base, window_buffer)
           @term.put_string changes
           changes.clear
           base = index + 1

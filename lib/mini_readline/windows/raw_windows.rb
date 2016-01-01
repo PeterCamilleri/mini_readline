@@ -2,8 +2,9 @@
 
 require_relative 'win_32_api'
 require_relative 'map_windows'
+require_relative 'set_posn'
 
-#* raw_windows.rb - Support for raw terminal access in windows systems.
+#* windows/raw_windows.rb - Support for raw terminal access in windows systems.
 module MiniReadline
 
   #The detected platform is windows.
@@ -21,6 +22,10 @@ module MiniReadline
     #Backspace
     BACK_SPACE      = "\x08"
 
+    #The magic number for standard out.
+    STD_OUTPUT_HANDLE = -11
+
+
     #Where is the cursor now?
     attr_reader :cursor_posn
 
@@ -29,6 +34,12 @@ module MiniReadline
       @_getch = Win32API.new("msvcrt", "_getch", [], 'I')
       @_kbhit = Win32API.new("msvcrt", "_kbhit", [], 'I')
       @_beep  = Win32API.new("user32","MessageBeep",['L'],'L')
+
+      @_set_console_cursor_posn = Win32API.new("kernel32","SetConsoleCursorPosition",['L','L'],'L')
+      @_get_console_screen_info = Win32API.new("kernel32","GetConsoleScreenBufferInfo",['L','P'],'L')
+
+      @_get_handle = Win32API.new("kernel32","GetStdHandle",['L'],'L')
+      @_handle = @_get_handle.call(STD_OUTPUT_HANDLE)
     end
 
     #Output a string
