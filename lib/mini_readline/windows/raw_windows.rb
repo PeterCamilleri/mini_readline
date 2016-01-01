@@ -25,10 +25,6 @@ module MiniReadline
     #The magic number for standard out.
     STD_OUTPUT_HANDLE = -11
 
-
-    #Where is the cursor now?
-    attr_reader :cursor_posn
-
     #Set up the Windows Raw Terminal.
     def initialize
       @_getch = Win32API.new("msvcrt", "_getch", [], 'I')
@@ -49,7 +45,8 @@ module MiniReadline
 
     #Output a string
     def put_string(str)
-      print(scan_string(str))
+      scan_string(str) unless @_handle
+      print(str)
     end
 
     #Home the cursor and start at a known state.
@@ -94,8 +91,6 @@ module MiniReadline
           @cursor_posn += 1
         end
       end
-
-      str
     end
 
   end

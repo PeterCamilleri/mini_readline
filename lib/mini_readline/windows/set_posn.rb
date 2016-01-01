@@ -31,7 +31,7 @@ module MiniReadline
       if new_posn == 0
         reset
       else
-        move_cursor(new_posn, cursor_posn, buffer) if new_posn != cursor_posn
+        move_cursor(new_posn, @cursor_posn, buffer) if new_posn != @cursor_posn
       end
     end
 
