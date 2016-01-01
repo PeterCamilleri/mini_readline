@@ -14,7 +14,7 @@ module MiniReadline
                      keyboard_args[1] +
                      @edit_buffer[@edit_posn..-1]
 
-     @edit_posn += 1
+      @edit_posn += 1
     end
 
   end

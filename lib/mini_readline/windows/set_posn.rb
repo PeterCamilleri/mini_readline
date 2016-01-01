@@ -37,10 +37,15 @@ module MiniReadline
 
     #Move the cursor from the old_posn to the new_posn.
     def move_cursor(new_posn, old_posn, buffer)
+      gap = old_posn - new_posn
+
       if new_posn > old_posn
         put_string(buffer[old_posn...new_posn])
+      elsif gap > (old_posn / 2)
+        reset
+        move_cursor(new_posn, 0, buffer)
       else
-        put_string(RawTerm::BACK_SPACE*(old_posn-new_posn))
+        put_string(RawTerm::BACK_SPACE*(gap))
       end
     end
   end
