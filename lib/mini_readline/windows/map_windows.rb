@@ -40,12 +40,12 @@ module MiniReadline
     MAP[pfx+"P"] = [:next_history]
 
     #The Home keys
-    MAP["\x00G"] = [:home]
-    MAP[pfx+"G"] = [:home]
+    MAP["\x00G"] = [:go_home]
+    MAP[pfx+"G"] = [:go_home]
 
     #The End keys
-    MAP["\x00O"] = [:end]
-    MAP[pfx+"O"] = [:end]
+    MAP["\x00O"] = [:go_end]
+    MAP[pfx+"O"] = [:go_end]
 
     #The Backspace key
     MAP["\x08"]  = [:delete_left]
