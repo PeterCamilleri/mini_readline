@@ -11,6 +11,7 @@ require_relative 'edit/go_end'
 
 require_relative 'edit/delete_left'
 require_relative 'edit/delete_right'
+require_relative 'edit/cancel'
 
 require_relative 'edit/unmapped'
 
