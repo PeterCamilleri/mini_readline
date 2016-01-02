@@ -64,8 +64,6 @@ module MiniReadline
       @_beep.call(0)
     end
 
-    private
-
     #Wait for a key to be pressed.
     def wait_for_key
       while (@_kbhit.call == 0)

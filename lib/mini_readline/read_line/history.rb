@@ -11,8 +11,6 @@ module MiniReadline
       @_history || []
     end
 
-    private
-
     #Go to the end of the history array.
     def goto_end_of_history
       @history_cursor = history.length

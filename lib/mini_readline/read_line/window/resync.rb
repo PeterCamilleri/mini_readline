@@ -6,27 +6,25 @@ module MiniReadline
   #* read_line/window/resync.rb - Keeping the screen in sync.
   class Readline
 
-    private
-
     #Keep things in sync!
     def resync
       window_buffer.clear unless check_margins
       image = build_screen_image
       update_screen(image)
-      window_buffer = image
+      @window_buffer = image
     end
 
     #Verify/update the window margins. Returns true if they're fine.
     def check_margins
-      old_margins = [left_margin, right_margin]
+      old_margins = [self.left_margin, self.right_margin]
 
-      if edit_posn < left_margin
-        left_margin  = [edit_posn - scroll_step, 0].max
-      elsif edit_posn > right_margin
-        right_margin = [edit_posn + scroll_step, length].min
+      if edit_posn < self.left_margin
+        self.left_margin  = [self.edit_posn - scroll_step, 0].max
+      elsif edit_posn > self.right_margin
+        self.right_margin = [self.edit_posn + scroll_step, length].min
       end
 
-       old_margins == [left_margin, right_margin]
+       old_margins == [self.left_margin, self.right_margin]
     end
 
     #Compute what should be on the screen.

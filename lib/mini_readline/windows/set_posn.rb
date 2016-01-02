@@ -15,8 +15,6 @@ module MiniReadline
       end
     end
 
-    private
-
     #Move the cursor using windows voodoo API.
     def api_set_posn(new_posn)
       raw_buffer = 0.chr * 24

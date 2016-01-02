@@ -6,8 +6,6 @@ module MiniReadline
   #* read_line/window/edit/delete_left.rb - Process :delete_left
   class Readline
 
-    private
-
     #The insert_text command
     def delete_left(_keyboard_args)
       if @edit_posn > 0

@@ -33,8 +33,6 @@ module MiniReadline
       edit_buffer
     end
 
-    private
-
     #Initialize the read line process. This basically process the arguments
     #of the readline method.
     def initialize_readline(prompt, options = {})

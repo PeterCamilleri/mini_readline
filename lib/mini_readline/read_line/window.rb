@@ -8,8 +8,6 @@ module MiniReadline
   #* read_line/window.rb - Support for the edit window.
   class Readline
 
-    private
-
     #Determine the edit window limits.
     def setup_window_parms
       @base_width   = window_width - @options[:base_prompt].length

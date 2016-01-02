@@ -6,8 +6,6 @@ module MiniReadline
   #* read_line/window/edit/unmapped.rb - Process :unmapped
   class Readline
 
-    private
-
     #An unmapped key was pressed. Beep!
     def unmapped(keyboard_args)
       if @options[:debug]

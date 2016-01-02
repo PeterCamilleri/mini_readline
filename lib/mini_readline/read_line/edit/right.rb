@@ -6,8 +6,6 @@ module MiniReadline
   #* read_line/window/edit/right.rb - Process :right
   class Readline
 
-    private
-
     #A little to the right please!
     def right(_keyboard_args)
       if @edit_posn < edit_buffer.length
