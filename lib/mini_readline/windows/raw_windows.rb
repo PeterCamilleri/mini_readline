@@ -40,7 +40,6 @@ module MiniReadline
                                        ['L','P'], 'L')
 
       @_get_handle = Win32API.new("kernel32", "GetStdHandle",['L'], 'L')
-      @_out_handle = @_get_handle.call(STD_OUTPUT_HANDLE)
     end
 
     #Output a string
@@ -51,6 +50,7 @@ module MiniReadline
 
     #Home the cursor and start at a known state.
     def reset
+      @_out_handle = @_get_handle.call(STD_OUTPUT_HANDLE)
       put_string CARRIAGE_RETURN
     end
 

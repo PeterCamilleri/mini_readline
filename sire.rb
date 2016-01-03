@@ -1,8 +1,21 @@
 # coding: utf-8
 # A Simple Interactive Ruby Environment
 
-require 'readline' #YUK
-#require_relative 'lib/mini_readline'
+#require 'readline' #YUK
+
+if defined?(MiniReadline)
+  puts "The mini_readline gem is already loaded."
+else
+  begin
+    require 'mini_readline'
+    puts "\nLoaded mini_readline from the system gem."
+  rescue LoadError
+    require './lib/mini_readline'
+    puts "\nLoaded mini_readline from the local code folder."
+  end
+end
+
+require_relative 'lib/mini_readline'
 require 'pp'
 
 class Object
@@ -27,9 +40,6 @@ class SIRE
   #Set up the interactive session.
   def initialize
     @_done = false
-
-    puts "Welcome to a Simple Interactive Ruby Environment\n"
-    puts "Use command 'q' to quit.\n\n"
   end
 
   #Quit the interactive session.
@@ -37,6 +47,14 @@ class SIRE
     @_done = true
     puts
     "Bye bye for now!"
+  end
+
+  #Test spawning a process. This breaks the regular readline gem.
+  def run(command)
+    IO.popen(command, "r+") do |io|
+      io.close_write
+      return io.read
+    end
   end
 
   #Execute a single line.
@@ -58,6 +76,10 @@ class SIRE
 
   #Run the interactive session.
   def run_sire
+    puts
+    puts "Welcome to a Simple Interactive Ruby Environment\n"
+    puts "Use command 'q' to quit.\n\n"
+
     until @_done
       exec_line(Readline.readline('SIRE>', true))
     end

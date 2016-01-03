@@ -33,12 +33,6 @@ task :reek do |t|
   `reek --no-color lib > reek.txt`
 end
 
-desc "Test with a Simple Interactive Ruby Environment."
-task :sire do
-  require './sire'
-  SIRE.new.run_sire
-end
-
 desc "What version of mine_readline is this?"
 task :vers do |t|
   puts

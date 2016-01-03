@@ -22,3 +22,7 @@ module MiniReadline
     @readers[history].readline(prompt)
   end
 end
+
+unless $no_alias_read_line_module
+  Readline = MiniReadline
+end
