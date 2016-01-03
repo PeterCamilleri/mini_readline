@@ -41,7 +41,7 @@ module MiniReadline
       @options, @working = MiniReadline::BASE_OPTIONS.merge(options), true
 
       set_prompt(prompt)
-      setup_edit_parms("")
+      initialize_edit_parms
       setup_window_parms
       goto_end_of_history
     end

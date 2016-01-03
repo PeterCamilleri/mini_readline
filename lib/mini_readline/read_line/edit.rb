@@ -24,9 +24,9 @@ module MiniReadline
   #* read_line/edit.rb - The line editor.
   class Readline
 
-    #Determine the initial edit settings.
-    def setup_edit_parms(string)
-      @edit_posn, @edit_buffer = string.length, string.dup
+    #Set up the initial edit settings.
+    def initialize_edit_parms
+      @edit_posn, @edit_buffer = 0, ""
     end
 
     #The main edit buffer
