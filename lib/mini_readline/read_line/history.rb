@@ -16,11 +16,6 @@ module MiniReadline
       @history_cursor = self.history.length
     end
 
-    #Get the current history entry.
-    def get_current_history
-      self.history[@history_cursor] || ""
-    end
-
     #Setup the history array of the mini line editor.
     def init_history(history)
       @_history = history
