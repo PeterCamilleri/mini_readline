@@ -1,13 +1,13 @@
 # coding: utf-8
 
-#* read_line/window/edit/left.rb - Process :left
+#* read_line/window/edit/go_left.rb - Process :go_left
 module MiniReadline
 
-  #* read_line/window/edit/enter.rb - Process :left
+  #* read_line/window/edit/go_left.rb - Process :go_left
   class Readline
 
     #A little to the left please!
-    def left(_keyboard_args)
+    def go_left(_keyboard_args)
       if @edit_posn > 0
         @edit_posn -= 1
       else

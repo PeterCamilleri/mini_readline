@@ -24,12 +24,12 @@ module MiniReadline
     #Map the non-printing characters.
 
     #Left Arrows
-    MAP["\x00K"] = [:left]
-    MAP[pfx+"K"] = [:left]
+    MAP["\x00K"] = [:go_left]
+    MAP[pfx+"K"] = [:go_left]
 
     #Right Arrows
-    MAP["\x00M"] = [:right]
-    MAP[pfx+"M"] = [:right]
+    MAP["\x00M"] = [:go_right]
+    MAP[pfx+"M"] = [:go_right]
 
     #Up Arrows
     MAP["\x00H"] = [:previous_history]
