@@ -10,6 +10,7 @@ module MiniReadline
                                               #Set to nil for no alt prompt.
 
                   :no_blanks     => true,     #No empty lines in history.
+                  :no_dups       => true,     #No duplicate lines in history.
 
                   :debug         => false     #Used during development.
                  }

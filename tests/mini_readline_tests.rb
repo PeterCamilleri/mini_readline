@@ -27,8 +27,18 @@ class MiniReadlineTester < Minitest::Test
 
   def test_reading_a_line
     puts
-    puts "Enter the word: test"
-    assert_equal("test", MiniReadline::readline(">"))
+    puts "To finish this test, enter the word: quit"
+
+    edit = MiniReadline::Readline.new()
+
+    result = ''
+
+    loop do
+      result = edit.readline(">")
+      break unless result != 'quit'
+    end
+
+    assert_equal("quit", result)
   end
 
 end

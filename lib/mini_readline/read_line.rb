@@ -16,8 +16,8 @@ module MiniReadline
     #<br>Parameters:
     #* history - An array of strings used to contain the history. Use an empty
     #  array to have a history buffer with no initial entries. Use the
-    #  value nil to maintain no history at all.
-    def initialize(history)
+    #  value nil (or false) to maintain no history at all.
+    def initialize(history=[])
       init_history(history)
       @term = MiniReadline::raw_term
     end
@@ -30,6 +30,7 @@ module MiniReadline
       initialize_readline(prompt, options)
       edit_loop
       @term.put_string("\n")
+      append_history(edit_buffer)
       edit_buffer
     end
 
@@ -42,6 +43,7 @@ module MiniReadline
       set_prompt(prompt)
       setup_edit_parms("")
       setup_window_parms
+      goto_end_of_history
     end
 
     #Set up the prompt options.

@@ -1,1 +1,9 @@
-0 total warnings
+lib/mini_readline/read_line/history.rb -- 3 warnings:
+  [53, 55]:MiniReadline::Readline#append_history calls self.history 2 times (DuplicateMethodCall)
+  [52, 53]:MiniReadline::Readline#append_history calls str.strip 2 times (DuplicateMethodCall)
+  [42, 44]:MiniReadline::Readline#get_next_history calls self.history 2 times (DuplicateMethodCall)
+lib/mini_readline/read_line/window/resync.rb -- 3 warnings:
+  [22, 24]:MiniReadline::Readline#check_margins calls self.edit_posn 2 times (DuplicateMethodCall)
+  [19, 21, 27]:MiniReadline::Readline#check_margins calls self.left_margin 3 times (DuplicateMethodCall)
+  [19, 23, 27]:MiniReadline::Readline#check_margins calls self.right_margin 3 times (DuplicateMethodCall)
+6 total warnings
