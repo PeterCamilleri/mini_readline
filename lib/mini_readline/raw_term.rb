@@ -10,10 +10,6 @@ end
 #* raw_term.rb - Platform determination for raw terminal access.
 module MiniReadline
   #Get an instance of a raw terminal controller object.
-  @raw_term = RawTerm.new
+  BASE_OPTIONS[:term] = RawTerm.new
 
-  class << self
-    #The current raw terminal controller object.
-    attr_reader :raw_term
-  end
 end

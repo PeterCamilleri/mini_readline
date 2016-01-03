@@ -12,6 +12,8 @@ module MiniReadline
                   :no_blanks     => true,     #No empty lines in history.
                   :no_dups       => true,     #No duplicate lines in history.
 
+                  :term          => nil,      #Filled in by raw_term.rb
+
                   :debug         => false     #Used during development.
                  }
 end
