@@ -1,7 +1,7 @@
 # coding: utf-8
 # A Simple Interactive Ruby Environment
 
-#require 'readline' #YUK
+puts
 
 if defined?(MiniReadline)
   puts "The mini_readline gem is already loaded."
@@ -10,12 +10,16 @@ else
     require 'mini_readline'
     puts "\nLoaded mini_readline from the system gem."
   rescue LoadError
-    require './lib/mini_readline'
-    puts "\nLoaded mini_readline from the local code folder."
+    begin
+      require './lib/mini_readline'
+      puts "\nLoaded mini_readline from the local code folder."
+    rescue LoadError
+      require 'readline'
+      puts "\nLoaded the standard readline gem."
+    end
   end
 end
 
-require_relative 'lib/mini_readline'
 require 'pp'
 
 class Object
@@ -78,7 +82,7 @@ class SIRE
   def run_sire
     puts
     puts "Welcome to a Simple Interactive Ruby Environment\n"
-    puts "Use command 'q' to quit.\n\n"
+    puts "Use the command 'q' to quit.\n\n"
 
     until @_done
       exec_line(Readline.readline('SIRE>', true))
