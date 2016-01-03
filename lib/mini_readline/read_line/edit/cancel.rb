@@ -11,7 +11,5 @@ module MiniReadline
       @edit_buffer = ""
       @edit_posn = 0
     end
-
   end
-
 end

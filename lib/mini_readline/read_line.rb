@@ -61,7 +61,5 @@ module MiniReadline
         fail "Prompt too long: <#{str}>"
       end
     end
-
   end
-
 end

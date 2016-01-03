@@ -58,6 +58,5 @@ module MiniReadline
 
       window_width
     end
-
   end
 end

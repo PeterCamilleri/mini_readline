@@ -51,7 +51,5 @@ module MiniReadline
 
       history << str
     end
-
   end
-
 end

@@ -14,7 +14,5 @@ module MiniReadline
 
       @edit_posn += 1
     end
-
   end
-
 end

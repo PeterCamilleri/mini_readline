@@ -55,7 +55,5 @@ module MiniReadline
       key_cmd = @term.get_mapped_keystroke
       send(key_cmd[0], key_cmd)
     end
-
   end
-
 end

@@ -67,9 +67,5 @@ module MiniReadline
 
       MAP[first_char] || MAP[first_char + get_raw_char]
     end
-
-
   end
-
-
 end

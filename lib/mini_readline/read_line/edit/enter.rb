@@ -10,7 +10,5 @@ module MiniReadline
     def enter(_keyboard_args)
       @working = false
     end
-
   end
-
 end

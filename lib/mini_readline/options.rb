@@ -14,5 +14,4 @@ module MiniReadline
 
                   :debug         => false     #Used during development.
                  }
-
 end

@@ -15,7 +15,5 @@ module MiniReadline
         @term.beep
       end
     end
-
   end
-
 end

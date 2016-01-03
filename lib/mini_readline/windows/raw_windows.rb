@@ -90,7 +90,5 @@ module MiniReadline
         end
       end
     end
-
   end
-
 end

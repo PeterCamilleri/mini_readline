@@ -53,7 +53,4 @@ module MiniReadline
 
     end
   end
-
-
-
 end

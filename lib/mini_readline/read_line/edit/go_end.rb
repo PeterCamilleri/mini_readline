@@ -10,7 +10,5 @@ module MiniReadline
     def go_end(_keyboard_args)
       @edit_posn = length
     end
-
   end
-
 end

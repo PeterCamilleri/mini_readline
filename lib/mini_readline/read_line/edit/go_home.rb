@@ -10,7 +10,5 @@ module MiniReadline
     def go_home(_keyboard_args)
       @edit_posn = 0
     end
-
   end
-
 end

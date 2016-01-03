@@ -65,8 +65,5 @@ module MiniReadline
     def scroll_step
        @options[:scroll_step]
     end
-
   end
-
-
 end
