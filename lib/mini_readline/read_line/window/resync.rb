@@ -24,7 +24,7 @@ module MiniReadline
         self.right_margin = [edit_posn + scroll_step, length].min
       end
 
-       old_margins == [self.left_margin, self.right_margin]
+       old_margins == [left_margin, right_margin]
     end
 
     #Compute what should be on the screen.
