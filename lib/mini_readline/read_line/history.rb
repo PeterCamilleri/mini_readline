@@ -39,9 +39,9 @@ module MiniReadline
 
     #Get the next history string
     def get_next_history
-      if @history_cursor < self.history.length
+      if @history_cursor < history.length
         @history_cursor += 1
-        self.history[@history_cursor] || ""
+        history[@history_cursor] || ""
       else
         false
       end
@@ -49,10 +49,12 @@ module MiniReadline
 
     #Append a string to the history buffer if enabled.
     def append_history(str)
-      return if (str.strip == '') && @options[:no_blanks]
-      return if (self.history.include?(str.strip)) && @options[:no_dups]
+      str_strip = str.strip
 
-      self.history << str
+      return if (str_strip == '')                  && @options[:no_blanks]
+      return if (history.include?(str_strip)) && @options[:no_dups]
+
+      history << str
     end
 
   end

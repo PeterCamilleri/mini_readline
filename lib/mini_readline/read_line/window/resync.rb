@@ -16,12 +16,12 @@ module MiniReadline
 
     #Verify/update the window margins. Returns true if they're fine.
     def check_margins
-      old_margins = [self.left_margin, self.right_margin]
+      old_margins = [left_margin, right_margin]
 
-      if edit_posn < self.left_margin
-        self.left_margin  = [self.edit_posn - scroll_step, 0].max
-      elsif edit_posn > self.right_margin
-        self.right_margin = [self.edit_posn + scroll_step, length].min
+      if edit_posn < left_margin
+        self.left_margin  = [edit_posn - scroll_step, 0].max
+      elsif edit_posn > right_margin
+        self.right_margin = [edit_posn + scroll_step, length].min
       end
 
        old_margins == [self.left_margin, self.right_margin]
