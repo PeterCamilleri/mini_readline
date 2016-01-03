@@ -26,6 +26,7 @@ module MiniReadline
 
     #Set the right margin
     def right_margin=(value)
+      @left_margin = 1 #Force the scrolled state for accurate scrolling.
       @left_margin = value - active_width + 1
     end
 
