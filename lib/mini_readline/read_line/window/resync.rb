@@ -33,30 +33,13 @@ module MiniReadline
     end
 
     #Bring the screen into agreement with the image.
-    #<br>Endemic Code Smells
-    #* :reek:TooManyStatements - The way things are!
     def update_screen(image)
-      base, changes = find_first_difference(image), ""
-
-      (base...window_width).each do |index|
-        changes << (image_char = image[index])
-
-        if image_char != window_buffer[index]
-          @term.set_posn(base, window_buffer)
-          @term.put_string changes
-          changes.clear
-          base = index + 1
+      (0...window_width).each do |index|
+        if (image_char = image[index]) != window_buffer[index]
+          @term.set_posn(index, window_buffer)
+          @term.put_string(image_char)
         end
       end
-    end
-
-    #Find the first point of difference.
-    def find_first_difference(image)
-      (0...window_width).each do |index|
-        return index if image[index] != window_buffer[index]
-      end
-
-      window_width
     end
   end
 end
