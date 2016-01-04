@@ -62,7 +62,7 @@ module MiniReadline
 
     #Verify that the prompt will fit!
     def verify_prompt(str)
-      unless (window_width - str.length) > scroll_step
+      unless (window_width - str.length) > (scroll_step * 2)
         fail "Prompt too long: <#{str}>"
       end
     end

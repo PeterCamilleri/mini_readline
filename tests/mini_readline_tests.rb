@@ -41,4 +41,12 @@ class MiniReadlineTester < Minitest::Test
     assert_equal("quit", result)
   end
 
+  def test_prompt_verification
+    opts = {:window_width  => 39}
+    edit = MiniReadline::Readline.new()
+    assert_raises(RuntimeError) {edit.readline(">"*20, opts)}
+  end
+
+
+
 end
