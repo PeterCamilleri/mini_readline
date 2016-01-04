@@ -21,7 +21,7 @@ module MiniReadline
       if edit_posn < left_margin
         self.left_margin  = [edit_posn - scroll_step, 0].max
       elsif edit_posn > right_margin
-        self.right_margin = [edit_posn + scroll_step, length].min
+        self.right_margin = edit_posn + scroll_step
       end
 
        old_margins == [left_margin, right_margin]
