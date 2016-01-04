@@ -43,7 +43,7 @@ module MiniReadline
     #The line editor processing loop.
     def edit_loop
       loop do
-        resync
+        @edit_window.resync(edit_buffer, edit_posn)
         break unless @working
         process_keystroke
       end
@@ -51,7 +51,11 @@ module MiniReadline
 
     #Process a keystroke.
     def process_keystroke
-      @term.set_posn(edit_posn - left_margin + prompt.length, window_buffer)
+      @term.set_posn(edit_posn -
+                     @edit_window.left_margin +
+                     @edit_window.prompt.length,
+                     @edit_window.window_buffer)
+
       key_cmd = @term.get_mapped_keystroke
       send(key_cmd[0], key_cmd)
     end

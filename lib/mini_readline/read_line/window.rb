@@ -6,12 +6,14 @@ require_relative 'window/resync'
 module MiniReadline
 
   #* read_line/window.rb - Support for the edit window.
-  class Readline
+  class EditWindow
 
     #Determine the edit window limits.
-    def setup_window_parms
+    def initialize_parms(options)
+      @options      = options
       @base_width   = window_width - @options[:base_prompt].length
       @scroll_width = window_width - @options[:scroll_prompt].length
+      @term         = @options[:term]
 
       @left_margin, @window_buffer = 0, ""
     end

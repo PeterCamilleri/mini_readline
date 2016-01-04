@@ -19,6 +19,7 @@ module MiniReadline
     #  value nil (or false) to maintain no history at all.
     def initialize(buffer=[])
       @history = History.new(buffer)
+      @edit_window = EditWindow.new
     end
 
     #Get the history buffer of this read line instance.
@@ -31,7 +32,7 @@ module MiniReadline
     #* prompt - A string used to prompt the user. '>' is popular.
     #* options - A hash of options; Typically :symbol => value
     def readline(prompt, options = {})
-      initialize_readline(prompt, options)
+      initialize_parms(prompt, options)
       edit_loop
       @term.put_new_line
       @history.append_history(edit_buffer)
@@ -40,14 +41,15 @@ module MiniReadline
 
     #Initialize the read line process. This basically process the arguments
     #of the readline method.
-    def initialize_readline(prompt, options = {})
+    def initialize_parms(prompt, options)
       @options = MiniReadline::BASE_OPTIONS.merge(options)
       @working = true
       (@term = @options[:term]).reset
 
       set_prompt(prompt)
+      @edit_window.initialize_parms(@options)
+
       initialize_edit_parms
-      setup_window_parms
       @history.initialize_history_parms(@options)
     end
 
@@ -62,7 +64,7 @@ module MiniReadline
 
     #Verify that the prompt will fit!
     def verify_prompt(str)
-      unless (window_width - str.length) > (scroll_step * 2)
+      unless (@options[:window_width] - str.length) > (@options[:scroll_step] * 2)
         fail "Prompt too long: <#{str}>"
       end
     end

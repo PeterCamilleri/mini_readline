@@ -15,6 +15,7 @@ class MiniReadlineTester < Minitest::Test
     assert_equal(Module, MiniReadline.class)
     assert_equal(String, MiniReadline::VERSION.class)
     assert_equal(Class,  MiniReadline::Readline.class)
+    assert_equal(Class,  MiniReadline::EditWindow.class)
   end
 
   def test_platform_detection
