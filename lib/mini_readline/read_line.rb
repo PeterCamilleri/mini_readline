@@ -18,7 +18,7 @@ module MiniReadline
     #  array to have a history buffer with no initial entries. Use the
     #  value nil (or false) to maintain no history at all.
     def initialize(history=[])
-      init_history(history)
+      @history = History.new(history)
     end
 
     #Read a line from the console with edit and history.
@@ -29,7 +29,7 @@ module MiniReadline
       initialize_readline(prompt, options)
       edit_loop
       @term.put_string("\n")
-      append_history(edit_buffer)
+      @history.append_history(edit_buffer, @options)
       edit_buffer
     end
 
@@ -42,7 +42,7 @@ module MiniReadline
       set_prompt(prompt)
       initialize_edit_parms
       setup_window_parms
-      goto_end_of_history
+      @history.goto_end_of_history
     end
 
     #Set up the prompt options.

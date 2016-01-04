@@ -4,22 +4,17 @@
 module MiniReadline
 
   #* read_line/history.rb - Support for the edit history.
-  class Readline
+  class History
 
-    #Get the history associated with this instance.
-    def history
-      @_history || []
+    #Setup the history array of the mini line editor.
+    def initialize(buffer)
+      @_buffer = buffer
+      goto_end_of_history
     end
 
     #Go to the end of the history array.
     def goto_end_of_history
-      @history_cursor = self.history.length
-    end
-
-    #Setup the history array of the mini line editor.
-    def init_history(history)
-      @_history = history
-      goto_end_of_history
+      @history_cursor = history.length
     end
 
     #Get the previous history string.
@@ -43,13 +38,18 @@ module MiniReadline
     end
 
     #Append a string to the history buffer if enabled.
-    def append_history(str)
+    def append_history(str, options)
       str_strip = str.strip
 
-      return if (str_strip == '')                  && @options[:no_blanks]
-      return if (history.include?(str_strip)) && @options[:no_dups]
+      return if (str_strip == '')             && options[:no_blanks]
+      return if (history.include?(str_strip)) && options[:no_dups]
 
       history << str
+    end
+
+    #Get the history buffer associated with this instance.
+    def history
+      @_buffer || []
     end
   end
 end

@@ -8,7 +8,7 @@ module MiniReadline
 
     #The insert_text command. We are DONE!
     def previous_history(_keyboard_args)
-      if (temp = self.get_previous_history)
+      if (temp = @history.get_previous_history)
         @edit_buffer = temp
         @edit_posn   = temp.length
       else
