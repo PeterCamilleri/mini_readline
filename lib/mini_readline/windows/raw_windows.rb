@@ -54,6 +54,11 @@ module MiniReadline
       put_string CARRIAGE_RETURN
     end
 
+    #Start on a new line.
+    def put_new_line
+      print("\n")
+    end
+
     #Back up the cursor
     def back_up(count)
       put_string BACK_SPACE * count
