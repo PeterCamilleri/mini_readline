@@ -12,6 +12,12 @@ module MiniReadline
       goto_end_of_history
     end
 
+    #Get the history object ready for the next read line operation.
+    def initialize_history_parms(options)
+      @options = options
+      goto_end_of_history
+    end
+
     #Go to the end of the history array.
     def goto_end_of_history
       @history_cursor = history.length
@@ -38,11 +44,11 @@ module MiniReadline
     end
 
     #Append a string to the history buffer if enabled.
-    def append_history(str, options)
+    def append_history(str)
       str_strip = str.strip
 
-      return if (str_strip == '')             && options[:no_blanks]
-      return if (history.include?(str_strip)) && options[:no_dups]
+      return if (str_strip == '')             && @options[:no_blanks]
+      return if (history.include?(str_strip)) && @options[:no_dups]
 
       history << str
     end

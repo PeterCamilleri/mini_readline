@@ -34,7 +34,7 @@ module MiniReadline
       initialize_readline(prompt, options)
       edit_loop
       @term.put_new_line
-      @history.append_history(edit_buffer, @options)
+      @history.append_history(edit_buffer)
       edit_buffer
     end
 
@@ -48,7 +48,7 @@ module MiniReadline
       set_prompt(prompt)
       initialize_edit_parms
       setup_window_parms
-      @history.goto_end_of_history
+      @history.initialize_history_parms(@options)
     end
 
     #Set up the prompt options.
