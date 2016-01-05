@@ -26,7 +26,7 @@ module MiniReadline
 
     #Set up the initial edit settings.
     def initialize_edit_parms
-      @edit_posn, @edit_buffer = 0, ""
+      @edit_posn, @edit_buffer, @working = 0, "", true
     end
 
     #The main edit buffer

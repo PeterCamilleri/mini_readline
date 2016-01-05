@@ -43,7 +43,6 @@ module MiniReadline
     #of the readline method.
     def initialize_parms(prompt, options)
       @options = MiniReadline::BASE_OPTIONS.merge(options)
-      @working = true
       (@term = @options[:term]).reset
 
       set_prompt(prompt)
