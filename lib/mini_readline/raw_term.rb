@@ -2,9 +2,9 @@
 
 #Select the type of platform in use.
 if (RUBY_PLATFORM =~ /\bcygwin\b/i) || (RUBY_PLATFORM !~ /mswin|mingw/)
-  require_relative 'raw_term/other/raw_other'
+  require_relative 'raw_term/other'
 else
-  require_relative 'raw_term/windows/raw_windows'
+  require_relative 'raw_term/windows'
 end
 
 #* raw_term.rb - Platform determination for raw terminal access.

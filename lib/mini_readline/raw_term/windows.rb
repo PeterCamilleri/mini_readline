@@ -1,10 +1,10 @@
 # coding: utf-8
 
-require_relative 'win_32_api'
-require_relative 'map_windows'
-require_relative 'set_posn'
+require_relative 'windows/win_32_api'
+require_relative 'windows/map'
+require_relative 'windows/set_posn'
 
-#* windows/raw_windows.rb - Support for raw terminal access in windows systems.
+#* raw_term/windows.rb - Support for raw terminal access in windows systems.
 module MiniReadline
 
   #The detected platform is windows.
