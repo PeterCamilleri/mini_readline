@@ -36,6 +36,7 @@ class MiniReadlineTester < Minitest::Test
 
     loop do
       result = edit.readline(">")
+      puts result.inspect
       break unless result != 'quit'
     end
 
