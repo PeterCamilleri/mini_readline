@@ -6,8 +6,8 @@ module MiniReadline
   #* read_line/window/resync.rb - Keeping the screen in sync.
   class EditWindow
 
-    #Keep things in sync!
-    def resync(edit_buffer, edit_posn)
+    #Keep the edit window in sync!
+    def sync_window(edit_buffer, edit_posn)
       window_buffer.clear unless check_margins(edit_posn)
       image = build_screen_image(edit_buffer)
       update_screen(image)

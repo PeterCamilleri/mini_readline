@@ -43,7 +43,7 @@ module MiniReadline
     #The line editor processing loop.
     def edit_loop
       loop do
-        @edit_window.resync(edit_buffer, edit_posn)
+        @edit_window.sync_window(edit_buffer, edit_posn)
         break unless @working
         process_keystroke
       end
