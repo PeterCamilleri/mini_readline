@@ -1,11 +1,11 @@
 # coding: utf-8
 
-require_relative 'window/sync_window'
+require_relative 'edit_window/sync_window'
 
-#* read_line/window.rb - Edit window support.
+#* read_line/edit_window.rb - Edit window support.
 module MiniReadline
 
-  #* read_line/window.rb - Support for the edit window.
+  #* read_line/edit_window.rb - Support for the edit window.
   class EditWindow
 
     #Determine the edit window limits.

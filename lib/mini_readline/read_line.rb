@@ -1,6 +1,6 @@
 # coding: utf-8
 
-require_relative 'read_line/window'
+require_relative 'read_line/edit_window'
 require_relative 'read_line/history'
 require_relative 'read_line/edit'
 
