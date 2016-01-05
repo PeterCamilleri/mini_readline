@@ -1,6 +1,7 @@
 # coding: utf-8
 
 require_relative 'edit_window/sync_window'
+require_relative 'edit_window/sync_cursor'
 
 #* read_line/edit_window.rb - Edit window support.
 module MiniReadline

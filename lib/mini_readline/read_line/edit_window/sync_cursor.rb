@@ -1,0 +1,15 @@
+# coding: utf-8
+
+#* read_line/window/sync_cursor.rb - Keep the cursor in sync.
+module MiniReadline
+
+  #* read_line/window/sync_cursor.rb - Keep the cursor in sync.
+  class EditWindow
+
+    #Keep the cursor in sync!
+    def sync_cursor(edit_posn)
+      @term.set_posn(edit_posn - left_margin + prompt.length, window_buffer)
+    end
+
+  end
+end

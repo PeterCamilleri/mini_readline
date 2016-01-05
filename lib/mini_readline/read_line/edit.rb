@@ -44,19 +44,16 @@ module MiniReadline
     def edit_loop
       loop do
         @edit_window.sync_window(edit_buffer, edit_posn)
+
         break unless @working
-        process_keystroke
+
+        @edit_window.sync_cursor(edit_posn)
+        process_keystroke(@term.get_mapped_keystroke)
       end
     end
 
     #Process a keystroke.
-    def process_keystroke
-      @term.set_posn(edit_posn -
-                     @edit_window.left_margin +
-                     @edit_window.prompt.length,
-                     @edit_window.window_buffer)
-
-      key_cmd = @term.get_mapped_keystroke
+    def process_keystroke(key_cmd)
       send(key_cmd[0], key_cmd)
     end
   end
