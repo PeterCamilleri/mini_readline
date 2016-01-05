@@ -4,7 +4,7 @@
 module MiniReadline
 
   #* read_line/window/edit/go_left.rb - Process :go_left
-  class Readline
+  class Edit
 
     #A little to the left please!
     def go_left(_keyboard_args)

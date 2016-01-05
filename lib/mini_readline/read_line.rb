@@ -1,7 +1,5 @@
 # coding: utf-8
 
-require_relative 'read_line/edit_window'
-require_relative 'read_line/history'
 require_relative 'read_line/edit'
 
 #* read_line.rb - The ReadLine class that does the actual work.
@@ -18,13 +16,12 @@ module MiniReadline
     #  array to have a history buffer with no initial entries. Use the
     #  value nil (or false) to maintain no history at all.
     def initialize(buffer=[])
-      @history = History.new(buffer)
-      @edit_window = EditWindow.new
+      @edit = Edit.new(buffer)
     end
 
     #Get the history buffer of this read line instance.
     def history
-      @history.history
+      @edit.history
     end
 
     #Read a line from the console with edit and history.
@@ -33,10 +30,9 @@ module MiniReadline
     #* options - A hash of options; Typically :symbol => value
     def readline(prompt, options = {})
       initialize_parms(prompt, options)
-      edit_loop
+      result = @edit.edit_process
       @term.put_new_line
-      @history.append_history(edit_buffer)
-      edit_buffer
+      result
     end
 
     #Initialize the read line process. This basically process the arguments
@@ -46,10 +42,7 @@ module MiniReadline
       (@term = @options[:term]).reset
 
       set_prompt(prompt)
-      @edit_window.initialize_parms(@options)
-
-      initialize_edit_parms
-      @history.initialize_history_parms(@options)
+      @edit.initialize_edit_parms(@options)
     end
 
     #Set up the prompt options.

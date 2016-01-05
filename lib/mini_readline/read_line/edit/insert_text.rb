@@ -4,7 +4,7 @@
 module MiniReadline
 
   #* read_line/window/edit/insert_text.rb - Process :insert_text
-  class Readline
+  class Edit
 
     #The insert_text command
     def insert_text(keyboard_args)

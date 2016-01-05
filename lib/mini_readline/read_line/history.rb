@@ -13,7 +13,7 @@ module MiniReadline
     end
 
     #Get the history object ready for the next read line operation.
-    def initialize_history_parms(options)
+    def initialize_parms(options)
       @options = options
       goto_end_of_history
     end

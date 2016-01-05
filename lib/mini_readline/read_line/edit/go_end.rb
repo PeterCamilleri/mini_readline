@@ -4,7 +4,7 @@
 module MiniReadline
 
   #* read_line/window/edit/go_home.rb - Process :go_end
-  class Readline
+  class Edit
 
     #A lot to the right please!
     def go_end(_keyboard_args)

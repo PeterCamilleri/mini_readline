@@ -4,7 +4,7 @@
 module MiniReadline
 
   #* read_line/window/edit/delete_right.rb - Process :delete_right
-  class Readline
+  class Edit
 
     #The delete to the right
     def delete_right(_keyboard_args)

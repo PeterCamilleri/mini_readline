@@ -4,7 +4,7 @@
 module MiniReadline
 
   #* read_line/window/edit/cancel.rb - Process :cancel
-  class Readline
+  class Edit
 
     #All right! Scrap all of this and start over!
     def cancel(_keyboard_args)

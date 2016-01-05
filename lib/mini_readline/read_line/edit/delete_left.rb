@@ -4,7 +4,7 @@
 module MiniReadline
 
   #* read_line/window/edit/delete_left.rb - Process :delete_left
-  class Readline
+  class Edit
 
     #The delete to the left command
     def delete_left(_keyboard_args)

@@ -1,5 +1,8 @@
 # coding: utf-8
 
+require_relative 'edit_window'
+require_relative 'history'
+
 require_relative 'edit/insert_text'
 require_relative 'edit/enter'
 
@@ -22,11 +25,24 @@ require_relative 'edit/unmapped'
 module MiniReadline
 
   #* read_line/edit.rb - The line editor.
-  class Readline
+  class Edit
+
+    #Set up the edit instance.
+    def initialize(buffer)
+      @history     = History.new(buffer)
+      @edit_window = EditWindow.new
+    end
 
     #Set up the initial edit settings.
-    def initialize_edit_parms
-      @edit_posn, @edit_buffer, @working = 0, "", true
+    def initialize_edit_parms(options)
+      @options     = options
+      @term        = @options[:term]
+      @edit_posn   = 0
+      @edit_buffer = ""
+      @working     = true
+
+      @edit_window.initialize_parms(@options)
+      @history.initialize_parms(@options)
     end
 
     #The main edit buffer
@@ -40,16 +56,27 @@ module MiniReadline
       edit_buffer.length
     end
 
+    #Get the history array for this edit instance.
+    def history
+      @history.history
+    end
+
+    #Interact with the user
+    def edit_process
+      result = edit_loop
+      @history.append_history(result)
+      result
+    end
+
     #The line editor processing loop.
     def edit_loop
-      loop do
+      while @working
         @edit_window.sync_window(edit_buffer, edit_posn)
-
-        break unless @working
-
         @edit_window.sync_cursor(edit_posn)
         process_keystroke(@term.get_mapped_keystroke)
       end
+
+      edit_buffer
     end
 
     #Process a keystroke.

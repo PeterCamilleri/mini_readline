@@ -4,7 +4,7 @@
 module MiniReadline
 
   #* read_line/window/edit/enter.rb - Process :enter
-  class Readline
+  class Edit
 
     #The insert_text command. We are DONE!
     def enter(_keyboard_args)

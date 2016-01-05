@@ -4,7 +4,7 @@
 module MiniReadline
 
   #* read_line/window/edit/previous_history.rb - Process :previous_history
-  class Readline
+  class Edit
 
     #The insert_text command. We are DONE!
     def previous_history(_keyboard_args)
