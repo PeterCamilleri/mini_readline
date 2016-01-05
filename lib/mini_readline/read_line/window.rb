@@ -1,6 +1,6 @@
 # coding: utf-8
 
-require_relative 'window/resync'
+require_relative 'window/sync_window'
 
 #* read_line/window.rb - Edit window support.
 module MiniReadline

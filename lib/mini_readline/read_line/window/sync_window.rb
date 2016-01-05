@@ -1,9 +1,9 @@
 # coding: utf-8
 
-#* read_line/window/resync.rb - Keeping the screen in sync.
+#* read_line/window/sync_window.rb - Keeping the screen in sync.
 module MiniReadline
 
-  #* read_line/window/resync.rb - Keeping the screen in sync.
+  #* read_line/window/sync_window.rb - Keeping the screen in sync.
   class EditWindow
 
     #Keep the edit window in sync!
