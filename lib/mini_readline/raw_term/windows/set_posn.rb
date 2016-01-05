@@ -26,11 +26,7 @@ module MiniReadline
 
     #Move the cursor using laborious terminal primitives.
     def term_set_posn(new_posn, buffer)
-      if new_posn == 0
-        reset
-      else
-        move_cursor(new_posn, @cursor_posn, buffer) if new_posn != @cursor_posn
-      end
+      move_cursor(new_posn, @cursor_posn, buffer) if new_posn != @cursor_posn
     end
 
     #Move the cursor from the old_posn to the new_posn.
@@ -41,7 +37,7 @@ module MiniReadline
         put_string(buffer[old_posn...new_posn])
       elsif gap > (old_posn / 2)
         reset
-        move_cursor(new_posn, 0, buffer)
+        put_string(buffer[0...new_posn])
       else
         put_string(RawTerm::BACK_SPACE*(gap))
       end
