@@ -49,7 +49,7 @@ module MiniReadline
     end
 
     #Home the cursor and start at a known state.
-    def reset
+    def initialize_parms
       @_out_handle = @_get_handle.call(STD_OUTPUT_HANDLE)
       put_string CARRIAGE_RETURN
     end

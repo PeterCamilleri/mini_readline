@@ -39,7 +39,7 @@ module MiniReadline
     #of the readline method.
     def initialize_parms(prompt, options)
       @options = MiniReadline::BASE_OPTIONS.merge(options)
-      (@term = @options[:term]).reset
+      (@term = @options[:term]).initialize_parms
 
       set_prompt(prompt)
       @edit.initialize_edit_parms(@options)
