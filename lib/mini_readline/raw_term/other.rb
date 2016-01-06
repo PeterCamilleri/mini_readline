@@ -13,9 +13,6 @@ module MiniReadline
   #The class used to manipulate console i/o on a low level.
   class RawTerm
 
-    #The sleep interval waiting for a key to be pressed.
-    WAIT_SLEEP      = 0.02
-
     #Carriage return
     CARRIAGE_RETURN = "\x0D"
 
@@ -45,17 +42,16 @@ module MiniReadline
       print("\n")
     end
 
-    #Back up the cursor
-    def back_up(count)
-      put_string BACK_SPACE * count
-    end
-
     #Sound a beep
     def beep
       print BELL
     end
 
     #Get a uncooked character keystroke.
+    #<br>Notes
+    #* This needs to be tested under Linux, Cygwin, and Apple.
+    #<br>Endemic Code Smells
+    #* :reek:UtilityFunction -- For now, the way things are.
     def get_raw_char
       STDIN.getch
     end

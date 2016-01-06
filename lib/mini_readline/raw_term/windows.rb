@@ -59,11 +59,6 @@ module MiniReadline
       print("\n")
     end
 
-    #Back up the cursor
-    def back_up(count)
-      put_string BACK_SPACE * count
-    end
-
     #Sound a beep
     def beep
       @_beep.call(0)

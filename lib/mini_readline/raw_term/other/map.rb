@@ -67,6 +67,7 @@ module MiniReadline
         key_cmd = MAP[key_seq]
       end until key_cmd
 
+      key_cmd
     end
   end
 end
