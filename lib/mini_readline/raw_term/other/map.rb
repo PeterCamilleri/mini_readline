@@ -16,9 +16,9 @@ module MiniReadline
     end
 
     #Map the non-terminal entries.
-    MAP["\e"]  = false
-    MAP["\e["] = false
-    MAP["\eO"] = false
+    MAP["\e"]   = false
+    MAP["\e["]  = false
+    MAP["\eO"]  = false
 
     #Map the non-printing characters.
 
@@ -47,10 +47,12 @@ module MiniReadline
     MAP["\eOF"]  = [:go_end]
 
     #The Backspace key
-    MAP["\x08"]  = [:delete_left]
+    MAP["\x7F"]  = [:delete_left]
 
     #The Delete keys
-    MAP["\x7F"]  = [:delete_right]
+    MAP["\x1F"]  = [:delete_right]
+    MAP["\e[3"]  = false
+    MAP["\e[3~"] = [:delete_right]
 
     #The Enter key
     MAP["\x0D"]  = [:enter]

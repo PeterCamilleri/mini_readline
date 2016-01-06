@@ -8,11 +8,12 @@ module MiniReadline
 
     #Move the cursor using terminal primitives.
     def set_posn(new_posn)
-
-      if new_posn > @cursor_posn
-        print("\e#{new_posn - @cursor_posn}C")
+      if new_posn == 0
+        put_string(CARRIAGE_RETURN)
+      elsif new_posn > @cursor_posn
+        print("\e[#{new_posn - @cursor_posn}C")
       elsif new_posn < @cursor_posn
-        print("\e#{@cursor_posn - new_posn}D")
+        print("\e[#{@cursor_posn - new_posn}D")
       end
 
       @cursor_posn = new_posn
