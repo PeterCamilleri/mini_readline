@@ -36,7 +36,7 @@ module MiniReadline
     def update_screen(image)
       (0...window_width).each do |index|
         if (image_char = image[index]) != window_buffer[index]
-          @term.set_posn(index, window_buffer)
+          @term.set_posn(index)
           @term.put_string(image_char)
         end
       end

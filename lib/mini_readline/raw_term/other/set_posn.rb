@@ -7,7 +7,7 @@ module MiniReadline
   class RawTerm
 
     #Move the cursor using terminal primitives.
-    def set_posn(new_posn, _buffer)
+    def set_posn(new_posn)
 
       if new_posn > @cursor_posn
         print("\e#{new_posn - @cursor_posn}C")

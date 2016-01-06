@@ -19,9 +19,6 @@ module MiniReadline
     #Carriage return
     CARRIAGE_RETURN = "\x0D"
 
-    #Backspace
-    BACK_SPACE      = "\x08"
-
     #The magic number for standard out.
     STD_OUTPUT_HANDLE = -11
 
@@ -80,11 +77,8 @@ module MiniReadline
     #Determine the affect of a string on the cursor.
     def scan_string(str)
       str.chars.each do |char|
-        case char
-        when CARRIAGE_RETURN
+        if char == CARRIAGE_RETURN
           @cursor_posn = 0
-        when BACK_SPACE
-          @cursor_posn -= 1
         else
           @cursor_posn += 1
         end

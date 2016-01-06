@@ -7,11 +7,11 @@ module MiniReadline
   class RawTerm
 
     #Set the position of the screen cursor within the line.
-    def set_posn(new_posn, buffer)
+    def set_posn(new_posn)
       if @_out_handle
         api_set_posn(new_posn)
       else
-        term_set_posn(new_posn, buffer)
+        term_set_posn(new_posn)
       end
     end
 
@@ -24,23 +24,17 @@ module MiniReadline
       @_set_cursor_posn.call(@_out_handle, y_posn * 65536 + new_posn)
     end
 
-    #Move the cursor using laborious terminal primitives.
-    def term_set_posn(new_posn, buffer)
-      move_cursor(new_posn, @cursor_posn, buffer) if new_posn != @cursor_posn
-    end
+    #Move the cursor using terminal primitives.
+    def term_set_posn(new_posn)
 
-    #Move the cursor from the old_posn to the new_posn.
-    def move_cursor(new_posn, old_posn, buffer)
-      gap = old_posn - new_posn
-
-      if new_posn > old_posn
-        put_string(buffer[old_posn...new_posn])
-      elsif gap > (old_posn / 2)
-        reset
-        put_string(buffer[0...new_posn])
-      else
-        put_string(RawTerm::BACK_SPACE*(gap))
+      if new_posn > @cursor_posn
+        print("\e#{new_posn - @cursor_posn}C")
+      elsif new_posn < @cursor_posn
+        print("\e#{@cursor_posn - new_posn}D")
       end
+
+      @cursor_posn = new_posn
     end
+
   end
 end
