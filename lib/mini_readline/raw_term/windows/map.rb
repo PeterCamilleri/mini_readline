@@ -1,9 +1,9 @@
 # coding: utf-8
 
-#* map_windows.rb - Character mapping for windows systems.
+#* windows/map.rb - Character mapping for windows systems.
 module MiniReadline
 
-  #* windows/map_wondows.rb - Character to action mapping for windows.
+  #* windows/map.rb - Character mapping for windows systems.
   class RawTerm
 
     #Create a hash with a default value.
