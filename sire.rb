@@ -1,9 +1,15 @@
 # coding: utf-8
 # A Simple Interactive Ruby Environment
 
-puts
+require 'pp'
 
-if defined?(MiniReadline)
+if ARGV[0] == 'old'
+  require 'readline'
+  puts "\nOption(old). Loaded the standard readline gem."
+elsif ARGV[0] == 'local'
+  require './lib/mini_readline'
+  puts "\nOption(local). Loaded mini_readline from the local code folder."
+elsif defined?(MiniReadline)
   puts "The mini_readline gem is already loaded."
 else
   begin
@@ -19,8 +25,6 @@ else
     end
   end
 end
-
-require 'pp'
 
 class Object
   #Generate the class lineage of the object.
