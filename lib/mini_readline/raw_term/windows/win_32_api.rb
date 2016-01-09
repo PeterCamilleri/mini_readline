@@ -7,6 +7,10 @@ module MiniReadline
 
   #The classic \Win32API gem is deprecated, so we emulate it with fiddle.
   class Win32API
+
+    #Use standard calling conventions
+    STDCALL = 1
+
     #A hash of DLL files used for one or more API entry points.
     DLL = {}
 
@@ -21,7 +25,7 @@ module MiniReadline
 
       handle = DLL[dllname] ||= Fiddle.dlopen(dllname)
 
-      @func = Fiddle::Function.new(handle[func], TYPES.values_at(*@proto), 1)
+      @func = Fiddle::Function.new(handle[func], TYPES.values_at(*@proto), STDCALL)
     end
 
     #Call the Win 32 API entry point with appropriate arguments.
