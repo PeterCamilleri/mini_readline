@@ -34,6 +34,36 @@ Or install it yourself as:
 
     $ gem install mini_readline
 
+## Key Mappings
+The mini_readline gem supports a simple set of editing commands. These vary
+somewhat based on the system platform. The keyboard mappings (and alias
+mappings) are listed below:
+
+Editor Action    | Windows Key    | Other Key
+-----------------|----------------|------------
+Enter            | Enter          | Enter
+Left             | Left Arrow     | Left Arrow
+                 | Keypad Left    |
+Right            | Right Arrow    | Right Arrow
+                 | Keypad Right   |
+Go to start      | Home           | Home
+                 | Keypad Home    |
+Go to end        | End            | End
+                 | Keypad End     |
+Previous History | Up Arrow       | Up Arrow
+                 | Keypad Up      |
+Next History     | Down Arrow     | Down Arrow
+                 | Keypad Down    |
+Erase Left       | Backspace      | Backspace
+Erase Right      | Delete         | Delete
+                 | Ctrl-Backspace | Ctrl-Backspace
+Erase All        | Escape         | Ctrl-B
+
+### Notes
+* The label "Other" is an umbrella that bundles together the Linux, Mac,
+and Cygwin platforms.
+* References to Keypad keys under Windows assume that Num Lock is not engaged.
+
 ## Usage
 
 The typical way of utilizing this gem is to place the following:
