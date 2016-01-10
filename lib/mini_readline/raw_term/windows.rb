@@ -41,7 +41,6 @@ module MiniReadline
 
     #Output a string
     def put_string(str)
-      scan_string(str) unless @_out_handle
       print(str)
     end
 
@@ -72,17 +71,6 @@ module MiniReadline
     def get_raw_char
       wait_for_key
       @_getch.call.chr
-    end
-
-    #Determine the affect of a string on the cursor.
-    def scan_string(str)
-      str.chars.each do |char|
-        if char == CARRIAGE_RETURN
-          @cursor_posn = 0
-        else
-          @cursor_posn += 1
-        end
-      end
     end
   end
 end
