@@ -57,6 +57,12 @@ class SIRE
     "Bye bye for now!"
   end
 
+  #Get a mapped keystroke.
+  def g
+    print 'Press a key:'
+    MiniReadline::BASE_OPTIONS[:term].get_mapped_keystroke
+  end
+
   #Test spawning a process. This breaks the regular readline gem.
   def run(command)
     IO.popen(command, "r+") do |io|
