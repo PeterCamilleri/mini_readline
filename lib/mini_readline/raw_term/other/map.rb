@@ -33,6 +33,7 @@ module MiniReadline
     #Up Arrows
     MAP["\e[A"]  = [:previous_history]
     MAP["\eOA"]  = [:previous_history]
+    MAP["\x12"]  = [:previous_history]
 
     #Down Arrows
     MAP["\e[B"]  = [:next_history]
@@ -41,13 +42,16 @@ module MiniReadline
     #The Home keys
     MAP["\e[H"]  = [:go_home]
     MAP["\eOH"]  = [:go_home]
+    MAP["\x01"]  = [:go_home]
 
     #The End keys
     MAP["\e[F"]  = [:go_end]
     MAP["\eOF"]  = [:go_end]
+    MAP["\x05"]  = [:go_end]
 
     #The Backspace key
     MAP["\x7F"]  = [:delete_left]
+    MAP["\x08"]  = [:delete_left]
 
     #The Delete keys
     MAP["\x1F"]  = [:delete_right]

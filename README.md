@@ -18,6 +18,8 @@ that I will see the same bugs and fix them. Then perhaps it can be seen how
 the original code can also be fixed. In the long run, this is perhaps the
 most important goal.
 
+<br>The mini_readline gem is designed for use with MRI version 1.9.3 or later.
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -39,25 +41,18 @@ The mini_readline gem supports a simple set of editing commands. These vary
 somewhat based on the system platform. The keyboard mappings (and alias
 mappings) are listed below:
 
-Editor Action    | Windows Key    | Other Key
------------------|----------------|------------
-Enter            | Enter          | Enter
-Left             | Left Arrow     | Left Arrow
-                 | Keypad Left    |
-Right            | Right Arrow    | Right Arrow
-                 | Keypad Right   |
-Go to start      | Home           | Home
-                 | Keypad Home    |
-Go to end        | End            | End
-                 | Keypad End     |
-Previous History | Up Arrow       | Up Arrow
-                 | Keypad Up      |
-Next History     | Down Arrow     | Down Arrow
-                 | Keypad Down    |
-Erase Left       | Backspace      | Backspace
-Erase Right      | Delete         | Delete
-                 | Ctrl-Backspace | Ctrl-Backspace
-Erase All        | Escape         | Ctrl-B
+Editor Action    | Windows Key               | Other Key
+-----------------|---------------------------|------------
+Enter            | Enter                     | Enter
+Left             | Left Arrow, Keypad Left   | Left Arrow
+Right            | Right Arrow, Keypad Right | Right Arrow
+Go to start      | Home, Keypad Home         | Home, Ctrl-A
+Go to end        | End, Keypad End           | End, Ctrl-E
+Previous History | Up Arrow, Keypad Up       | Up Arrow, Ctrl-R
+Next History     | Down Arrow, Keypad Down   | Down Arrow
+Erase Left       | Backspace                 | Backspace, Ctrl-H
+Erase Right      | Delete, Ctrl-Backspace    | Delete, Ctrl-Backspace
+Erase All        | Escape                    | Ctrl-B
 
 ### Notes
 * The label "Other" is an umbrella that bundles together the Linux, Mac,
