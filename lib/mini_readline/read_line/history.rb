@@ -45,10 +45,8 @@ module MiniReadline
 
     #Append a string to the history buffer if enabled.
     def append_history(str)
-      str_strip = str.strip
-
-      return if (str_strip == '')             && @options[:no_blanks]
-      return if (history.include?(str_strip)) && @options[:no_dups]
+      return              if @options[:no_blanks] && (str.strip == '')
+      history.delete(str) if @options[:no_dups]
 
       history << str
     end
