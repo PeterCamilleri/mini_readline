@@ -17,12 +17,13 @@ module MiniReadline
       @map[index] = value
     end
 
+    #Handle the preamble characters in the command sequence.
     def process_non_terminals(index)
       seq = ""
 
       index.chop.chars.each do |char|
         seq << char
-        fail "Ambiguous entry" if @map.has_key?(seq) && @map[seq]
+        fail "Ambiguous entry #{index.inspect}" if @map.has_key?(seq) && @map[seq]
         @map[seq] = false
       end
     end
