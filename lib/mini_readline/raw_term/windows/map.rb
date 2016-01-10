@@ -6,20 +6,7 @@ module MiniReadline
   #* windows/map.rb - Character mapping for windows systems.
   class RawTerm
 
-    #Create a hash with a default value.
-    MAP = Hash.new {|_hash, key| [:unmapped, key]}
-
-    #Map the printable characters.
-    (32..126).each do |code|
-      char = code.chr
-      MAP[char] = [:insert_text, char]
-    end
-
     pfx = 0xE0.chr
-
-    #Map the non-terminal entries.
-    MAP["\x00"] = false
-    MAP[  pfx ] = false
 
     #Map the non-printing characters.
 
@@ -60,12 +47,5 @@ module MiniReadline
 
     #The Escape key
     MAP["\x1B"]  = [:cancel]
-
-    #Get a mapped sequence.
-    def get_mapped_keystroke
-      first_char = get_raw_char
-
-      MAP[first_char] || MAP[first_char + get_raw_char]
-    end
   end
 end

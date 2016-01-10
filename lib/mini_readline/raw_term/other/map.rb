@@ -6,20 +6,6 @@ module MiniReadline
   #* other/map.rb - Character mapping for other systems.
   class RawTerm
 
-    #Create a hash with a default value.
-    MAP = Hash.new {|_hash, key| [:unmapped, key]}
-
-    #Map the printable characters.
-    (32..126).each do |code|
-      char = code.chr
-      MAP[char] = [:insert_text, char]
-    end
-
-    #Map the non-terminal entries.
-    MAP["\e"]   = false
-    MAP["\e["]  = false
-    MAP["\eO"]  = false
-
     #Map the non-printing characters.
 
     #Left Arrows
@@ -55,7 +41,6 @@ module MiniReadline
 
     #The Delete keys
     MAP["\x1F"]  = [:delete_right]
-    MAP["\e[3"]  = false
     MAP["\e[3~"] = [:delete_right]
 
     #The Enter key
@@ -63,17 +48,5 @@ module MiniReadline
 
     #The Cancel key
     MAP["\x02"]  = [:cancel]
-
-    #Get a mapped sequence.
-    def get_mapped_keystroke
-      key_seq, key_cmd = "", nil
-
-      begin
-        key_seq << get_raw_char
-        key_cmd = MAP[key_seq]
-      end until key_cmd
-
-      key_cmd
-    end
   end
 end

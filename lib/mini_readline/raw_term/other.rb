@@ -19,10 +19,6 @@ module MiniReadline
     #Bell
     BELL            = "\x07"
 
-    #Set up the Other Raw Terminal.
-    def initialize
-    end
-
     #Output a string
     def put_string(str)
       scan_string(str)
