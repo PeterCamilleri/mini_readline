@@ -34,11 +34,6 @@ module MiniReadline
       put_string CARRIAGE_RETURN
     end
 
-    #Start on a new line.
-    def put_new_line
-      print("\n")
-    end
-
     #Sound a beep
     def beep
       print BELL
