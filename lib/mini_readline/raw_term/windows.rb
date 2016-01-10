@@ -27,15 +27,10 @@ module MiniReadline
       @_getch = Win32API.new("msvcrt", "_getch", [])
       @_kbhit = Win32API.new("msvcrt", "_kbhit", [])
       @_beep  = Win32API.new("user32", "MessageBeep", ['L'])
-
-      @_set_cursor_posn = Win32API.new("kernel32",
-                                       "SetConsoleCursorPosition",
+      @_set_cursor_posn = Win32API.new("kernel32", "SetConsoleCursorPosition",
                                        ['L','L'])
-
-      @_get_screen_info = Win32API.new("kernel32",
-                                       "GetConsoleScreenBufferInfo",
+      @_get_screen_info = Win32API.new("kernel32", "GetConsoleScreenBufferInfo",
                                        ['L','P'])
-
       @_get_handle = Win32API.new("kernel32", "GetStdHandle", ['L'])
     end
 
@@ -55,16 +50,12 @@ module MiniReadline
       @_beep.call(0)
     end
 
-    #Wait for a key to be pressed.
-    def wait_for_key
+    #Get a uncooked character keystroke.
+    def get_raw_char
       while (@_kbhit.call == 0)
         sleep(WAIT_SLEEP)
       end
-    end
 
-    #Get a uncooked character keystroke.
-    def get_raw_char
-      wait_for_key
       @_getch.call.chr
     end
   end
