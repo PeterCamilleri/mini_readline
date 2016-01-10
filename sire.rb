@@ -10,7 +10,7 @@ elsif ARGV[0] == 'local'
   require './lib/mini_readline'
   puts "\nOption(local). Loaded mini_readline from the local code folder."
 elsif defined?(MiniReadline)
-  puts "The mini_readline gem is already loaded."
+  puts "\nThe mini_readline gem is already loaded."
 else
   begin
     require 'mini_readline'
