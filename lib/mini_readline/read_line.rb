@@ -30,7 +30,7 @@ module MiniReadline
     #* options - A hash of options; Typically :symbol => value
     def readline(prompt, options = {})
       initialize_parms(prompt, options)
-      result = @edit.edit_process
+      @edit.edit_process
     ensure
       @term.conclude
     end
