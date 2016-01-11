@@ -12,7 +12,7 @@ module MiniReadline
 
       if @edit_posn < len
         right = @edit_buffer[(@edit_posn+1)..-1]
-        @edit_posn = (posn = /\s\S/ =~ right) ? @edit_posn + posn + 2 : len
+        @edit_posn = (posn = right.index(/\s\S/)) ? @edit_posn+posn+2 : len
       else
         @term.beep
       end
