@@ -52,7 +52,7 @@ Previous History | Up Arrow, Keypad Up       | Up Arrow, Ctrl-R
 Next History     | Down Arrow, Keypad Down   | Down Arrow
 Erase Left       | Backspace                 | Backspace, Ctrl-H
 Erase Right      | Delete, Ctrl-Backspace    | Delete, Ctrl-Backspace
-Erase All        | Escape                    | Ctrl-B
+Erase All        | Escape                    | Ctrl-L
 
 ### Notes
 * The label "Other" is an umbrella that bundles together the Linux, Mac,

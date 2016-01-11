@@ -47,6 +47,6 @@ module MiniReadline
     MAP["\x0D"]  = [:enter]
 
     #The Cancel key
-    MAP["\x02"]  = [:cancel]
+    MAP["\f"]    = [:cancel]
   end
 end
