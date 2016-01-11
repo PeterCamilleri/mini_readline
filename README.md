@@ -41,18 +41,20 @@ The mini_readline gem supports a simple set of editing commands. These vary
 somewhat based on the system platform. The keyboard mappings (and alias
 mappings) are listed below:
 
-Editor Action    | Windows Key               | Other Key
------------------|---------------------------|------------
-Enter            | Enter                     | Enter
-Left             | Left Arrow, Keypad Left   | Left Arrow
-Right            | Right Arrow, Keypad Right | Right Arrow
-Go to start      | Home, Keypad Home         | Home, Ctrl-A
-Go to end        | End, Keypad End           | End, Ctrl-E
-Previous History | Up Arrow, Keypad Up       | Up Arrow, Ctrl-R
-Next History     | Down Arrow, Keypad Down   | Down Arrow
-Erase Left       | Backspace                 | Backspace, Ctrl-H
-Erase Right      | Delete, Ctrl-Backspace    | Delete, Ctrl-Backspace
-Erase All        | Escape                    | Ctrl-L
+Editor Action    | Windows Key                      | Other Key
+-----------------|----------------------------------|------------
+Enter            | Enter                            | Enter
+Left             | Left Arrow, Pad Left             | Left Arrow
+Word Left        | Ctrl Left Arrow, Ctrl Pad Left   | Ctrl Left Arrow, Ctrl-B, Alt-b
+Right            | Right Arrow, Pad Right           | Right Arrow
+Word Right       | Ctrl Right Arrow, Ctrl Pad Right | Ctrl Right Arrow, Ctrl-F, Alt-f
+Go to start      | Home, Pad Home                   | Home, Ctrl-A
+Go to end        | End, Pad End                     | End, Ctrl-E
+Previous History | Up Arrow, Pad Up                 | Up Arrow, Ctrl-R
+Next History     | Down Arrow, Pad Down             | Down Arrow
+Erase Left       | Backspace                        | Backspace, Ctrl-H
+Erase Right      | Delete, Ctrl-Backspace           | Delete, Ctrl-Backspace
+Erase All        | Escape                           | Ctrl-L
 
 ### Notes
 * The label "Other" is an umbrella that bundles together the Linux, Mac,

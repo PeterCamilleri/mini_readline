@@ -14,9 +14,15 @@ module MiniReadline
     MAP["\x00K"] = [:go_left]
     MAP[pfx+"K"] = [:go_left]
 
+    MAP["\x00s"] = [:word_left]
+    MAP[pfx+"s"] = [:word_left]
+
     #Right Arrows
     MAP["\x00M"] = [:go_right]
     MAP[pfx+"M"] = [:go_right]
+
+    MAP["\x00t"] = [:word_right]
+    MAP[pfx+"t"] = [:word_right]
 
     #Up Arrows
     MAP["\x00H"] = [:previous_history]

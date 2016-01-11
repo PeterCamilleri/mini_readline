@@ -7,7 +7,10 @@ require_relative 'edit/insert_text'
 require_relative 'edit/enter'
 
 require_relative 'edit/go_left'
+require_relative 'edit/word_left'
+
 require_relative 'edit/go_right'
+require_relative 'edit/word_right'
 
 require_relative 'edit/go_home'
 require_relative 'edit/go_end'
