@@ -28,6 +28,13 @@ module MiniReadline
     #Home the cursor and start at a known state.
     def initialize_parms
       put_string CARRIAGE_RETURN
+      STDIN.raw!
+    end
+
+    #Conclude the terminal state.
+    def conclude
+      STDIN.cooked!
+      print("\n")
     end
 
     #Sound a beep

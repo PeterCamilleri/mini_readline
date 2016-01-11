@@ -31,8 +31,8 @@ module MiniReadline
     def readline(prompt, options = {})
       initialize_parms(prompt, options)
       result = @edit.edit_process
-      @term.put_new_line
-      result
+    ensure
+      @term.conclude
     end
 
     #Initialize the read line process. This basically process the arguments

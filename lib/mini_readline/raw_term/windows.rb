@@ -45,6 +45,11 @@ module MiniReadline
       put_string CARRIAGE_RETURN
     end
 
+    #Conclude the terminal state.
+    def conclude
+      print("\n")
+    end
+
     #Sound a beep
     def beep
       @_beep.call(0)

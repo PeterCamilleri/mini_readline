@@ -21,11 +21,6 @@ module MiniReadline
     def get_mapped_keystroke
       MAP.get_mapped_keystroke {get_raw_char}
     end
-
-    #Start on a new line.
-    def put_new_line
-      print("\n")
-    end
   end
 
   #Select the type of platform in use.
