@@ -8,11 +8,9 @@ module MiniReadline
 
     #A little more to the right please!
     def word_right(_keyboard_args)
-      len = edit_buffer.length
-
-      if @edit_posn < len
+      if @edit_posn < length
         right = @edit_buffer[(@edit_posn+1)..-1]
-        @edit_posn = (posn = right.index(/\s\S/)) ? @edit_posn+posn+2 : len
+        @edit_posn = (posn = right.index(/\s\S/)) ? @edit_posn+posn+2 : length
       else
         @term.beep
       end
