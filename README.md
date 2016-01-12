@@ -158,6 +158,7 @@ BASE_OPTIONS = {
   :alt_prompt    => "<< ",    #The prompt when scrolled.
                               #Set to nil for no alt prompt.
 
+  :history       => false,    #Is the history buffer enabled?
   :no_blanks     => true,     #No empty lines in history.
   :no_dups       => true,     #No duplicate lines in history.
 
