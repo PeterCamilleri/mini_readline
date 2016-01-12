@@ -37,7 +37,7 @@ module MiniReadline
     #Read a line from the console with edit and history.
     #<br>Parameters:
     #* prompt - A string used to prompt the user. '>' is popular.
-    #* options - A hash of options; Typically :symbol => value
+    #* options - A hash of options; Typically symbol: value
     def readline(prompt, options = {})
       initialize_parms(prompt, options)
       @edit.edit_process
