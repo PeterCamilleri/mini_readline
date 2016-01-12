@@ -59,7 +59,7 @@ Erase All        | Escape                           | Ctrl-L
 ### Notes
 * The label "Other" is an umbrella that bundles together the Linux, Mac,
 and Cygwin platforms.
-* References to Keypad keys under Windows assume that Num Lock is not engaged.
+* References to Pad keys under Windows assume that Num Lock is not engaged.
 
 ## Usage
 
