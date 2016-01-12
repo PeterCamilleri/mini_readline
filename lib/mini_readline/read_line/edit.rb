@@ -1,7 +1,6 @@
 # coding: utf-8
 
 require_relative 'edit_window'
-require_relative 'history'
 
 require_relative 'edit/insert_text'
 require_relative 'edit/enter'

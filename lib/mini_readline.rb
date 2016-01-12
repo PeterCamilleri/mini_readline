@@ -12,14 +12,12 @@ require_relative "mini_readline/raw_term"
 #* mini_readline.rb - The root file that gathers up all the system's parts.
 module MiniReadline
 
-  #The instances of Readline with and without history.
-  @readers = {true => Readline.new([]), false => Readline.new(nil)}
+  #The shared instance of Readline.
+  @reader = Readline.new()
 
   #The (limited) compatibility module function.
-  #<br>Endemic Code Smells
-  #* :reek:BooleanParameter -- Required for compatibility
-  def self.readline(prompt, history = false)
-    @readers[history].readline(prompt)
+  def self.readline(prompt, history = nil)
+    @reader.readline(prompt, history: history)
   end
 end
 

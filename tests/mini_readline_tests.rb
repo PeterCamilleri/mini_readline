@@ -15,6 +15,8 @@ class MiniReadlineTester < Minitest::Test
     assert_equal(Module, MiniReadline.class)
     assert_equal(String, MiniReadline::VERSION.class)
     assert_equal(Class,  MiniReadline::Readline.class)
+    assert_equal(Class,  MiniReadline::History.class)
+    assert_equal(Class,  MiniReadline::NoHistory.class)
     assert_equal(Class,  MiniReadline::Edit.class)
     assert_equal(Class,  MiniReadline::EditWindow.class)
     assert_equal(Class,  MiniReadline::Mapper.class)
@@ -39,12 +41,12 @@ class MiniReadlineTester < Minitest::Test
     puts
     puts "To finish this test, enter the word: quit"
 
-    edit = MiniReadline::Readline.new()
+    edit = MiniReadline::Readline.new
 
     result = ''
 
     loop do
-      result = edit.readline(">")
+      result = edit.readline(">", history: true)
       puts result.inspect
       break unless result != 'quit'
     end

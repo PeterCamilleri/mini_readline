@@ -53,7 +53,7 @@ module MiniReadline
 
     #Get the history buffer associated with this instance.
     def history
-      @_buffer || []
+      @_buffer
     end
   end
 end

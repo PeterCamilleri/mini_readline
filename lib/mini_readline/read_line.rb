@@ -1,6 +1,9 @@
 # coding: utf-8
 
 require_relative 'read_line/edit'
+require_relative 'read_line/history'
+require_relative 'read_line/no_history'
+
 
 #* read_line.rb - The ReadLine class that does the actual work.
 module MiniReadline
@@ -16,12 +19,14 @@ module MiniReadline
     #Setup the instance of the mini line editor.
     #<br>Parameters:
     #* buffer - An array of strings used to contain the history. Use an empty
-    #  array to have a history buffer with no initial entries. Use the
-    #  value nil (or false) to maintain no history at all.
+    #  array to have a history buffer with no initial entries.
     #* instance_options - A hash of options owned by this \Readline instance.
+    #<br>Notes
+    #* In order to specify any instance options, buffer must also be specified.
     def initialize(buffer=[], instance_options={})
       @instance_options = instance_options
-      @history = History.new(buffer)
+      @history    = History.new(buffer)
+      @no_history = NoHistory.new
     end
 
     #Get the history buffer of this read line instance.
@@ -44,9 +49,11 @@ module MiniReadline
     #of the readline method.
     def initialize_parms(prompt, options)
       set_options(options)
-      (@term = @options[:term]).initialize_parms
       set_prompt(prompt)
-      @edit = Edit.new(@history, @options)
+
+      history = @options[:history] ? @history : @no_history
+      @edit = Edit.new(history, @options)
+
       @history.initialize_parms(@options)
     end
 
@@ -54,6 +61,7 @@ module MiniReadline
     def set_options(options)
       @options = MiniReadline::BASE_OPTIONS.merge(instance_options)
       @options.merge!(options)
+      (@term = @options[:term]).initialize_parms
     end
 
     #Set up the prompt.
