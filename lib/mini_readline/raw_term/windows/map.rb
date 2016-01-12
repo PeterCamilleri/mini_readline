@@ -48,6 +48,9 @@ module MiniReadline
     MAP["\x00S"] = [:delete_right]
     MAP[pfx+"S"] = [:delete_right]
 
+    #Auto-completion.
+    MAP["\t"]    = [:auto_complete]
+
     #The Enter key
     MAP["\x0D"]  = [:enter]
 

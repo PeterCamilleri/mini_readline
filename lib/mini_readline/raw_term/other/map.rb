@@ -51,6 +51,9 @@ module MiniReadline
     MAP["\x1F"]  = [:delete_right]
     MAP["\e[3~"] = [:delete_right]
 
+    #Auto-completion.
+    MAP["\t"]    = [:auto_complete]
+
     #The Enter key
     MAP["\x0D"]  = [:enter]
 

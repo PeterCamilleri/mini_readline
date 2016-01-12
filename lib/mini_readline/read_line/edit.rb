@@ -21,6 +21,8 @@ require_relative 'edit/cancel'
 require_relative 'edit/previous_history'
 require_relative 'edit/next_history'
 
+require_relative 'edit/auto_complete'
+
 require_relative 'edit/unmapped'
 
 #* read_line/edit.rb - The line editor.
