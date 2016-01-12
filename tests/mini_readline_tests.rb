@@ -20,6 +20,13 @@ class MiniReadlineTester < Minitest::Test
     assert_equal(Class,  MiniReadline::Mapper.class)
   end
 
+  def test_for_storage_of_options
+    assert_equal(Hash, MiniReadline::BASE_OPTIONS.class)
+    edit = MiniReadline::Readline.new()
+    assert_equal(Hash, edit.instance_options.class)
+    refute_equal(MiniReadline::BASE_OPTIONS, edit.instance_options)
+  end
+
   def test_platform_detection
     if (RUBY_PLATFORM =~ /\bcygwin\b/i) || (RUBY_PLATFORM !~ /mswin|mingw/)
       assert_equal(:other, MiniReadline::PLATFORM)

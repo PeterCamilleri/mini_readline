@@ -10,12 +10,16 @@ module MiniReadline
   #the optional command history.
   class Readline
 
+    #The options specifically associated with this instance.
+    attr_reader :instance_options
+
     #Setup the instance of the mini line editor.
     #<br>Parameters:
     #* buffer - An array of strings used to contain the history. Use an empty
     #  array to have a history buffer with no initial entries. Use the
     #  value nil (or false) to maintain no history at all.
-    def initialize(buffer=[])
+    def initialize(buffer=[], instance_options={})
+      @instance_options = instance_options
       @edit = Edit.new(buffer)
     end
 
@@ -38,14 +42,19 @@ module MiniReadline
     #Initialize the read line process. This basically process the arguments
     #of the readline method.
     def initialize_parms(prompt, options)
-      @options = MiniReadline::BASE_OPTIONS.merge(options)
+      set_options(options)
       (@term = @options[:term]).initialize_parms
-
       set_prompt(prompt)
       @edit.initialize_edit_parms(@options)
     end
 
-    #Set up the prompt options.
+    #Set up the options
+    def set_options(options)
+      @options = MiniReadline::BASE_OPTIONS.merge(instance_options)
+      @options.merge!(options)
+    end
+
+    #Set up the prompt.
     def set_prompt(prompt)
       @options[:base_prompt]   = prompt
       @options[:scroll_prompt] = @options[:alt_prompt] || prompt

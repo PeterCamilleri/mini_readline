@@ -135,10 +135,20 @@ hist << "launch --weapons:nuclear --all"
 ```
 
 ### Options
-In mini_readline, options exist at two levels:
+In mini_readline, options exist at three levels:
 * The MiniReadline module hash BASE_OPTIONS. These options are shared by
 all instances of the Readline class.
+* The instance options associated with each instance of the Readline class
 * The options hash argument of the Readline class's readline instance method.
+
+<br>The options in effect during a read line operation are expressed as:
+
+```ruby
+MiniReadline::BASE_OPTIONS.merge(instance_options).merge(options)
+```
+<br>This means that instance_options entries override those in BASE_OPTION and
+readline parameter option entries override both instance_options and BASE_OPTION
+entries.
 
 <br>The available options are described below:
 ```ruby
