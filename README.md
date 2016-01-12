@@ -232,10 +232,11 @@ system gem, use this:
 
 ## Testing
 To date this code has been tested under:
-* Windows 7 with MRI ruby 2.1.6p336 (2015-04-13 revision 50298) [i386-mingw32]
-* Windows 7 + Cygwin with ruby 2.2.3p173 (2015-08-18 revision 51636) [i386-cygwin]
+* Windows 7 with ruby 1.9.3p484 (2013-11-22) [i386-mingw32]
+* Windows 7 with ruby 2.1.6p336 (2015-04-13 revision 50298) [i386-mingw32]
+* Windows 7+Cygwin with ruby 2.2.3p173 (2015-08-18 revision 51636) [i386-cygwin]
 
-<br>More testing is clearly called for.
+<br>**More testing is clearly called for.**
 
 ## Contributing
 
