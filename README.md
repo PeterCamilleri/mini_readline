@@ -137,8 +137,12 @@ hist << "launch --weapons:nuclear --all"
 ### Options
 In mini_readline, options exist at three levels:
 * The MiniReadline module hash BASE_OPTIONS. These options are shared by
-all instances of the Readline class.
-* The instance options associated with each instance of the Readline class
+all instances of the Readline class. These options can be modified by
+changing entries in the MiniReadline::BASE_OPTIONS hash.
+* The instance options associated with each instance of the Readline class.
+These options may be specified when a Readline instance is created (with new)
+or by getting the instance options with the instance_options property and
+adding/changing entries to/in it.
 * The options hash argument of the Readline class's readline instance method.
 
 <br>The options in effect during a read line operation are expressed as:
@@ -221,7 +225,7 @@ and not go bannanas. To test the behavior of the standard readline library, use:
     $ ruby sire.rb old
 
 To test the local copy of mini_readline in the lib folder instead of the
-system gem, use this instead:
+system gem, use this:
 
     $ ruby sire.rb local
 
