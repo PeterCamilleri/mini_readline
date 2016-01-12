@@ -3,9 +3,9 @@
 #* windows/win_32_api.rb - Support for selected low level Win32 API entry points.
 module MiniReadline
 
-  require 'fiddle'
+  require 'dl'
 
-  #The classic \Win32API gem is deprecated, so we emulate it with fiddle.
+  #The classic \Win32API gem is deprecated, so we emulate it with DL.
   class Win32API
 
     #Use standard calling conventions
@@ -23,7 +23,7 @@ module MiniReadline
     def initialize(dllname, func, import)
       @proto = import.join.tr("VPpNnLlIi", "0SSI").chomp('0').split('')
 
-      handle = DLL[dllname] ||= Fiddle.dlopen(dllname)
+      handle = DLL[dllname] ||= DL.dlopen(dllname)
 
       @func = Fiddle::Function.new(handle[func], TYPES.values_at(*@proto), STDCALL)
     end
