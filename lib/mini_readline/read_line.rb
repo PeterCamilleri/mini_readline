@@ -18,14 +18,15 @@ module MiniReadline
     #* buffer - An array of strings used to contain the history. Use an empty
     #  array to have a history buffer with no initial entries. Use the
     #  value nil (or false) to maintain no history at all.
+    #* instance_options - A hash of options owned by this \Readline instance.
     def initialize(buffer=[], instance_options={})
       @instance_options = instance_options
-      @edit = Edit.new(buffer)
+      @history = History.new(buffer)
     end
 
     #Get the history buffer of this read line instance.
     def history
-      @edit.history
+      @history.history
     end
 
     #Read a line from the console with edit and history.
@@ -45,7 +46,8 @@ module MiniReadline
       set_options(options)
       (@term = @options[:term]).initialize_parms
       set_prompt(prompt)
-      @edit.initialize_edit_parms(@options)
+      @edit = Edit.new(@history, @options)
+      @history.initialize_parms(@options)
     end
 
     #Set up the options

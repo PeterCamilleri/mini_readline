@@ -31,21 +31,15 @@ module MiniReadline
   class Edit
 
     #Set up the edit instance.
-    def initialize(buffer)
-      @history     = History.new(buffer)
-      @edit_window = EditWindow.new
-    end
-
-    #Set up the initial edit settings.
-    def initialize_edit_parms(options)
+    def initialize(history, options)
       @options     = options
+      @history     = history
       @term        = @options[:term]
       @edit_posn   = 0
       @edit_buffer = ""
       @working     = true
 
-      @edit_window.initialize_parms(@options)
-      @history.initialize_parms(@options)
+      @edit_window = EditWindow.new(@options)
     end
 
     #The main edit buffer
@@ -57,11 +51,6 @@ module MiniReadline
     #How long is the current string?
     def length
       edit_buffer.length
-    end
-
-    #Get the history array for this edit instance.
-    def history
-      @history.history
     end
 
     #Interact with the user

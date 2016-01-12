@@ -10,7 +10,7 @@ module MiniReadline
   class EditWindow
 
     #Determine the edit window limits.
-    def initialize_parms(options)
+    def initialize(options)
       @options      = options
       @base_width   = window_width - @options[:base_prompt].length
       @scroll_width = window_width - @options[:scroll_prompt].length

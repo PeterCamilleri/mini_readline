@@ -7,8 +7,9 @@ module MiniReadline
   BASE_OPTIONS = {:window_width  => 79,       #The width of the edit area.
                   :scroll_step   => 12,       #The amount scrolled.
                   :alt_prompt    => "<< ",    #The prompt when scrolled.
-                                              #Set to nil for no alt prompt.
+                                              #Set to nil to use main prompt.
 
+                  :history       => false,    #Is the history buffer enabled?
                   :no_blanks     => true,     #No empty lines in history.
                   :no_dups       => true,     #No duplicate lines in history.
 
