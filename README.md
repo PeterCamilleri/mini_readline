@@ -163,6 +163,9 @@ BASE_OPTIONS = {
   :alt_prompt    => "<< ",    #The prompt when scrolled.
                               #Set to nil for no alt prompt.
 
+  :auto_complete => true,     #Is auto complete enabled?
+  :auto_source   => nil,      #Filled in by auto_complete.rb
+
   :history       => false,    #Is the history buffer enabled?
   :no_blanks     => true,     #No empty lines in history.
   :no_dups       => true,     #No duplicate lines in history.
