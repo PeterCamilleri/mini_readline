@@ -16,7 +16,7 @@ module MiniReadline
     def auto_complete(_keyboard_args)
       root, pivot = get_root_pivot
 
-      if (new_pivot = auto_manager.next(pivot))
+      if @options[:auto_complete] && (new_pivot = auto_manager.next(pivot))
         @edit_buffer = root + new_pivot
         @edit_posn   = length
       else
