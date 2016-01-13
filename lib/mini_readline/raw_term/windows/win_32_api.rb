@@ -23,21 +23,18 @@ module MiniReadline
 
     #Call the Win 32 API entry point with appropriate arguments.
     #<br>Endemic Code Smells
-    #* :reek:TooManyStatements - I ain't messin' with this crap!
+    #* :reek:FeatureEnvy
     def call(*args)
-      import = @proto.split("")
-
-      args.each_with_index do |value, index|
+      args.each_with_index do |arg, index|
         case @proto[index]
           when "S"
-            args[index], = [value == 0 ? nil : value].pack("p").unpack("l!*")
+            args[index], = [arg == 0 ? nil : arg].pack("p").unpack("l!*")
           when "I"
-            args[index], = [value].pack("I").unpack("i")
+            args[index], = [arg].pack("I").unpack("i")
         end
       end
 
-      ret, = @func.call(args)
-      return ret || 0
+      @func.call(args).to_i || 0
     end
 
   end
