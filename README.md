@@ -163,7 +163,7 @@ BASE_OPTIONS = {
   :alt_prompt    => "<< ",    #The prompt when scrolled.
                               #Set to nil for no alt prompt.
 
-  :auto_complete => true,     #Is auto complete enabled?
+  :auto_complete => false,    #Is auto complete enabled?
   :auto_source   => nil,      #Filled in by auto_complete.rb
 
   :history       => false,    #Is the history buffer enabled?
@@ -172,12 +172,24 @@ BASE_OPTIONS = {
 
   :term          => nil,      #Filled in by raw_term.rb
 
-  :debug         => false}    #Used during development.
+  :debug         => false}    #Used during development only.
 ```
 
-<br>The options in effect on any given call of the readline method are the
-module base options plus any options passed in as an argument. The passed in
-options override the base options for the duration of that method call.
+<br>While most of these options are self explanatory, a few could stand some
+further description:
+* :alt_prompt is the prompt used when the text must be scrolled to fit on the
+screen.
+* :auto_complete is disabled by default. To make enabled the default use:
+```ruby
+require 'mini_readline'
+MiniReadline::BASE_OPTION[:auto_complete] = true
+```
+or... complain and make a case for changing the default in the next release ;-)
+* :auto_source is the class of the source for auto-complete data. By default this
+is MiniReadline::FileFolderSource. This option can be changed up to get auto-complete
+data other than files and folders.
+* :term is the interactive source of data, the console by default. This can be
+changed to get data from another source (like a serial attached terminal).
 
 #### Notes
 * Since the compatibility mode does not accept an options hash, the only way to
@@ -239,7 +251,7 @@ To date this code has been tested under:
 * Windows 7 with ruby 2.1.6p336 (2015-04-13 revision 50298) [i386-mingw32]
 * Windows 7+Cygwin with ruby 2.2.3p173 (2015-08-18 revision 51636) [i386-cygwin]
 
-<br>**More testing is clearly called for.**
+<br>**More testing is clearly called for and suggestions/bug reports are most welcomed!!!**
 
 ## Contributing
 

@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["peter.c.camilleri@gmail.com"]
 
   spec.summary       = "A simplified replacement for readline."
-  spec.description   = "[WIP] A gem for console command entry with line edit "+
+  spec.description   = "A gem for console command entry with line edit "+
                        "and history. This gem is like the standard readline " +
                        "gem except that it has been redesigned, simplified, " +
                        "and extensively cleaned up."
