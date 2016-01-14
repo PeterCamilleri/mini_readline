@@ -7,14 +7,21 @@ module MiniReadline
   class FileFolderSource
 
     #Construct a new data list for auto-complete
-    def rebuild(pivot)
+    def rebuild(str)
+      @root, pivot = /\S+$/ =~ str ? [$`.to_s, $~.to_s] : [str, ""]
+
       list = Dir.glob(pivot + '*')
 
       unless list.empty?
-        list.cycle
+        @cycler = list.cycle
       else
-        nil
+        false
       end
+    end
+
+    #Get the next string for auto-complete
+    def next
+      @root + @cycler.next
     end
 
   end

@@ -14,19 +14,12 @@ module MiniReadline
 
     #The auto-complete command.
     def auto_complete(_keyboard_args)
-      root, pivot = get_root_pivot
-
-      if @options[:auto_complete] && (new_pivot = auto_manager.next(pivot))
-        @edit_buffer = root + new_pivot
+      if @options[:auto_complete] && (new_buffer = auto_manager.next(auto_trim))
+        @edit_buffer = new_buffer
         @edit_posn   = length
       else
         @term.beep
       end
-    end
-
-    #Get the key components of the auto-complete process.
-    def get_root_pivot
-      /\S+$/ =~ (str = auto_trim) ? [$`.to_s, $~.to_s] : [str, ""]
     end
 
     #Get the base part of the edit buffer.

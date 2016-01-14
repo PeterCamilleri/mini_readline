@@ -11,16 +11,16 @@ module MiniReadline
       @_block = block
     end
 
-    #Get the next pivot string
-    def next(pivot)
-      unless @cycler && @old_pivot == pivot
-        @cycler = source.rebuild(pivot)
+    #Get the next buffer string
+    def next(buffer)
+      unless @active && @old_buffer == buffer
+        @active = source.rebuild(buffer)
       end
 
-      if @cycler
-        @old_pivot = @cycler.next
+      if @active
+        @old_buffer = source.next
       else
-        @old_pivot = nil
+        @old_buffer = nil
       end
     end
 
