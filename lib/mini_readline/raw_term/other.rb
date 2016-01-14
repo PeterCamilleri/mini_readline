@@ -17,7 +17,7 @@ module MiniReadline
     CARRIAGE_RETURN = "\x0D"
 
     #Bell
-    BELL            = "\x07"
+    BELL = "\x07"
 
     #Output a string
     def put_string(str)
@@ -39,7 +39,8 @@ module MiniReadline
 
     #Sound a beep
     def beep
-      print BELL
+      $stderr.write(BELL)
+      $stderr.flush
     end
 
     #Get a uncooked character keystroke.
