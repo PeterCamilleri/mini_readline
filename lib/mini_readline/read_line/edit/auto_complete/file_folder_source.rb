@@ -15,7 +15,7 @@ module MiniReadline
       unless list.empty?
         @cycler = list.cycle
       else
-        false
+        @cycler = nil
       end
     end
 
