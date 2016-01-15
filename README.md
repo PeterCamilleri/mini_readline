@@ -112,19 +112,20 @@ In native mode, instances of the Readline class are used to get user input.
 edit = MiniReadline::Readline.new()
 ```
 
-The constructor takes a single optional argument which is either:
+The constructor takes two optional arguments. The first is either:
 * An array of strings; A history buffer pre-loaded with commands.
 * An empty array; A history buffer with no pre-load.
-* The value **false**, to disable the history buffer.
+
+<br>The second is a hash of options that are used as instance level options.
 
 <br>Once an instance is created it may be used as follows:
 
 ```ruby
 edit.readline(prompt, options)
 ```
-Where prompt is a prompt string and options is a hash of options settings.
-More on options below. In addition, it is possible to get a hold of the
-history buffer of the edit object with:
+Where prompt is a prompt string and options is an optional hash of options
+settings. In addition, it is possible to get a hold
+of the history buffer of the edit object with:
 ```ruby
 hist = edit.history
 ```
