@@ -181,12 +181,12 @@ BASE_OPTIONS = {
 further description:
 * :alt_prompt is the prompt used when the text must be scrolled to fit on the
 screen.
-* :auto_complete is disabled by default. To make enabled the default use:
+* :auto_complete is disabled by default. Of course there are a number of ways
+to enable it, or to make auto-complete enabled the default use:
 ```ruby
 require 'mini_readline'
 MiniReadline::BASE_OPTION[:auto_complete] = true
 ```
-or... complain and make a case for changing the default in the next release ;-)
 * :auto_source is the class of the source for auto-complete data. By default this
 is MiniReadline::FileFolderSource. This option can be changed up to get auto-complete
 data other than files and folders.

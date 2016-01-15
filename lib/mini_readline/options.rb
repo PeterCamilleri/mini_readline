@@ -18,6 +18,6 @@ module MiniReadline
 
                   :term          => nil,      #Filled in by raw_term.rb
 
-                  :debug         => false     #Used during development.
+                  :debug         => false     #Used during development only.
                  }
 end

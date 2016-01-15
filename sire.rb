@@ -5,23 +5,23 @@ require 'pp'
 
 if ARGV[0] == 'old'
   require 'readline'
-  puts "\nOption(old). Loaded the standard readline gem."
+  puts "\nOption(old). Loaded the standard readline gem. Version #{Readline::VERSION}"
 elsif ARGV[0] == 'local'
   require './lib/mini_readline'
-  puts "\nOption(local). Loaded mini_readline from the local code folder."
+  puts "\nOption(local). Loaded mini_readline from the local code folder. Version #{MiniReadline::VERSION}"
 elsif defined?(MiniReadline)
-  puts "\nThe mini_readline gem is already loaded."
+  puts "\nThe mini_readline gem is already loaded. Version #{MiniReadline::VERSION}"
 else
   begin
     require 'mini_readline'
-    puts "\nLoaded mini_readline from the system gem."
+    puts "\nLoaded mini_readline from the system gem. Version #{MiniReadline::VERSION}"
   rescue LoadError
     begin
       require './lib/mini_readline'
-      puts "\nLoaded mini_readline from the local code folder."
+      puts "\nLoaded mini_readline from the local code folder. Version #{MiniReadline::VERSION}"
     rescue LoadError
       require 'readline'
-      puts "\nLoaded the standard readline gem."
+      puts "\nLoaded the standard readline gem. Version #{Readline::VERSION}"
     end
   end
 end
