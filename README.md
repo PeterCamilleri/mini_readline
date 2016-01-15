@@ -135,6 +135,7 @@ menacing part of the history buffer.
 ```ruby
 hist << "launch --weapons:nuclear --all"
 ```
+<br>Maybe I should cut back on the Fallout/4?
 
 ### Options
 In mini_readline, options exist at three levels:
