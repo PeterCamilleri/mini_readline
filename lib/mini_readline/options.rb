@@ -9,7 +9,7 @@ module MiniReadline
                   :alt_prompt    => "<< ",    #The prompt when scrolled.
                                               #Set to nil to use main prompt.
 
-                  :auto_complete => true,     #Is auto complete enabled?
+                  :auto_complete => false,    #Is auto complete enabled?
                   :auto_source   => nil,      #Filled in by auto_complete.rb
 
                   :history       => false,    #Is the history buffer enabled?
