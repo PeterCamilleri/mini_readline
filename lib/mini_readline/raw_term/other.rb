@@ -38,6 +38,8 @@ module MiniReadline
     end
 
     #Sound a beep
+    #<br>Endemic Code Smells
+    #* :reek:UtilityFunction
     def beep
       $stderr.write(BELL)
       $stderr.flush
