@@ -29,7 +29,7 @@ module MiniReadline
 
     #Get the auto-complete manager
     def auto_manager
-      @_auto_manager ||= AutoManager.new { @options[:auto_source].new }
+      @_auto_manager ||= AutoManager.new{@options[:auto_source].new(@options)}
     end
   end
 
