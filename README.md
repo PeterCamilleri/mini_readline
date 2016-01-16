@@ -130,12 +130,12 @@ of the history buffer of the edit object with:
 hist = edit.history
 ```
 This method answers an array of strings. Entries added to this array are
-available to the edit instance. For example, the following makes a rather
-menacing part of the history buffer.
+available to the edit instance. For example, the following adds a rather
+menacing entry to the history buffer.
 ```ruby
-hist << "launch --weapons:nuclear --all"
+edit.history << "launch --weapons:nuclear --all"
 ```
-<br>Maybe I should cut back on the Fallout/4?
+Maybe I should cut back on the Fallout/4?
 
 ### Options
 In mini_readline, options exist at three levels:
@@ -180,7 +180,7 @@ BASE_OPTIONS = {
 <br>While most of these options are self explanatory, a few could stand some
 further description:
 * :alt_prompt is the prompt used when the text must be scrolled to fit on the
-screen.
+screen. If this is set to nil, then the main prompt is always used.
 * :auto_complete is disabled by default. Of course there are a number of ways
 to enable it, or to make auto-complete enabled the default use:
 ```ruby
