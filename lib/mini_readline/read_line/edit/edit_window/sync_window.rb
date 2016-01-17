@@ -8,17 +8,19 @@ module MiniReadline
 
     #Keep the edit window in sync!
     def sync_window(edit_buffer, edit_posn)
-      window_buffer.clear unless check_margins(edit_posn)
+      window_buffer.clear unless check_margins(edit_buffer.length, edit_posn)
       image = build_screen_image(edit_buffer)
       update_screen(image)
       @window_buffer = image
     end
 
     #Verify/update the window margins. Returns true if they're fine.
-    def check_margins(edit_posn)
+    def check_margins(length, edit_posn)
       old_margins = [left_margin, right_margin]
 
-      if edit_posn < left_margin
+      if length < base_width
+        self.left_margin  = 0
+      elsif edit_posn < left_margin
         self.left_margin  = [edit_posn - scroll_step, 0].max
       elsif edit_posn > right_margin
         self.right_margin = edit_posn + scroll_step

@@ -71,6 +71,12 @@ class SIRE
     end
   end
 
+  WRE = %r{
+    (?<ec> [^\/\\\:\*\?\<\>\"\ ]){0} (?# File name edge character.)
+    (?<mc> [^\/\\\:\*\?\<\>\"]){0}   (?# File name middle character.)
+    ([a-zA-z]\:\\)?((\g<ec>((\g<mc>)*\g<ec>)+)*\\?)*$
+  }x
+
   #Execute a single line.
   def exec_line(line)
     result = eval line
