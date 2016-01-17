@@ -19,14 +19,14 @@ module MiniReadline
       old_margins = [left_margin, right_margin]
 
       if length < base_width
-        self.left_margin  = 0
+        self.left_margin = 0
       elsif edit_posn < left_margin
-        self.left_margin  = [edit_posn - scroll_step, 0].max
+        self.left_margin = [edit_posn - scroll_step, 0].max
       elsif edit_posn > right_margin
         self.right_margin = edit_posn + scroll_step
       end
 
-       old_margins == [left_margin, right_margin]
+      old_margins == [left_margin, right_margin]
     end
 
     #Compute what should be on the screen.
