@@ -71,6 +71,7 @@ class SIRE
     end
   end
 
+  #Strict Windows Regex.
   # a File name edge character. No spaces allowed here.
   # b File name middle character. Spaces allowed here.
   # c Drive specification.
@@ -83,6 +84,33 @@ class SIRE
 
     (\g<x>|\g<y>)$
   }x
+
+  #Rubified Windows Regex.
+  # a File name edge character. No spaces allowed here.
+  # b File name middle character. Spaces allowed here.
+  # c Drive specification.
+  RRE = %r{
+    (?<a> [^\/\\\:\*\?\<\>\"\s]){0}
+    (?<b> [^\/\\\:\*\?\<\>\"]){0}
+    (?<c> [a-zA-z]\:\/){0}
+    (?<x> \g<c>?(\g<a>*\/?)*){0}
+    (?<y> \"\g<c>?(\g<a>(\g<b>*\g<a>)?\/?)*\"){0}
+
+    (\g<x>|\g<y>)$
+  }x
+
+  #Other Platforms Regex.
+  # a File name edge character. No spaces allowed here.
+  # b File name middle character. Spaces allowed here.
+  ORE = %r{
+    (?<a> [^\/\\\:\*\?\<\>\"\s]){0}
+    (?<b> [^\/\\\:\*\?\<\>\"]){0}
+    (?<x> (\g<a>*\/?)*){0}
+    (?<y> \"(\g<a>(\g<b>*\g<a>)?\/?)*\"){0}
+
+    (\g<x>|\g<y>)$
+  }x
+
 
   #Execute a single line.
   def exec_line(line)
