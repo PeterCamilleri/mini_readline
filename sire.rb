@@ -72,13 +72,15 @@ class SIRE
   end
 
   #Strict Windows Regex.
-  # a File name edge character. No spaces allowed here.
-  # b File name middle character. Spaces allowed here.
+  # a File name character, no spaces.
+  # b File name character, with spaces.
   # c Drive specification.
+  # x Non-quoted file spec.
+  # y Quoted file spec.
   WRE = %r{
     (?<a> [^\/\\\:\*\?\<\>\"\s]){0}
     (?<b> [^\/\\\:\*\?\<\>\"]){0}
-    (?<c> [a-zA-z]\:\\){0}
+    (?<c> ([a-zA-z]\:)?\\){0}
     (?<x> \g<c>?(\g<a>*\\?)*){0}
     (?<y> \"\g<c>?(\g<a>(\g<b>*\g<a>)?\\?)*\"){0}
 
@@ -86,13 +88,15 @@ class SIRE
   }x
 
   #Rubified Windows Regex.
-  # a File name edge character. No spaces allowed here.
-  # b File name middle character. Spaces allowed here.
+  # a File name character, no spaces.
+  # b File name character, with spaces.
   # c Drive specification.
+  # x Non-quoted file spec.
+  # y Quoted file spec.
   RRE = %r{
     (?<a> [^\/\\\:\*\?\<\>\"\s]){0}
     (?<b> [^\/\\\:\*\?\<\>\"]){0}
-    (?<c> [a-zA-z]\:\/){0}
+    (?<c> ([a-zA-z]\:)?\/){0}
     (?<x> \g<c>?(\g<a>*\/?)*){0}
     (?<y> \"\g<c>?(\g<a>(\g<b>*\g<a>)?\/?)*\"){0}
 
@@ -100,13 +104,17 @@ class SIRE
   }x
 
   #Other Platforms Regex.
-  # a File name edge character. No spaces allowed here.
-  # b File name middle character. Spaces allowed here.
+  # a File name character, no spaces.
+  # b File name character, with spaces.
+  # c Root specification.
+  # x Non-quoted file spec.
+  # y Quoted file spec.
   ORE = %r{
     (?<a> [^\/\\\:\*\?\<\>\"\s]){0}
     (?<b> [^\/\\\:\*\?\<\>\"]){0}
-    (?<x> (\g<a>*\/?)*){0}
-    (?<y> \"(\g<a>(\g<b>*\g<a>)?\/?)*\"){0}
+    (?<c> \/){0}
+    (?<x> \g<c>?(\g<a>*\/?)*){0}
+    (?<y> \"\g<c>?(\g<a>(\g<b>*\g<a>)?\/?)*\"){0}
 
     (\g<x>|\g<y>)$
   }x
