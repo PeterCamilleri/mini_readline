@@ -71,10 +71,17 @@ class SIRE
     end
   end
 
+  # a File name edge character. No spaces allowed here.
+  # b File name middle character. Spaces allowed here.
+  # c Drive specification.
   WRE = %r{
-    (?<ec> [^\/\\\:\*\?\<\>\"\ ]){0} (?# File name edge character.)
-    (?<mc> [^\/\\\:\*\?\<\>\"]){0}   (?# File name middle character.)
-    ([a-zA-z]\:\\)?((\g<ec>((\g<mc>)*\g<ec>)+)*\\?)*$
+    (?<a> [^\/\\\:\*\?\<\>\"\s]){0}
+    (?<b> [^\/\\\:\*\?\<\>\"]){0}
+    (?<c> [a-zA-z]\:\\){0}
+    (?<x> \g<c>?(\g<a>*\\?)*){0}
+    (?<y> \"\g<c>?(\g<a>(\g<b>*\g<a>)?\\?)*\"){0}
+
+    (\g<x>|\g<y>)$
   }x
 
   #Execute a single line.
@@ -105,6 +112,9 @@ class SIRE
     end
 
     puts "\n\n"
+
+  rescue Interrupt => e
+    puts "\n"
   end
 
 end
