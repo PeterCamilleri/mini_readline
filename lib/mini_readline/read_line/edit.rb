@@ -22,6 +22,7 @@ require_relative 'edit/previous_history'
 require_relative 'edit/next_history'
 
 require_relative 'edit/auto_complete'
+require_relative 'edit/end_of_input'
 
 require_relative 'edit/unmapped'
 

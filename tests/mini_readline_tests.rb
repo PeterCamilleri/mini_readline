@@ -54,6 +54,12 @@ class MiniReadlineTester < Minitest::Test
     assert_equal("quit", result)
   end
 
+  def test_end_of_input_detection
+    edit = MiniReadline::Readline.new()
+    puts "Exit by signaling end of input"
+    assert_raises(MiniReadlineEOI) {edit.readline(">", eoi_detect: true)}
+  end
+
   def test_prompt_verification
     opts = {:window_width  => 39}
     edit = MiniReadline::Readline.new()

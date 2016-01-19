@@ -56,5 +56,8 @@ module MiniReadline
 
     #The Escape key
     MAP["\x1B"]  = [:cancel]
+
+    #End of Input
+    MAP["\x1A"] = [:end_of_input]
   end
 end

@@ -56,11 +56,13 @@ Erase Left       | Backspace, Ctrl-H                | Backspace, Ctrl-H
 Erase Right      | Delete, Ctrl-Backspace           | Delete, Ctrl-Backspace
 Erase All        | Escape                           | Ctrl-L
 Auto-complete    | Tab, Ctrl-I                      | Tab, Ctrl-I
+End of Input     | Ctrl-Z                           | Alt-z
 
 ### Notes
 * The label "Other" is an umbrella that bundles together the Linux, Mac,
 and Cygwin platforms.
 * References to Pad keys under Windows assume that Num Lock is not engaged.
+* Support for End of Input is controlled by the eoi_detect option.
 
 ## Usage
 
@@ -168,6 +170,8 @@ BASE_OPTIONS = {
   :auto_complete => false,    #Is auto complete enabled?
   :auto_source   => nil,      #Filled in by auto_complete.rb
 
+  :eoi_detect    => false,    #Is end of input detection enabled?
+
   :history       => false,    #Is the history buffer enabled?
   :no_blanks     => true,     #No empty lines in history.
   :no_dups       => true,     #No duplicate lines in history.
@@ -190,6 +194,9 @@ MiniReadline::BASE_OPTION[:auto_complete] = true
 * :auto_source is the class of the source for auto-complete data. By default this
 is MiniReadline::FileFolderSource. This option can be changed up to get auto-complete
 data other than files and folders.
+* :eoi_detect is used to control the end of input detection logic. If disabled,
+eoi inputs are treated as unmapped. If enabled, they raise a MiniReadlineEOI
+exception.
 * :term is the interactive source of data, the console by default. This can be
 changed to get data from another source (like a serial attached terminal).
 

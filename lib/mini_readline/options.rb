@@ -12,6 +12,8 @@ module MiniReadline
                   :auto_complete => false,    #Is auto complete enabled?
                   :auto_source   => nil,      #Filled in by auto_complete.rb
 
+                  :eoi_detect    => false,    #Is end of input detection enabled?
+
                   :history       => false,    #Is the history buffer enabled?
                   :no_blanks     => true,     #No empty lines in history.
                   :no_dups       => true,     #No duplicate lines in history.

@@ -59,5 +59,8 @@ module MiniReadline
 
     #The Cancel key
     MAP["\f"]    = [:cancel]
+
+    #End of Input
+    MAP["\ez"] = [:end_of_input]
   end
 end
