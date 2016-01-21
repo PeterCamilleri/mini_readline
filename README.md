@@ -27,7 +27,6 @@ Add this line to your application's Gemfile:
 ```ruby
 gem 'mini_readline'
 ```
-
 And then execute:
 
     $ bundle
@@ -62,7 +61,8 @@ End of Input     | Ctrl-Z                           | Alt-z
 * The label "Other" is an umbrella that bundles together the Linux, Mac,
 and Cygwin platforms.
 * References to Pad keys under Windows assume that Num Lock is not engaged.
-* Support for End of Input is controlled by the eoi_detect option.
+* Support for End of Input is controlled by the eoi_detect option. See options
+below.
 
 ## Usage
 
@@ -71,8 +71,7 @@ The typical way of utilizing this gem is to place the following:
 ```ruby
 require 'mini_readline'
 ```
-
-<br>By default, the constant Readline is set to the MiniReadline module. If this
+By default, the constant Readline is set to the MiniReadline module. If this
 is not desired use the following:
 
 ```ruby
@@ -114,19 +113,23 @@ In native mode, instances of the Readline class are used to get user input.
 edit = MiniReadline::Readline.new()
 ```
 
-The constructor takes two optional arguments. The first is either:
-* An array of strings; A history buffer pre-loaded with commands.
-* An empty array; A history buffer with no pre-load.
-
-<br>The second is a hash of options that are used as instance level options.
+The constructor takes an optional argument. A hash of options that are used
+as instance level options.
 
 <br>Once an instance is created it may be used as follows:
 
 ```ruby
-edit.readline(prompt, options)
+edit.readline(options)
 ```
-Where prompt is a prompt string and options is an optional hash of options
-settings. In addition, it is possible to get a hold
+Where an optional hash of options settings. For example, to specify a prompt,
+use the following:
+
+```ruby
+edit.readline(prompt: '>')
+```
+
+
+In addition, it is possible to get a hold
 of the history buffer of the edit object with:
 ```ruby
 hist = edit.history
@@ -164,6 +167,8 @@ entries.
 BASE_OPTIONS = {
   :window_width  => 79,       #The width of the edit area.
   :scroll_step   => 12,       #The amount scrolled.
+
+  :prompt        => ">",      #The default prompt.
   :alt_prompt    => "<< ",    #The prompt when scrolled.
                               #Set to nil for no alt prompt.
 
@@ -173,6 +178,7 @@ BASE_OPTIONS = {
   :eoi_detect    => false,    #Is end of input detection enabled?
 
   :history       => false,    #Is the history buffer enabled?
+  :log           => [],       #Default is no previous history
   :no_blanks     => true,     #No empty lines in history.
   :no_dups       => true,     #No duplicate lines in history.
 

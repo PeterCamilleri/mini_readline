@@ -54,6 +54,23 @@ class MiniReadlineTester < Minitest::Test
     assert_equal("quit", result)
   end
 
+  def test_reading_a_line_no_history
+    puts
+    puts "No history: To finish this test, enter the word: quit"
+
+    edit = MiniReadline::Readline.new
+
+    result = ''
+
+    loop do
+      result = edit.readline(prompt: ">")
+      puts result.inspect
+      break unless result != 'quit'
+    end
+
+    assert_equal("quit", result)
+  end
+
   def test_end_of_input_detection
     edit = MiniReadline::Readline.new()
     puts "Exit by signaling end of input"

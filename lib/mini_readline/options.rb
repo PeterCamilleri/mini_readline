@@ -6,6 +6,7 @@ module MiniReadline
   #The base options shared by all instances.
   BASE_OPTIONS = {:window_width  => 79,       #The width of the edit area.
                   :scroll_step   => 12,       #The amount scrolled.
+
                   :prompt        => ">",      #The default prompt.
                   :alt_prompt    => "<< ",    #The prompt when scrolled.
                                               #Set to nil to use main prompt.
