@@ -46,7 +46,7 @@ class MiniReadlineTester < Minitest::Test
     result = ''
 
     loop do
-      result = edit.readline(">", history: true)
+      result = edit.readline(prompt: ">", history: true)
       puts result.inspect
       break unless result != 'quit'
     end
@@ -57,13 +57,13 @@ class MiniReadlineTester < Minitest::Test
   def test_end_of_input_detection
     edit = MiniReadline::Readline.new()
     puts "Exit by signaling end of input"
-    assert_raises(MiniReadlineEOI) {edit.readline(">", eoi_detect: true)}
+    assert_raises(MiniReadlineEOI) {edit.readline(prompt: ">", eoi_detect: true)}
   end
 
   def test_prompt_verification
-    opts = {:window_width  => 39}
+    opts = {prompt: ">"*20, window_width: 39}
     edit = MiniReadline::Readline.new()
-    assert_raises(RuntimeError) {edit.readline(">"*20, opts)}
+    assert_raises(RuntimeError) {edit.readline(opts)}
   end
 
 

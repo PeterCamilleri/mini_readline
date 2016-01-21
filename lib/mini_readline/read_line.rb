@@ -11,6 +11,8 @@ module MiniReadline
   #The \Readline class that does the actual work of getting lines from the
   #user. Note that each instance of this class maintains its own copy of
   #the optional command history.
+  #<br>Endemic Code Smells
+  # :reek:TooManyInstanceVariables
   class Readline
 
     #The options specifically associated with this instance.
@@ -18,14 +20,11 @@ module MiniReadline
 
     #Setup the instance of the mini line editor.
     #<br>Parameters:
-    #* buffer - An array of strings used to contain the history. Use an empty
-    #  array to have a history buffer with no initial entries.
     #* instance_options - A hash of options owned by this \Readline instance.
-    #<br>Notes
-    #* In order to specify any instance options, buffer must also be specified.
-    def initialize(buffer=[], instance_options={})
+    def initialize(instance_options={})
       @instance_options = instance_options
-      @history    = History.new(buffer)
+      log = (@instance_options[:log] || BASE_OPTIONS[:log] || []).clone
+      @history    = History.new(log)
       @no_history = NoHistory.new
     end
 
@@ -38,8 +37,8 @@ module MiniReadline
     #<br>Parameters:
     #* prompt - A string used to prompt the user. '>' is popular.
     #* options - A hash of options; Typically symbol: value
-    def readline(prompt, options = {})
-      initialize_parms(prompt, options)
+    def readline(options = {})
+      initialize_parms(options)
       @edit.edit_process
     ensure
       @term.conclude
@@ -47,9 +46,8 @@ module MiniReadline
 
     #Initialize the read line process. This basically process the arguments
     #of the readline method.
-    def initialize_parms(prompt, options)
+    def initialize_parms(options)
       set_options(options)
-      set_prompt(prompt)
 
       history = @options[:history] ? @history : @no_history
       @edit = Edit.new(history, @options)
@@ -62,6 +60,7 @@ module MiniReadline
       @options = MiniReadline::BASE_OPTIONS.merge(instance_options)
       @options.merge!(options)
       (@term = @options[:term]).initialize_parms
+      set_prompt(@options[:prompt])
     end
 
     #Set up the prompt.

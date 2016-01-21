@@ -18,7 +18,7 @@ module MiniReadline
 
   #The (limited) compatibility module function.
   def self.readline(prompt, history = nil)
-    @reader.readline(prompt, history: history)
+    @reader.readline(prompt: prompt, history: history)
   end
 end
 

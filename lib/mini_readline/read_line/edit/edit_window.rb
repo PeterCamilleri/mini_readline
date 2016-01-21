@@ -7,6 +7,8 @@ require_relative 'edit_window/sync_cursor'
 module MiniReadline
 
   #* read_line/edit_window.rb - Support for the edit window.
+  #<br>Endemic Code Smells
+  # :reek:TooManyInstanceVariables
   class EditWindow
 
     #Determine the edit window limits.
@@ -20,7 +22,7 @@ module MiniReadline
     end
 
     #What is the offset of the window's left margin?
-    attr_accessor :left_margin
+    attr_reader :left_margin
 
     #What is the offset of the window's right margin?
     def right_margin
@@ -41,7 +43,7 @@ module MiniReadline
     end
 
     #The shadow copy of what is actually on the screen?
-    attr_accessor :window_buffer
+    attr_reader :window_buffer
 
     #The width of the window with the base prompt
     attr_reader :base_width
