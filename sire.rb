@@ -87,6 +87,11 @@ class SIRE
     (\g<x>|\g<y>)$
   }x
 
+  #Test the WRE
+  def wre(str)
+    WRE.match str
+  end
+
   #Rubified Windows Regex.
   # a File name character, no spaces.
   # b File name character, with spaces.
@@ -102,6 +107,11 @@ class SIRE
 
     (\g<x>|\g<y>)$
   }x
+
+  #Test the RRE
+  def rre(str)
+    RRE.match str
+  end
 
   #Other Platforms Regex.
   # a File name character, no spaces.
@@ -119,6 +129,10 @@ class SIRE
     (\g<x>|\g<y>)$
   }x
 
+  #Test the ORE
+  def ore(str)
+    ORE.match str
+  end
 
   #Execute a single line.
   def exec_line(line)
