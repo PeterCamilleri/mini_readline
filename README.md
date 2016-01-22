@@ -9,19 +9,18 @@ is a list of what is hoped to be accomplished here.
 
 * The standard readline gem works poorly under Windows.
 <br>- The keypad arrow keys do not work.
-<br>- If the program attempts to send data to a subprocess, it breaks.
-* The code is so convoluted that it is difficult to fix or re-factor.
-* The code is just plain UGLY! With all we've learned about object oriented
-design, there just HAD to be a better way!
+<br>- If the program attempts to send data to a subprocess, readline breaks.
+* The source code is massive, monolithic, and difficult to fix or re-factor.
+* The original code registered nearly a 1000 code smells when I last checked
+it with reek. That is too many.
 * Finally, since this code will borrow a lot from the original, it is hoped
 that I will see the same bugs and fix them. Then perhaps it can be seen how
 the original code can also be fixed. In the long run, this is perhaps the
 most important goal.
 
-<br>The mini_readline gem is designed for use with MRI version 1.9.3 or later.
+The mini_readline gem is designed for use with MRI version 1.9.3 or later.
 
 ## Installation
-
 Add this line to your application's Gemfile:
 
 ```ruby
@@ -30,7 +29,6 @@ gem 'mini_readline'
 And then execute:
 
     $ bundle
-
 Or install it yourself as:
 
     $ gem install mini_readline
@@ -119,13 +117,13 @@ as instance level options.
 <br>Once an instance is created it may be used as follows:
 
 ```ruby
-edit.readline(options)
+user_entry = edit.readline(options)
 ```
-Where an optional hash of options settings. For example, to specify a prompt,
-use the following:
+Where an optional hash of options settings. For example, to specify a
+non-default prompt with history enabled, use the following:
 
 ```ruby
-edit.readline(prompt: '>')
+user_entry = edit.readline(prompt: '? ', history: true)
 ```
 
 
