@@ -153,17 +153,19 @@ class SIRE
 
   #Run the interactive session.
   def run_sire
+    edit = MiniReadline::Readline.new
+
     puts
     puts "Welcome to a Simple Interactive Ruby Environment\n"
     puts "Use the command 'q' to quit.\n\n"
 
     until @_done
-      exec_line(Readline.readline('SIRE>', true))
+      exec_line(edit.readline(prompt: 'SIRE>', history: true, eoi_detect: true))
     end
 
     puts "\n\n"
 
-  rescue Interrupt => e
+  rescue MiniReadlineEOI, Interrupt => e
     puts "\n"
   end
 
