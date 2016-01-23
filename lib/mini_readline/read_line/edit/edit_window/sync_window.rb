@@ -19,11 +19,11 @@ module MiniReadline
       old_margins = [left_margin, right_margin]
 
       if length < base_width
-        @left_margin = 0
+        set_left_margin(0)
       elsif edit_posn < left_margin
-        @left_margin = [edit_posn - scroll_step, 0].max
+        set_left_margin([edit_posn - scroll_step, 0].max)
       elsif edit_posn > right_margin
-        self.right_margin = edit_posn + scroll_step
+        set_right_margin(edit_posn + scroll_step)
       end
 
       old_margins == [left_margin, right_margin]
@@ -44,5 +44,19 @@ module MiniReadline
       end
     end
 
+    private
+
+    #Set the left margin
+    def set_left_margin(value)
+      @left_margin = value
+    end
+
+    #Set the right margin
+    #<br>Notes
+    #* If the right_margin is being set, then we must be scrolling. That is
+    #  why the scroll_width is used instead of active_width here.
+    def set_right_margin(value)
+      @left_margin = value - scroll_width + 1
+    end
   end
 end

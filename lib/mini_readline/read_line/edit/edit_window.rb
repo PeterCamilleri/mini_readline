@@ -27,14 +27,6 @@ module MiniReadline
       left_margin + active_width - 1
     end
 
-    #Set the right margin
-    #<br>Notes
-    #* If the right_margin is being set, then we must be scrolling. That is
-    #  why the scroll_width is used instead of active_width here.
-    def right_margin=(value)
-      @left_margin = value - scroll_width + 1
-    end
-
     #Is the window currently in the scrolled state?
     def window_scrolled?
       left_margin > 0
