@@ -30,8 +30,6 @@ require_relative 'edit/unmapped'
 module MiniReadline
 
   #* read_line/edit.rb - The line editor.
-  #<br>Endemic Code Smells
-  # :reek:TooManyInstanceVariables
   class Edit
 
     #Set up the edit instance.

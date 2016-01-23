@@ -11,8 +11,6 @@ module MiniReadline
   PLATFORM = :other
 
   #The class used to manipulate console i/o on a low level.
-  #<br>Endemic Code Smells
-  # :reek:TooManyInstanceVariables
   class RawTerm
 
     #Carriage return

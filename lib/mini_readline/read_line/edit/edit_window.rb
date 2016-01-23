@@ -7,8 +7,6 @@ require_relative 'edit_window/sync_cursor'
 module MiniReadline
 
   #* read_line/edit_window.rb - Support for the edit window.
-  #<br>Endemic Code Smells
-  # :reek:TooManyInstanceVariables
   class EditWindow
 
     #Determine the edit window limits.

@@ -6,8 +6,6 @@ require_relative 'raw_term/mapper'
 module MiniReadline
 
   #The class used to manipulate console i/o on a low level.
-  #<br>Endemic Code Smells
-  # :reek:TooManyInstanceVariables
   class RawTerm
 
     #Create a mapper.

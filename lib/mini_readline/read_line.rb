@@ -11,8 +11,6 @@ module MiniReadline
   #The \Readline class that does the actual work of getting lines from the
   #user. Note that each instance of this class maintains its own copy of
   #the optional command history.
-  #<br>Endemic Code Smells
-  # :reek:TooManyInstanceVariables
   class Readline
 
     #The options specifically associated with this instance.
