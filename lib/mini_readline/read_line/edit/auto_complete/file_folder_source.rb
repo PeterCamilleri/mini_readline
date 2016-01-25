@@ -15,15 +15,20 @@ module MiniReadline
 
     #Construct a new data list for auto-complete
     def rebuild(str)
-      @root, pivot = /\S+$/ =~ str ? [$PREMATCH, $MATCH] : [str, ""]
+      extract_root_pivot(str)
 
-      list = Dir.glob(pivot + '*')
+      list = Dir.glob(@pivot + '*')
 
       unless list.empty?
         @cycler = list.cycle
       else
         @cycler = nil
       end
+    end
+
+    #Parse the string into the two basic components.
+    def extract_root_pivot(str)
+      @root, @pivot = /\S+$/ =~ str ? [$PREMATCH, $MATCH] : [str, ""]
     end
 
     #Get the next string for auto-complete
