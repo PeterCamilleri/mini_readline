@@ -4,21 +4,11 @@ This gem is used to get console style input from the user, with support for
 inline editing and command history.
 
 The mini readline gem is an experiment in replacing the standard readline gem
-that is part of Ruby. The reasons for doing this are somewhat shaky, but here
-is a list of what is hoped to be accomplished here.
-
-* The standard readline gem works poorly under Windows.
-<br>- The keypad arrow keys do not work.
-<br>- If the program attempts to send data to a subprocess, readline breaks.
-* The source code is massive, monolithic, and difficult to fix or re-factor.
-* The original code registered nearly a 1000 code smells when I last checked
-it with reek. That is too many.
-* Finally, since this code will borrow a lot from the original, it is hoped
-that I will see the same bugs and fix them. Then perhaps it can be seen how
-the original code can also be fixed. In the long run, this is perhaps the
-most important goal.
+that is part of Ruby. The mini readline will focus on the needs of Ruby programs
+as opposed to a UN*X shell program.
 
 The mini_readline gem is designed for use with MRI version 1.9.3 or later.
+The original readline which tries to support older versions of Ruby.
 
 ## Installation
 Add this line to your application's Gemfile:
