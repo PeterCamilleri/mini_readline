@@ -162,6 +162,7 @@ BASE_OPTIONS = {
 
   :auto_complete => false,    #Is auto complete enabled?
   :auto_source   => nil,      #Filled in by auto_complete.rb
+                              #MiniReadline::QuotedFileFolderSource
 
   :eoi_detect    => false,    #Is end of input detection enabled?
 
@@ -171,6 +172,7 @@ BASE_OPTIONS = {
   :no_dups       => true,     #No duplicate lines in history.
 
   :term          => nil,      #Filled in by raw_term.rb
+                              #MiniReadline::RawTerm
 
   :debug         => false}    #Used during development only.
 ```
@@ -187,7 +189,7 @@ MiniReadline::BASE_OPTION[:auto_complete] = true
 ```
 * :auto_source is the class of the source for auto-complete data. By default this
 is MiniReadline::FileFolderSource. This option can be changed up to get auto-complete
-data other than files and folders.
+data other than files and folders. See Auto-Compete below for more details.
 * :eoi_detect is used to control the end of input detection logic. If disabled,
 eoi inputs are treated as unmapped. If enabled, they raise a MiniReadlineEOI
 exception.
@@ -201,6 +203,14 @@ affect options in this case is to modify the MiniReadline::BASE_OPTIONS hash.
 from the user and control what is displayed. This gem automatically adapts to
 the environment and plugs in the needed object. This can be overridden where
 special io needs exist.
+
+### Auto-Complete
+The mini readline gem comes with two auto-complete engines. These are:
+* MiniReadline::FileFolderSource - A simple, in-line auto-complete for files
+and folders that do **not** contain embedded spaces.
+* MiniReadline::QuotedFileFolderSource - A simple, in-line auto-complete for
+files and folders embedded in quotes "foo bar.rb" that may contain spaces.
+This is the default auto-complete data source.
 
 ## Demo
 A simple demo of mini_readline in action is available. To access this demo use

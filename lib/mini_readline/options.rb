@@ -13,8 +13,7 @@ module MiniReadline
 
                   :auto_complete => false,    #Is auto complete enabled?
                   :auto_source   => nil,      #Filled in by auto_complete.rb
-                  :files_parse   => :flex,    #flex for compatible file names.
-                                              #strict for strict rules.
+                                              #MiniReadline::QuotedFileFolderSource
 
                   :eoi_detect    => false,    #Is end of input detection enabled?
 
@@ -24,6 +23,7 @@ module MiniReadline
                   :no_dups       => true,     #No duplicate lines in history.
 
                   :term          => nil,      #Filled in by raw_term.rb
+                                              #MiniReadline::RawTerm
 
                   :debug         => false     #Used during development only.
                  }
