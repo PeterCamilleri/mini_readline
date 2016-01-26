@@ -26,7 +26,7 @@ module MiniReadline
 
     #Parse the string into the two basic components.
     def extract_root_pivot(str)
-      @root, @pivot = /(?<=\")[^\"\s][^\"]*(?=\"?$)/ =~ str ? [$PREMATCH, $MATCH] : [str + '"', ""]
+      @root, @pivot = /(?<=\")([^\"\s][^\"]*)?(?=\"?$)/ =~ str ? [$PREMATCH, $MATCH] : [str + '"', ""]
     end
 
     #Get the next string for auto-complete
