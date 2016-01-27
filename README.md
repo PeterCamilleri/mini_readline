@@ -8,7 +8,7 @@ that is part of Ruby. The mini readline will focus on the needs of Ruby programs
 as opposed to a UN*X shell program.
 
 The mini_readline gem is designed for use with MRI version 1.9.3 or later.
-The original readline which tries to support older versions of Ruby.
+The original readline tried to support older versions of Ruby.
 
 ## Installation
 Add this line to your application's Gemfile:
