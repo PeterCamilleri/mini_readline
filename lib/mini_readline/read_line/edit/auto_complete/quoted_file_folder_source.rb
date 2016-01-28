@@ -7,9 +7,7 @@ module MiniReadline
   class QuotedFileFolderSource
 
     #Create a new file/folder auto-data source. NOP
-    def initialize(options)
-      @options = options
-    end
+    def initialize(_options); end
 
     #Construct a new data list for auto-complete
     def rebuild(str)
@@ -24,9 +22,12 @@ module MiniReadline
       end
     end
 
+    #The parsing regular expression.
+    REGEX = /(?<=\")([^\"\s][^\"]*)?(?=\"?$)/
+
     #Parse the string into the two basic components.
     def extract_root_pivot(str)
-      @root, @pivot = /(?<=\")([^\"\s][^\"]*)?(?=\"?$)/ =~ str ? [$PREMATCH, $MATCH] : [str + '"', ""]
+      @root, @pivot = REGEX =~ str ? [$PREMATCH, $MATCH] : [str + '"', ""]
     end
 
     #Get the next string for auto-complete

@@ -7,9 +7,7 @@ module MiniReadline
   class FileFolderSource
 
     #Create a new file/folder auto-data source. NOP
-    def initialize(options)
-      @options = options
-    end
+    def initialize(_options); end
 
     #Construct a new data list for auto-complete
     def rebuild(str)
