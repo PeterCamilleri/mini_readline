@@ -5,7 +5,8 @@ inline editing and command history.
 
 The mini readline gem is an experiment in replacing the standard readline gem
 that is part of Ruby. The mini readline will focus on the needs of Ruby programs
-as opposed to a UN*X shell program.
+as opposed to a UN*X shell program. It will also try to correct a number of
+irritating issues encountered when running under a Windows platform.
 
 The mini_readline gem is designed for use with MRI version 1.9.3 or later.
 The original readline tried to support older versions of Ruby.
