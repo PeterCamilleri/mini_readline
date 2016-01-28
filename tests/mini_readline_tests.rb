@@ -71,6 +71,43 @@ class MiniReadlineTester < Minitest::Test
     assert_equal("quit", result)
   end
 
+  def test_array_complete
+    puts "\nPlease select an approved fruit."
+
+    fruit = ["apple", "blackberry", "blueberry", "cantaloupe", "cherry",
+             "clementine fruit", "coconut", "cranberry", "date", "elderberry",
+             "fig", "gooseberry", "grape", "loganberry", "lychee",
+             "mango", "olive", "orange", "papaya", "passion fruit", "peach",
+             "pear", "pineapple", "plum", "raspberry", "redcurrant",
+             "star fruit", "strawberry", "tomato"]
+
+    edit = MiniReadline::Readline.new(auto_complete: true,
+                                      auto_source: MiniReadline::ArraySource,
+                                      array_src: fruit)
+
+    result = edit.readline(prompt: "Fruit: ")
+    assert(fruit.include?(result))
+  end
+
+  def test_block_complete
+    puts "\nPlease select an approved fruit."
+
+    fruit = ["apple", "blackberry", "blueberry", "cantaloupe", "cherry",
+             "clementine fruit", "coconut", "cranberry", "date", "elderberry",
+             "fig", "gooseberry", "grape", "loganberry", "lychee",
+             "mango", "olive", "orange", "papaya", "passion fruit", "peach",
+             "pear", "pineapple", "plum", "raspberry", "redcurrant",
+             "star fruit", "strawberry", "tomato"]
+
+    edit = MiniReadline::Readline.new(auto_complete: true,
+                                      auto_source: MiniReadline::ArraySource,
+                                      array_src: lambda { fruit })
+
+    result = edit.readline(prompt: "Fruit: ")
+    assert(fruit.include?(result))
+  end
+
+
   def test_end_of_input_detection
     edit = MiniReadline::Readline.new()
     puts "Exit by signaling end of input"

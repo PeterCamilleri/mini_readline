@@ -3,6 +3,7 @@
 require_relative 'auto_complete/auto_manager'
 require_relative 'auto_complete/file_folder_source'
 require_relative 'auto_complete/quoted_file_folder_source'
+require_relative 'auto_complete/array_source'
 
 #* read_line/window/edit/auto_complete.rb - Process :auto_complete
 module MiniReadline
