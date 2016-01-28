@@ -213,8 +213,8 @@ strings or a proc (or lambda) that returns an array of strings.
 * MiniReadline::FileFolderSource - A simple, in-line auto-complete for files
 and folders that do **not** contain embedded spaces.
 * MiniReadline::QuotedFileFolderSource - A simple, in-line auto-complete for
-files and folders embedded in quotes "foo bar.rb" that may contain spaces.
-This is the default auto-complete data source.
+files and folders embedded in quotes. For example "foo bar.rb". Note that the
+file names may contain spaces. This is the default auto-complete data source.
 
 ## Demo
 A simple demo of mini_readline in action is available. To access this demo use
