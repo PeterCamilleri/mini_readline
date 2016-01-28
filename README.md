@@ -206,7 +206,7 @@ the environment and plugs in the needed object. This can be overridden where
 special io needs exist.
 
 ### Auto-Complete
-The mini readline gem comes with two auto-complete engines. These are:
+The mini readline gem comes with three auto-complete engines. These are:
 * MiniReadline::ArraySource - Make a selection from an array of choices. That
 array is found in the option :array_src. This can either be an array of
 strings or a proc (or lambda) that returns an array of strings.
