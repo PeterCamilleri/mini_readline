@@ -9,7 +9,7 @@ module MiniReadline
     #The insert_text command. We are DONE!
     def end_of_input(_keyboard_args)
       if @options[:eoi_detect]
-        raise MiniReadlineEOI, "EOI Detected."
+        raise MiniReadlineEOI, "End of input detected."
       else
         @term.beep
       end
