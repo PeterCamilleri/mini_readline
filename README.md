@@ -216,6 +216,58 @@ and folders that do **not** contain embedded spaces.
 files and folders embedded in quotes. For example "foo bar.rb". Note that the
 file names may contain spaces. This is the default auto-complete data source.
 
+### Adding Custom Auto-Completers
+It is possible, and fairly straightforward to add application specific
+auto-completers to mini readline. To show how this might be done, the
+File and Folder data source is shown. Essential components of this class are
+the initialize, rebuild, and next methods.
+
+```ruby
+  class FileFolderSource
+
+    #Create a new file/folder auto-data source. NOP
+    def initialize(options)
+      # Save or ignore the options hash.
+    end
+
+    #Construct a new data list for auto-complete given the current contents
+    #of the mini_readline edit buffer. Return true-ish for success and
+    #false-ish for failure.
+    def rebuild(str)
+      extract_root_pivot(str)
+
+      list = Dir.glob(@pivot + '*')
+
+      @cycler = list.empty? ? nil : list.cycle
+    end
+
+    #Parse the string into the two basic components. This is not part of the
+    #protocol but is included to give an example of splitting the invariant
+    #(root) part of the buffer from the variable (pivot) part.
+    def extract_root_pivot(str)
+      @root, @pivot = /\S+$/ =~ str ? [$PREMATCH, $MATCH] : [str, ""]
+    end
+
+    #Get the next string for auto-complete. Note that this is the entire
+    #string, not just the pivot bit at the end.
+    def next
+      @root + @cycler.next
+    end
+
+  end
+```
+To enable the use of a custom auto-completer, three things mst be done:
+* The option[:auto_complete] must be set to true
+* The option[:auto_source] must be set to the class name of the new completer.
+* Any optional, additional options required by the completer must be set.
+
+<br> See the section Options above for more details on setting/controlling
+options.
+
+<br>Note: Elsewhere in the code above there exists a require 'English'
+statement to permit the use of clearer, easier to read access to regular
+expression results.
+
 ## Demo
 A simple demo of mini_readline in action is available. To access this demo use
 the following from the mini_readline root folder:
