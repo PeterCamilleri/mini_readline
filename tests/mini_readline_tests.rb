@@ -107,6 +107,25 @@ class MiniReadlineTester < Minitest::Test
     assert(fruit.include?(result))
   end
 
+  def test_file_auto
+    puts "\nPlease select an unquoted file."
+
+    edit = MiniReadline::Readline.new(auto_complete: true,
+                                      auto_source: MiniReadline::FileFolderSource)
+
+    result = edit.readline(prompt: "File: ")
+    assert(result.is_a?(String))
+  end
+
+  def test_file_quoated
+    puts "\nPlease select an quoted file."
+
+    edit = MiniReadline::Readline.new(auto_complete: true,
+                                      auto_source: MiniReadline::QuotedFileFolderSource)
+
+    result = edit.readline(prompt: "File: ")
+    assert(result.is_a?(String))
+  end
 
   def test_end_of_input_detection
     edit = MiniReadline::Readline.new()
