@@ -17,11 +17,7 @@ module MiniReadline
 
       list = (get_array.select {|str| str.start_with?(@pivot)}).sort
 
-      unless list.empty?
-        @cycler = list.cycle
-      else
-        @cycler = nil
-      end
+      @cycler = list.empty? ? nil : list.cycle
     end
 
     #Parse the string into the two basic components.
