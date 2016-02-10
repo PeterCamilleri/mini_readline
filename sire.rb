@@ -5,6 +5,7 @@ require 'pp'
 
 if ARGV[0] == 'old'
   require 'readline'
+  $old = true
   puts "\nOption(old). Loaded the standard readline gem. Version #{Readline::VERSION}"
 elsif ARGV[0] == 'local'
   require './lib/mini_readline'
@@ -59,8 +60,12 @@ class SIRE
 
   #Get a mapped keystroke.
   def g
-    print 'Press a key:'
-    MiniReadline::BASE_OPTIONS[:term].get_mapped_keystroke
+    if $old
+      print 'Not supported by old readline.'
+    else
+      print 'Press a key:'
+      MiniReadline::BASE_OPTIONS[:term].get_mapped_keystroke
+    end
   end
 
   #Test spawning a process. This breaks the regular readline gem.
@@ -90,22 +95,22 @@ class SIRE
 
   #Run the interactive session.
   def run_sire
-    edit = MiniReadline::Readline.new(prompt: 'SIRE>',
-                                      auto_complete: true,
-                                      history: true,
-                                      eoi_detect: true)
+    unless $old
+      MiniReadline::BASE_OPTIONS[:auto_complete] = true
+      MiniReadline::BASE_OPTIONS[:eoi_detect] = true
+    end
 
     puts
     puts "Welcome to a Simple Interactive Ruby Environment\n"
     puts "Use the command 'q' to quit.\n\n"
 
     until @_done
-      exec_line(edit.readline)
+      exec_line(Readline.readline('SIRE>', true))
     end
 
     puts "\n\n"
 
-  rescue MiniReadlineEOI, Interrupt => e
+  rescue StandardError, Interrupt => e
     puts "\n"
   end
 

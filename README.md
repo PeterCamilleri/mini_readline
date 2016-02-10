@@ -189,13 +189,18 @@ require 'mini_readline'
 MiniReadline::BASE_OPTION[:auto_complete] = true
 ```
 * :auto_source is the class of the source for auto-complete data. By default this
-is MiniReadline::FileFolderSource. This option can be changed up to get auto-complete
-data other than files and folders. See Auto-Compete below for more details.
+is MiniReadline::QuotedFileFolderSource. This option can be changed up to get
+auto-complete data other than files and folders. See Auto-Compete below for
+more details.
 * :eoi_detect is used to control the end of input detection logic. If disabled,
 eoi inputs are treated as unmapped. If enabled, they raise a MiniReadlineEOI
 exception.
-* :term is the interactive source of data, the console by default. This can be
-changed to get data from another source (like a serial attached terminal).
+* :term is the interactive source of data, the console by default. The raw
+terminal console driver automatically adapts to the system environment
+(Windows or Other) so that correct operation is normally achieved with no
+further actions on the part of the user. The terminal support class can be
+changed, to a user supplied class, to get data from another source, such as
+a serial attached terminal.
 
 #### Notes
 * Since the compatibility mode does not accept an options hash, the only way to
