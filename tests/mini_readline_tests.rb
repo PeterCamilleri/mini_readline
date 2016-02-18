@@ -9,7 +9,7 @@ require          'minitest_visible'
 class MiniReadlineTester < Minitest::Test
 
   #Track mini-test progress.
-  MinitestVisible.track self, __FILE__
+  include MinitestVisible
 
   def test_that_module_entities_exists
     assert_equal(Module, MiniReadline.class)
