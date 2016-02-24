@@ -188,9 +188,9 @@ to enable it, or to make auto-complete enabled the default use:
 require 'mini_readline'
 MiniReadline::BASE_OPTION[:auto_complete] = true
 ```
-* :auto_source is the class of the source for auto-complete data. By default this
-is MiniReadline::QuotedFileFolderSource. This option can be changed up to get
-auto-complete data other than files and folders. See Auto-Compete below for
+* :auto_source is the class of the source for auto-complete data. By default
+this is MiniReadline::QuotedFileFolderSource. This option can be changed up to
+get auto-complete data other than files and folders. See Auto-Compete below for
 more details.
 * :eoi_detect is used to control the end of input detection logic. If disabled,
 eoi inputs are treated as unmapped. If enabled, they raise a MiniReadlineEOI
@@ -261,7 +261,7 @@ the initialize, rebuild, and next methods.
 
   end
 ```
-To enable the use of a custom auto-completer, three things mst be done:
+To enable the use of a custom auto-completer, three things must be done:
 * The option[:auto_complete] must be set to true
 * The option[:auto_source] must be set to the class name of the new completer.
 * Any optional, additional options required by the completer must be set.
@@ -325,7 +325,8 @@ To date this code has been tested under:
 * Windows 7 with ruby 2.1.6p336 (2015-04-13 revision 50298) [i386-mingw32]
 * Windows 7+Cygwin with ruby 2.2.3p173 (2015-08-18 revision 51636) [i386-cygwin]
 
-<br>**More testing is clearly called for and suggestions/bug reports are most welcomed!!!**
+<br>**More testing is clearly called for and suggestions/bug reports are most
+welcomed!!!**
 
 ## Contributing
 
