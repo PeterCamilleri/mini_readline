@@ -16,7 +16,7 @@ module MiniReadline
       @scroll_width = window_width - @options[:scroll_prompt].length
       @term         = @options[:term]
 
-      @left_margin, @window_buffer = 0, ""
+      @left_margin, @window_buffer, @show_prompt = 0, "", true
     end
 
     #What is the offset of the window's left margin?

@@ -1,5 +1,6 @@
 # coding: utf-8
 
+require_relative 'read_line/prompt'
 require_relative 'read_line/edit'
 require_relative 'read_line/history'
 require_relative 'read_line/no_history'
@@ -63,18 +64,18 @@ module MiniReadline
 
     #Set up the prompt.
     def set_prompt(prompt)
-      @options[:base_prompt]   = prompt
-      @options[:scroll_prompt] = @options[:alt_prompt] || prompt
+      @options[:base_prompt]   = Prompt.new(prompt)
+      @options[:scroll_prompt] = Prompt.new(@options[:alt_prompt] || prompt)
 
       verify_prompt(@options[:base_prompt])
       verify_prompt(@options[:scroll_prompt])
     end
 
     #Verify that the prompt will fit!
-    def verify_prompt(str)
-      unless (@options[:window_width] - str.length) >
+    def verify_prompt(prompt)
+      unless (@options[:window_width] - prompt.length) >
              (@options[:scroll_step] * 2)
-        fail "Prompt too long: #{str.inspect}"
+        fail "Too long: #{prompt.inspect}"
       end
     end
   end
