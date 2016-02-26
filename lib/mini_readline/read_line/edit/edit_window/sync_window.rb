@@ -8,7 +8,11 @@ module MiniReadline
 
     #Keep the edit window in sync!
     def sync_window(edit_buffer, edit_posn)
-      window_buffer.clear unless check_margins(edit_buffer.length, edit_posn)
+      unless check_margins(edit_buffer.length, edit_posn)
+        window_buffer.clear
+        @show_prompt = true
+      end
+
       image = build_screen_image(edit_buffer)
       update_screen(image)
       @window_buffer = image
@@ -31,14 +35,19 @@ module MiniReadline
 
     #Compute what should be on the screen.
     def build_screen_image(edit_buffer)
-      prompt.text + edit_buffer[left_margin..right_margin].ljust(window_width)
+      edit_buffer[left_margin..right_margin].ljust(active_width)
     end
 
     #Bring the screen into agreement with the image.
     def update_screen(image)
-      (0...window_width).each do |index|
+      if @show_prompt
+        @term.put_string("\r#{prompt.text}\r")
+        @show_prompt = false
+      end
+
+      (0...active_width).each do |index|
         if (image_char = image[index]) != window_buffer[index]
-          @term.set_posn(index)
+          @term.set_posn(prompt.length + index)
           @term.put_string(image_char)
         end
       end

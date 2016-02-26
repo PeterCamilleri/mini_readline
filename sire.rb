@@ -105,7 +105,7 @@ class SIRE
     puts "Use the command 'q' to quit.\n\n"
 
     until @_done
-      exec_line(Readline.readline('SIRE>', true))
+      exec_line(Readline.readline("\e[7mSIRE>\e[0m", true))
     end
 
     puts "\n\n"

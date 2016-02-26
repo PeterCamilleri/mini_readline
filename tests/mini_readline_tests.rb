@@ -85,7 +85,7 @@ class MiniReadlineTester < Minitest::Test
                                       auto_source: MiniReadline::ArraySource,
                                       array_src: fruit)
 
-    result = edit.readline(prompt: "Fruit: ")
+    result = edit.readline(prompt: "\e[7mFruit:\e[0m ")
     assert(fruit.include?(result))
   end
 
