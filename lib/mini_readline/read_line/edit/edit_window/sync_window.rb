@@ -31,7 +31,7 @@ module MiniReadline
 
     #Compute what should be on the screen.
     def build_screen_image(edit_buffer)
-      prompt + edit_buffer[left_margin..right_margin].ljust(window_width)
+      prompt.text + edit_buffer[left_margin..right_margin].ljust(window_width)
     end
 
     #Bring the screen into agreement with the image.
