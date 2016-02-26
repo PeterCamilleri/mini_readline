@@ -48,7 +48,8 @@ End of Input     | Ctrl-Z                           | Alt-z
 
 ### Notes
 * The label "Other" is an umbrella that bundles together the Linux, Mac,
-and Cygwin platforms.
+and Cygwin platforms. On systems lacking an Alt key, these sequences may be
+replaced by Escape followed by the appropriate letter.
 * References to Pad keys under Windows assume that Num Lock is not engaged.
 * Support for End of Input is controlled by the eoi_detect option. See options
 below.
