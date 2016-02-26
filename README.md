@@ -180,8 +180,12 @@ BASE_OPTIONS = {
 
 <br>While most of these options are self explanatory, a few could stand some
 further description:
+* :prompt is the standard prompt used when text is not scrolled.
 * :alt_prompt is the prompt used when the text must be scrolled to fit on the
 screen. If this is set to nil, then the main prompt is always used.
+<br>Both the prompt and alt_prompt may contain ANSI terminal control sequences.
+These are restricted, however, to those commands that do not alter the position
+of the cursor. So basically colors, highlighting, etc.
 * :auto_complete is disabled by default. Of course there are a number of ways
 to enable it, or to make auto-complete enabled the default use:
 ```ruby
