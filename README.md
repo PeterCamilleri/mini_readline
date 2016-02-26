@@ -342,6 +342,6 @@ https://github.com/PeterCamilleri/mini_readline.
 
 ## License
 
-The gem is available as open source under the terms of the
-[MIT License](http://opensource.org/licenses/MIT).
+The gem is available as open source under the terms of the MIT License. Please
+see LICENSE.txt for further details.
 
