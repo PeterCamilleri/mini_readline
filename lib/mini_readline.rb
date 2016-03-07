@@ -14,6 +14,12 @@ require_relative "mini_readline/read_line"
 #* mini_readline.rb - The root file that gathers up all the system's parts.
 module MiniReadline
 
+  private_constant :Prompt
+  private_constant :Edit
+  private_constant :EditWindow
+  private_constant :History
+  private_constant :NoHistory
+
   #The shared instance of Readline.
   @reader = Readline.new()
 
