@@ -11,17 +11,17 @@ module MiniReadline
     #Left Arrows
     MAP["\e[D"]  = [:go_left]
     MAP["\e[D"]  = [:go_left]
+    MAP["\x02"]  = [:go_left]
 
     MAP["\e[1;5D"] = [:word_left]
-    MAP["\x02"]    = [:word_left]
     MAP["\eb"]     = [:word_left]
 
     #Right Arrows
     MAP["\e[C"]  = [:go_right]
     MAP["\eOC"]  = [:go_right]
+    MAP["\x06"]  = [:go_right]
 
     MAP["\e[1;5C"] = [:word_right]
-    MAP["\x06"]    = [:word_right]
     MAP["\ef"]     = [:word_right]
 
     #Up Arrows
