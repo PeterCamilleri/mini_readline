@@ -32,10 +32,10 @@ mappings) are listed below:
 Editor Action    | Windows Key                      | Other Key
 -----------------|----------------------------------|------------
 Enter            | Enter                            | Enter
-Left             | Left Arrow, Pad Left             | Left Arrow
-Word Left        | Ctrl Left Arrow, Ctrl Pad Left   | Ctrl Left Arrow, Ctrl-B, Alt-b
-Right            | Right Arrow, Pad Right           | Right Arrow
-Word Right       | Ctrl Right Arrow, Ctrl Pad Right | Ctrl Right Arrow, Ctrl-F, Alt-f
+Left             | Left Arrow, Pad Left             | Left Arrow, Ctrl-B
+Word Left        | Ctrl Left Arrow, Ctrl Pad Left   | Ctrl Left Arrow, Alt-b
+Right            | Right Arrow, Pad Right           | Right Arrow, Ctrl-F
+Word Right       | Ctrl Right Arrow, Ctrl Pad Right | Ctrl Right Arrow, Alt-f
 Go to start      | Home, Pad Home                   | Home, Ctrl-A
 Go to end        | End, Pad End                     | End, Ctrl-E
 Previous History | Up Arrow, Pad Up                 | Up Arrow, Ctrl-R
