@@ -98,6 +98,7 @@ class SIRE
     unless $old
       MiniReadline::BASE_OPTIONS[:auto_complete] = true
       MiniReadline::BASE_OPTIONS[:eoi_detect] = true
+      MiniReadline::BASE_OPTIONS[:debug] = true
     end
 
     puts
