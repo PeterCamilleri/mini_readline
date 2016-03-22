@@ -15,7 +15,7 @@ module MiniReadline
     def rebuild(str)
       extract_root_pivot(str)
 
-      list = (get_array.select {|str| str.start_with?(@pivot)}).sort
+      list = (get_array.select {|entry| entry.start_with?(@pivot)}).sort
 
       @cycler = list.empty? ? nil : list.cycle
     end

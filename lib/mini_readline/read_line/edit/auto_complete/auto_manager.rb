@@ -9,6 +9,7 @@ module MiniReadline
     #Create a new auto-complete manager.
     def initialize(&block)
       @_block = block
+      @active = nil
     end
 
     #Get the next buffer string
