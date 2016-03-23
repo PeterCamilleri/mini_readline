@@ -29,6 +29,6 @@ module MiniReadline
   end
 end
 
-unless defined? $no_alias_read_line_module && $no_alias_read_line_module
+unless defined?($no_alias_read_line_module) && $no_alias_read_line_module
     Readline = MiniReadline
 end
