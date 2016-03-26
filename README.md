@@ -41,7 +41,9 @@ Go to end        | End, Pad End                     | End, Ctrl-E
 Previous History | Up Arrow, Pad Up                 | Up Arrow, Ctrl-R
 Next History     | Down Arrow, Pad Down             | Down Arrow
 Erase Left       | Backspace, Ctrl-H                | Backspace, Ctrl-H
+Erase All Left   |                                  | Ctrl-U
 Erase Right      | Delete, Ctrl-Backspace           | Delete, Ctrl-Backspace
+Erase All Right  |                                  | Ctrl-K
 Erase All        | Escape                           | Ctrl-L
 Auto-complete    | Tab, Ctrl-I                      | Tab, Ctrl-I
 End of Input     | Ctrl-Z                           | Alt-z
