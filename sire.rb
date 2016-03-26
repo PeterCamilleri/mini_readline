@@ -6,6 +6,10 @@ require 'pp'
 if ARGV[0] == 'old'
   require 'readline'
   $old = true
+
+  class MiniReadlineEOI < StandardError
+  end
+
   puts "\nOption(old). Loaded the standard readline gem. Version #{Readline::VERSION}"
 elsif ARGV[0] == 'local'
   require './lib/mini_readline'
@@ -98,7 +102,6 @@ class SIRE
     unless $old
       MiniReadline::BASE_OPTIONS[:auto_complete] = true
       MiniReadline::BASE_OPTIONS[:eoi_detect] = true
-      MiniReadline::BASE_OPTIONS[:debug] = true
     end
 
     puts
@@ -111,7 +114,7 @@ class SIRE
 
     puts "\n\n"
 
-  rescue StandardError, Interrupt => e
+  rescue MiniReadlineEOI, Interrupt => e
     puts "\n"
   end
 

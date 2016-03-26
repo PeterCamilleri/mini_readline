@@ -46,10 +46,12 @@ module MiniReadline
     #The Backspace key
     MAP["\x7F"]  = [:delete_left]
     MAP["\x08"]  = [:delete_left]
+    MAP["\x15"]  = [:delete_all_left]
 
     #The Delete keys
     MAP["\x1F"]  = [:delete_right]
     MAP["\e[3~"] = [:delete_right]
+    MAP["\x0B"]  = [:delete_all_right]
 
     #Auto-completion.
     MAP["\t"]    = [:auto_complete]

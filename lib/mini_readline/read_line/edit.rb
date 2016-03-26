@@ -15,7 +15,9 @@ require_relative 'edit/go_home'
 require_relative 'edit/go_end'
 
 require_relative 'edit/delete_left'
+require_relative 'edit/delete_all_left'
 require_relative 'edit/delete_right'
+require_relative 'edit/delete_all_right'
 require_relative 'edit/cancel'
 
 require_relative 'edit/previous_history'
