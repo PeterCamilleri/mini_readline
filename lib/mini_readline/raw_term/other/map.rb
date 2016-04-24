@@ -10,7 +10,7 @@ module MiniReadline
 
     #Left Arrows
     MAP["\e[D"]  = [:go_left]
-    MAP["\e[D"]  = [:go_left]
+    MAP["\eOD"]  = [:go_left]
     MAP["\x02"]  = [:go_left]
 
     MAP["\e[1;5D"] = [:word_left]
