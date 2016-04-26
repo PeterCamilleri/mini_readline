@@ -101,18 +101,18 @@ mini_readline gem is required, *no* aliasing will take place.
 $no_alias_read_line_module = true
 require 'mini_readline'
 ```
-2) If the global variable $force_alias_read_line_module is set to true before
-the mini_readline gem is required, aliasing *will* take place.
+2) Else, if the global variable $force_alias_read_line_module is set to true
+before the mini_readline gem is required, aliasing *will* take place.
 ```ruby
 $force_alias_read_line_module = true
 require 'mini_readline'
 ```
-3) If the readline gem is already loaded, *no* aliasing will take place.
+3) Else, if the readline gem is already loaded, *no* aliasing will take place.
 ```ruby
 require 'readline'
 require 'mini_readline'
 ```
-4) Finally, if none of the above are met, aliasing *will* take place.
+4) Finally, if none of the above conditions are met, aliasing *will* take place.
 ```ruby
 require 'mini_readline'
 ```
