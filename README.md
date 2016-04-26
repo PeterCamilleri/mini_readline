@@ -63,13 +63,6 @@ The typical way of utilizing this gem is to place the following:
 ```ruby
 require 'mini_readline'
 ```
-By default, the constant Readline is set to the MiniReadline module. If this
-is not desired use the following:
-
-```ruby
-$no_alias_read_line_module = true
-require 'mini_readline'
-```
 
 ### Compatible Mode
 
@@ -96,6 +89,36 @@ and
 MiniReadline.readline('>', false)
 ```
 
+##### Module Aliasing
+
+For enhanced compatibility, the mini_readline gem has the ability to alias
+itself as the readline gem. This ability is subject to the following list
+of conditions.
+
+1) If the global variable $no_alias_read_line_module is set to true before the
+mini_readline gem is required, *no* aliasing will take place.
+```ruby
+$no_alias_read_line_module = true
+require 'mini_readline'
+```
+2) If the global variable $force_alias_read_line_module is set to true before
+the mini_readline gem is required, aliasing *will* take place.
+```ruby
+$force_alias_read_line_module = true
+require 'mini_readline'
+```
+3) If the readline gem is already loaded, *no* aliasing will take place.
+```ruby
+require 'readline'
+require 'mini_readline'
+```
+4) Finally, if none of the above are met, aliasing *will* take place.
+```ruby
+require 'mini_readline'
+```
+Note that if the readline gem is subsequently required after the mini_readline
+gem, it will redefine the Readline constant, generating a warning message on
+$stderr.
 
 ### Native Mode
 

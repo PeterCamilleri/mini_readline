@@ -28,6 +28,17 @@ Rake::TestTask.new do |t|
   t.verbose = false
 end
 
+desc "Fire up an IRB session with mini_readline."
+task :console do
+  require 'irb'
+  require 'irb/completion'
+  $force_alias_read_line_module = true
+  require './lib/mini_readline'
+  puts "Starting an IRB console with mini_readline."
+  ARGV.clear
+  IRB.start
+end
+
 desc "Run a scan for smelly code!"
 task :reek do |t|
   `reek --no-color lib > reek.txt`

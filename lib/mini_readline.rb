@@ -27,8 +27,28 @@ module MiniReadline
   def self.readline(prompt, history = nil)
     @reader.readline(prompt: prompt, history: history)
   end
+
+  #A stub.
+  def self.input=(input)
+    input
+  end
+
+  #A stub.
+  def self.output=(output)
+    output
+  end
+
 end
 
-unless defined?($no_alias_read_line_module) && $no_alias_read_line_module
-    Readline = MiniReadline
+#Optionally: Setup the module alias for Readline
+begin
+  old_stderr = $stderr
+  $stderr = File.open(File::NULL, 'w')
+
+  if !$no_alias_read_line_module&&($force_alias_read_line_module||!defined? Readline)
+      Readline = MiniReadline
+  end
+ensure
+  $stderr.close
+  $stderr = old_stderr
 end
