@@ -118,7 +118,13 @@ require 'mini_readline'
 ```
 Note that if the readline gem is subsequently required after the mini_readline
 gem, it will redefine the Readline constant, generating a warning message on
-$stderr.
+$stderr. If that is an issue, the following should ensure that the
+mini_readline gem stays in charge.
+```ruby
+require 'readline'
+$force_alias_read_line_module = true
+require 'mini_readline'
+```
 
 ### Native Mode
 
