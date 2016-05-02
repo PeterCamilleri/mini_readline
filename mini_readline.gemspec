@@ -13,7 +13,8 @@ Gem::Specification.new do |spec|
   spec.description   = "A gem for console command entry with line edit "+
                        "and history. This gem is like the standard readline " +
                        "gem except that it has been redesigned, simplified, " +
-                       "and extensively cleaned up."
+                       "and extensively cleaned up. Also includes the irbm "  +
+                       "utility, which is IRB + Mini_readline."
 
   spec.homepage      = "http://teuthida-technologies.com/"
   spec.license       = "MIT"

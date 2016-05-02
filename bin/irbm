@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+#
+# Run irb with mini_readline
+#
+
+require 'irb'
+$force_alias_read_line_module = true
+require 'mini_readline'
+puts "Starting an IRB console with mini_readline."
+IRB.start
