@@ -28,14 +28,9 @@ Rake::TestTask.new do |t|
   t.verbose = false
 end
 
-desc "Fire up an IRB session with mini_readline."
+desc "Fire up an IRB session with the local mini_readline."
 task :console do
-  require 'irb'
-  $force_alias_read_line_module = true
-  require './lib/mini_readline'
-  puts "Starting an IRB console with mini_readline."
-  ARGV.clear
-  IRB.start
+  system "ruby irbt.rb local"
 end
 
 desc "Run a scan for smelly code!"
