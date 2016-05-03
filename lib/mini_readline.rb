@@ -38,6 +38,10 @@ module MiniReadline
     output
   end
 
+  #A stub.
+  def self.readline_attempted_completion_function(*_)
+  end
+
 end
 
 #Optionally: Setup the module alias for Readline
