@@ -64,6 +64,29 @@ The typical way of utilizing this gem is to place the following:
 require 'mini_readline'
 ```
 
+### Demos
+
+There are a number of demo/test programs available for the mini_readline gem.
+These are:
+
+    $ irbm
+    Starting an IRB console with mini_readline.
+    irb(main):001:0>
+
+This runs against the most recently installed gem. Also available in the gem
+root folder is the irbt test utility.
+
+    $ ruby irbt.rb
+
+which again, uses the most recent gem installed in the system.
+
+    $ ruby irbt.rb local
+
+which uses the local copy of mini_readline, ignoring the system gems. This can
+also be accomplished with the command:
+
+    $ rake console
+
 ### Compatible Mode
 
 In this mode, mini_readline is somewhat compatible with the classic readline.
