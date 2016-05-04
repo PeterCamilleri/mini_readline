@@ -12,17 +12,22 @@ The mini_readline gem is designed for use with MRI version 1.9.3 or later.
 The original readline tried to support older versions of Ruby.
 
 ## Installation
+
 Add this line to your application's Gemfile:
 
 ```ruby
 gem 'mini_readline'
 ```
+
 And then execute:
 
     $ bundle
+
 Or install it yourself as:
 
     $ gem install mini_readline
+
+The mini_readline gem itself is found at: ( https://rubygems.org/gems/mini_readline )
 
 ## Key Mappings
 The mini_readline gem supports a simple set of editing commands. These vary
