@@ -11,6 +11,13 @@ irritating issues encountered when running under a Windows platform.
 The mini_readline gem is designed for use with MRI version 1.9.3 or later.
 The original readline tried to support older versions of Ruby.
 
+**Note:** A pull request against the rb-readline project was submitted on
+April 24, 2016. This fixes the outstanding issues with windows operation with
+low risk to other platforms. However I do not much expect to come of this
+effort. There are two year old pull request languishing away, so it looks like
+support for the original rb-readline has ended. I will move forward with the
+mini_readline gem as I can at least support my own code.
+
 ## Installation
 
 Add this line to your application's Gemfile:
