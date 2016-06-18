@@ -21,10 +21,10 @@ module MiniReadline
   private_constant :NoHistory
 
   #The shared instance of Readline.
-  @reader = Readline.new()
+  @reader = MiniReadline::Readline.new()
 
   #The (limited) compatibility module function.
-  def self.readline(prompt, history = nil)
+  def self.readline(prompt = "", history = nil)
     @reader.readline(prompt: prompt, history: history)
   end
 

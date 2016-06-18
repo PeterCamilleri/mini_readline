@@ -41,9 +41,9 @@ class MiniReadlineTester < Minitest::Test
     result = ''
 
     loop do
-      result = edit.readline(prompt: ">", history: true)
+      result = edit.readline(prompt: ">", history: true).chomp
       puts result.inspect
-      break unless result != 'quit'
+      break unless result != "quit"
     end
 
     assert_equal("quit", result)
@@ -58,9 +58,9 @@ class MiniReadlineTester < Minitest::Test
     result = ''
 
     loop do
-      result = edit.readline(prompt: ">")
+      result = edit.readline(prompt: ">").chomp
       puts result.inspect
-      break unless result != 'quit'
+      break unless result != "quit"
     end
 
     assert_equal("quit", result)
@@ -81,7 +81,7 @@ class MiniReadlineTester < Minitest::Test
                                       array_src: fruit)
 
     result = edit.readline(prompt: "\e[7mFruit:\e[0m ")
-    assert(fruit.include?(result))
+    assert(fruit.include?(result.chomp))
   end
 
   def test_block_complete
@@ -99,7 +99,7 @@ class MiniReadlineTester < Minitest::Test
                                       array_src: lambda { fruit })
 
     result = edit.readline(prompt: "Fruit: ")
-    assert(fruit.include?(result))
+    assert(fruit.include?(result.chomp))
   end
 
   def test_file_auto
