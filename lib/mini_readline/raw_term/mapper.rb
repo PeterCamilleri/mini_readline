@@ -14,6 +14,7 @@ module MiniReadline
     #Add a map entry
     def []=(index, value)
       process_non_terminals(index)
+      fail "Duplicate entry #{index.inspect}" if @map.has_key?(index)
       @map[index] = value
     end
 

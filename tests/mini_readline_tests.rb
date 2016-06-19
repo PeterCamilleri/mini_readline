@@ -24,6 +24,13 @@ class MiniReadlineTester < Minitest::Test
     refute_equal(MiniReadline::BASE_OPTIONS, edit.instance_options)
   end
 
+  def test_mapper_checking
+    MiniReadline::RawTerm::MAP["\xC0test"] = [:go_left]
+
+    assert_raises { MiniReadline::RawTerm::MAP["\xC0t"]    = [:go_left] }
+    assert_raises { MiniReadline::RawTerm::MAP["\xC0test"] = [:go_left] }
+  end
+
   def test_platform_detection
     if (RUBY_PLATFORM =~ /\bcygwin\b/i) || (RUBY_PLATFORM !~ /mswin|mingw/)
       assert_equal(:other, MiniReadline::PLATFORM)
