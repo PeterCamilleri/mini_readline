@@ -50,8 +50,8 @@ begin
   old_stderr = $stderr
   $stderr = File.open(File::NULL, 'w')
 
-  if !$no_alias_read_line_module&&($force_alias_read_line_module||!defined? Readline)
-      Readline = MiniReadline
+  if !$no_alias_read_line_module && ($force_alias_read_line_module || !defined? Readline)
+    Readline = MiniReadline
   end
 ensure
   $stderr.close
