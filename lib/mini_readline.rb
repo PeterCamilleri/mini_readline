@@ -40,6 +40,7 @@ module MiniReadline
 
   #A stub.
   def self.readline_attempted_completion_function(*_)
+    nil
   end
 
 end
