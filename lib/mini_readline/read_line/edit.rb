@@ -60,7 +60,7 @@ module MiniReadline
     #Interact with the user
     def edit_process
       result = edit_loop
-      @history.append_history(result)
+      @history.append_history(result.chomp)
       result
     end
 
