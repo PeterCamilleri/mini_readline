@@ -60,8 +60,8 @@ module MiniReadline
     #Interact with the user
     def edit_process
       result = edit_loop
-      @history.append_history(result.chomp)
-      result
+      @history.append_history(result)
+      result + "\n"
     end
 
     #The line editor processing loop.
