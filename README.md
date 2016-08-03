@@ -282,15 +282,31 @@ the environment and plugs in the needed object. This can be overridden where
 special io needs exist.
 
 ### Auto-Complete
-The mini readline gem comes with three auto-complete engines. These are:
-* MiniReadline::ArraySource - Make a selection from an array of choices. That
-array is found in the option :array_src. This can either be an array of
-strings or a proc (or lambda) that returns an array of strings.
-* MiniReadline::FileFolderSource - A simple, in-line auto-complete for files
-and folders that do **not** contain embedded spaces.
-* MiniReadline::QuotedFileFolderSource - A simple, in-line auto-complete for
-files and folders embedded in quotes. For example "foo bar.rb". Note that the
-file names may contain spaces. This is the default auto-complete data source.
+The mini readline gem comes with four auto-complete engines. These are:
+
+###### MiniReadline::ArraySource
+Make a selection from an array of choices. That array is found in the
+option :array_src. This can either be an array of strings or a proc (or lambda)
+that returns an array of strings. This is an excellent choice for choosing
+from a list or program generated selection of choices.
+
+###### MiniReadline::FileFolderSource
+A simple, in-line auto-complete for files and folders. This is an excellent
+choice for cases where file names are to be used by a ruby program or passed
+to a Linux/Other command line shell.
+
+###### MiniReadline::QuotedFileFolderSource
+A simple, in-line auto-complete for files and folders embedded in quotes.
+This is a good choice where the returned string is to be evaluated as ruby
+code. The enclosing quotes will ensure that file names are evaluated as
+strings. NOTE: This is the default auto-complete data source.
+
+###### MiniReadline::AutoFileSource
+This auto-complete for files and folders is designed to automatically select
+the appropriate folder separator character and use quotes when files contain
+embedded spaces. This is a good choice when building commands with files that
+will be passed to the command line processor in multi-platform, portable
+environments.
 
 ### Adding Custom Auto-Completers
 It is possible, and fairly straightforward to add application specific
@@ -343,6 +359,13 @@ options.
 <br>Note: Elsewhere in the code above there exists a require 'English'
 statement to permit the use of clearer, easier to read access to regular
 expression results.
+
+### Important Security Note
+
+It must be remembered that any time strings are passed to the command line
+processor, there are serious security concerns. Passing such strings should
+only be done in cases where the user would be trusted with access to the
+command line itself. Untrusted users should **never** be given such access!
 
 ## Demo
 A simple demo of mini_readline in action is available. To access this demo use
