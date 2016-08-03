@@ -119,11 +119,21 @@ class MiniReadlineTester < Minitest::Test
     assert(result.is_a?(String))
   end
 
-  def test_file_quoated
+  def test_file_quoted
     puts "\nPlease select an quoted file."
 
     edit = MiniReadline::Readline.new(auto_complete: true,
                                       auto_source: MiniReadline::QuotedFileFolderSource)
+
+    result = edit.readline(prompt: "File: ")
+    assert(result.is_a?(String))
+  end
+
+  def test_file_shell
+    puts "\nPlease select an auto file."
+
+    edit = MiniReadline::Readline.new(auto_complete: true,
+                                      auto_source: MiniReadline::AutoFileSource)
 
     result = edit.readline(prompt: "File: ")
     assert(result.is_a?(String))
