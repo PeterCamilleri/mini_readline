@@ -161,6 +161,16 @@ $force_alias_read_line_module = true
 require 'mini_readline'
 ```
 
+##### Limitations
+
+All of the measures taken to ensure some backward compatibility with the
+standard readline facility are only of limited effectiveness. Any program
+that digs into the innards of the system gem will likely need at least some
+porting to switch to the mini_readline gem.
+
+For the most part, compatible mode exists to make that porting process an
+easier one.
+
 ### Native Mode
 
 In native mode, instances of the Readline class are used to get user input.
