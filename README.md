@@ -62,7 +62,8 @@ End of Input     | Ctrl-Z                           | Alt-z
 
 ### Notes
 * The label "Other" is an umbrella that bundles together the Linux, Mac,
-and Cygwin platforms. On systems lacking an Alt key, these sequences may be
+and Cygwin platforms.
+* On "Other" systems lacking an Alt key, these sequences may be
 replaced by Escape followed by the appropriate letter.
 * References to Pad keys under Windows assume that Num Lock is not engaged.
 * Support for End of Input is controlled by the eoi_detect option. See options
@@ -316,7 +317,7 @@ This auto-complete for files and folders is designed to automatically select
 the appropriate folder separator character and use quotes when files contain
 embedded spaces. This is a good choice when building commands with files that
 will be passed to the command line processor in multi-platform, portable
-environments.
+environments. Please see the Important Security Note below.
 
 ### Adding Custom Auto-Completers
 It is possible, and fairly straightforward to add application specific
@@ -434,10 +435,19 @@ welcomed!!!**
 
 ## Contributing
 
-Comments, suggestions, criticisms, bug reports, and pull requests are welcome
-on GitHub at:
+#### Plan A
 
-https://github.com/PeterCamilleri/mini_readline.
+1. Fork it ( https://github.com/PeterCamilleri/mini_readline/fork )
+2. Switch to the development branch ('git branch development')
+3. Create your feature branch ('git checkout -b my-new-feature')
+4. Commit your changes ('git commit -am "Add some feature"')
+5. Push to the branch ('git push origin my-new-feature')
+6. Create new Pull Request
+
+#### Plan B
+
+Go to the GitHub repository and raise an issue calling attention to some
+aspect that could use some TLC or a suggestion or an idea.
 
 
 ## License
