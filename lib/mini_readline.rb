@@ -28,21 +28,6 @@ module MiniReadline
     @reader.readline(prompt: prompt, history: history)
   end
 
-  #A stub.
-  def self.input=(input)
-    input
-  end
-
-  #A stub.
-  def self.output=(output)
-    output
-  end
-
-  #A stub.
-  def self.readline_attempted_completion_function(*_)
-    nil
-  end
-
 end
 
 #Optionally: Setup the module alias for Readline

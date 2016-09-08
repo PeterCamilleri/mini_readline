@@ -124,6 +124,7 @@ and
 ```ruby
 MiniReadline.readline('>', false)
 ```
+While it does require some small changes, the latter form is the preferred one.
 
 ##### Module Aliasing
 
