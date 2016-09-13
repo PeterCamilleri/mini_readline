@@ -1,4 +1,4 @@
 module MiniReadline
   #The current version of the mini_readline gem.
-  VERSION = "0.6.3"
+  VERSION = "0.6.4"
 end

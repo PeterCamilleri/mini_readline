@@ -62,6 +62,7 @@ module MiniReadline
       @options.merge!(options)
       (@term = @options[:term]).initialize_parms
       set_prompt(@options[:prompt])
+      verify_mask(@options[:secret_mask])
     end
 
     #Set up the prompt.
@@ -78,6 +79,13 @@ module MiniReadline
       unless (@options[:window_width] - prompt.length) >
              (@options[:scroll_step] * 2)
         fail "Too long: #{prompt.inspect}"
+      end
+    end
+
+    #Verify the secret mask
+    def verify_mask(secret)
+      if secret && secret.length != 1
+        fail "Secret mask must be nil or a single character string."
       end
     end
 

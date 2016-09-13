@@ -126,7 +126,7 @@ MiniReadline.readline('>', false)
 ```
 While it does require some small changes, the latter form is the preferred one.
 
-##### Module Aliasing
+##### Module Aliasing [Deprecated]
 
 For enhanced compatibility, the mini_readline gem has the ability to alias
 itself as the readline gem. This ability is subject to the following list
@@ -172,6 +172,10 @@ porting to switch to the mini_readline gem.
 
 For the most part, compatible mode exists to make that porting process an
 easier one.
+
+**IMPORTANT NOTE: The module aliasing feature is now deprecated. For now there
+will be no change, soon warnings will ensue, then errors. Look for this
+feature to go away by version 0.7.0 unless some feedback is received.**
 
 ### Native Mode
 
@@ -251,6 +255,10 @@ BASE_OPTIONS = {
   :no_blanks     => true,     #No empty lines in history.
   :no_dups       => true,     #No duplicate lines in history.
 
+  :secret_mask   => nil,      #No secret password mask. Use the
+                              #string "*" to use stars or " "
+                              #for invisible secrets.
+
   :term          => nil,      #Filled in by raw_term.rb
                               #MiniReadline::RawTerm
 
@@ -278,6 +286,9 @@ more details.
 * :eoi_detect is used to control the end of input detection logic. If disabled,
 eoi inputs are treated as unmapped. If enabled, they raise a MiniReadlineEOI
 exception.
+* :secret_mask is a masking character to be used for sensitive input like a
+password or missile launch code. This should be exactly one character long.
+Typical values are "*" or " ".
 * :term is the interactive source of data, the console by default. The raw
 terminal console driver automatically adapts to the system environment
 (Windows or Other) so that correct operation is normally achieved with no
