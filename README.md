@@ -102,9 +102,37 @@ also be accomplished with the command:
 
 ### Compatible Mode
 
-In this mode, mini_readline is somewhat compatible with the classic readline.
-Simply use:
+In compatible mode, mini_readline tries to be somewhat compatible with the
+classic system readline facility. Here is this compatible mode in action with
+entry history enabled:
 
+```ruby
+MiniReadline.readline('>', true)
+```
+and with entry history disabled:
+```ruby
+MiniReadline.readline('>', false)
+```
+Where the string argument is the prompt seen by the user and the flag controls
+the history buffer. Use true to enable history and false to disable it.
+
+##### Extensions
+
+In addition to the standard readline arguments, additional arguments may be
+passed in to access additional features. This is done with an optional trailing
+hash argument. For example, the following bit of compatibility mode code gets
+a string with password hiding:
+```ruby
+MiniReadline.readline(">", false, secret_mask: "*")
+```
+See the section Options below for more information on the sorts of things that
+can be accomplished with these options settings.
+
+##### Module Aliasing [Deprecated]
+
+For enhanced compatibility, the mini_readline gem has the ability to alias
+itself as the readline gem. When this feature is used, compatible code is even
+more compatible looking:
 ```ruby
 Readline.readline('>', true)
 ```
@@ -113,24 +141,7 @@ or to avoid tracking command history, use:
 ```ruby
 Readline.readline('>', false)
 ```
-Where the string argument is the prompt seen by the user and the flag controls
-the history buffer. This assumes that the $no_alias_read_line_module setting
-mentioned above was *not* used. If it was, then these somewhat less compatible
-forms are required:
-```ruby
-MiniReadline.readline('>', true)
-```
-and
-```ruby
-MiniReadline.readline('>', false)
-```
-While it does require some small changes, the latter form is the preferred one.
-
-##### Module Aliasing [Deprecated]
-
-For enhanced compatibility, the mini_readline gem has the ability to alias
-itself as the readline gem. This ability is subject to the following list
-of conditions.
+The aliasing of modules is subject to the following list of conditions:
 
 1) If the global variable $no_alias_read_line_module is set to true before the
 mini_readline gem is required, *no* aliasing will take place.
@@ -288,7 +299,9 @@ eoi inputs are treated as unmapped. If enabled, they raise a MiniReadlineEOI
 exception.
 * :secret_mask is a masking character to be used for sensitive input like a
 password or missile launch code. This should be exactly one character long.
-Typical values are "*" or " ".
+Typical values are "\*" or " ". Also, any secret entries should be done with
+the history option **TURNED OFF**. Otherwise later entries will be able to
+retrieve the secret codes by just scrolling through previous entries.
 * :term is the interactive source of data, the console by default. The raw
 terminal console driver automatically adapts to the system environment
 (Windows or Other) so that correct operation is normally achieved with no

@@ -26,8 +26,8 @@ module MiniReadline
   end
 
   #The (limited) compatibility module function.
-  def self.readline(prompt = "", history = nil)
-    get_reader.readline(prompt: prompt, history: history)
+  def self.readline(prompt = "", history = nil, options = {})
+    get_reader.readline(options.merge({prompt: prompt, history: history}))
   end
 
 end

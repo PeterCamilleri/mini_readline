@@ -77,12 +77,10 @@ class MiniReadlineTester < Minitest::Test
     puts
     puts "To finish this test, enter the word: password"
 
-    edit = MiniReadline::Readline.new
-
     result = ''
 
     loop do
-      result = edit.readline(prompt: ">", secret_mask: "*").chomp
+      result = MiniReadline.readline(">", nil, secret_mask: "*").chomp
       puts result.inspect
       break unless result != "password"
     end
