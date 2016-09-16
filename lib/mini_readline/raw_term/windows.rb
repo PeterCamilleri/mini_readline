@@ -11,7 +11,7 @@ module MiniReadline
   PLATFORM = :windows
 
   #The class used to manipulate console i/o on a low level.
-  #<br>Endemin Code Smells
+  #<br>Endemic Code Smells
   # :reek:TooManyInstanceVariables
   class RawTerm
 
