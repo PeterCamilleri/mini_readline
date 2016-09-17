@@ -73,6 +73,21 @@ class MiniReadlineTester < Minitest::Test
     assert_equal("quit", result)
   end
 
+  def test_reading_with_a_default
+    puts
+    puts "To finish this test, enter the word: quit"
+
+    result = ''
+
+    loop do
+      result = MiniReadline.readline(">", false, initial: "qui").chomp
+      puts result.inspect
+      break unless result != "quit"
+    end
+
+    assert_equal("quit", result)
+  end
+
   def test_reading_a_password
     puts
     puts "To finish this test, enter the word: password"
@@ -80,7 +95,7 @@ class MiniReadlineTester < Minitest::Test
     result = ''
 
     loop do
-      result = MiniReadline.readline(">", nil, secret_mask: "*").chomp
+      result = MiniReadline.readline(">", false, secret_mask: "*").chomp
       puts result.inspect
       break unless result != "password"
     end

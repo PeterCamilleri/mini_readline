@@ -39,8 +39,8 @@ module MiniReadline
       @options     = options
       @history     = history
       @term        = @options[:term]
-      @edit_posn   = 0
-      @edit_buffer = ""
+      @edit_buffer = @options[:initial]
+      @edit_posn   = @edit_buffer.length
       @working     = true
 
       @edit_window = EditWindow.new(@options)

@@ -270,6 +270,9 @@ BASE_OPTIONS = {
                               #string "*" to use stars or " "
                               #for invisible secrets.
 
+  :initial       => "",       #The initial text for the entry.
+                              #An empty string for none.
+
   :term          => nil,      #Filled in by raw_term.rb
                               #MiniReadline::RawTerm
 
@@ -302,6 +305,8 @@ password or missile launch code. This should be exactly one character long.
 Typical values are "\*" or " ". Also, any secret entries should be done with
 the history option **TURNED OFF**. Otherwise later entries will be able to
 retrieve the secret codes by just scrolling through previous entries.
+* :initial is the initial text used to prefill the readline edit area with the
+specified text. Leave as an empty string to default to the empty edit area.
 * :term is the interactive source of data, the console by default. The raw
 terminal console driver automatically adapts to the system environment
 (Windows or Other) so that correct operation is normally achieved with no
