@@ -32,6 +32,10 @@ module MiniReadline
 
 end
 
+if defined?($force_alias_read_line_module) && $force_alias_read_line_module
+  warn "mini_readline: $force_alias_read_line_module is deprecated."
+end
+
 #Optionally: Setup the module alias for Readline
 begin
   old_stderr = $stderr
