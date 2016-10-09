@@ -41,7 +41,7 @@ The mini_readline gem supports a simple set of editing commands. These vary
 somewhat based on the system platform. The keyboard mappings (and alias
 mappings) are listed below:
 
-Editor Action    | Windows Key                      | Other Key
+Editor Action    | Windows Key                      | Mac/Linux Key
 -----------------|----------------------------------|------------
 Enter            | Enter                            | Enter
 Left             | Left Arrow, Pad Left             | Left Arrow, Ctrl-B
@@ -61,9 +61,8 @@ Auto-complete    | Tab, Ctrl-I                      | Tab, Ctrl-I
 End of Input     | Ctrl-Z                           | Alt-z
 
 ### Notes
-* The label "Other" is an umbrella that bundles together the Linux, Mac,
-and Cygwin platforms.
-* On "Other" systems lacking an Alt key, these sequences may be
+* The label "Mac/Linux" also includes the Cygwin platform.
+* On "Mac/Linux" systems lacking an Alt key, these sequences may be
 replaced by Escape followed by the appropriate letter.
 * References to Pad keys under Windows assume that Num Lock is not engaged.
 * Support for End of Input is controlled by the eoi_detect option. See options
@@ -103,7 +102,8 @@ also be accomplished with the command:
 ### Compatible Mode
 
 In compatible mode, mini_readline tries to be somewhat compatible with the
-classic system readline facility. Here is this compatible mode in action with
+classic system readline facility. This means that MiniReadline module methods
+are used to obtain user input. Here is this compatible mode in action with
 entry history enabled:
 
 ```ruby
@@ -111,8 +111,13 @@ MiniReadline.readline('>', true)
 ```
 and with entry history disabled:
 ```ruby
+MiniReadline.readline('>')
+```
+or
+```ruby
 MiniReadline.readline('>', false)
 ```
+
 Where the string argument is the prompt seen by the user and the flag controls
 the history buffer. Use true to enable history and false to disable it.
 
@@ -130,9 +135,9 @@ can be accomplished with these options settings.
 
 ##### Module Aliasing [Deprecated]
 
-For enhanced compatibility, the mini_readline gem has the ability to alias
-itself as the readline gem. When this feature is used, compatible code is even
-more compatible looking:
+In an attempt to enhance compatibility, the mini_readline gem has the ability
+to alias itself as the readline gem. When this feature is used, compatible code
+is even more compatible looking:
 ```ruby
 Readline.readline('>', true)
 ```
@@ -193,7 +198,7 @@ feature to go away by version 0.7.0 unless some feedback is received.**
 In native mode, instances of the Readline class are used to get user input.
 
 ```ruby
-edit = MiniReadline::Readline.new()
+edit = MiniReadline::Readline.new
 ```
 
 The constructor takes an optional argument. A hash of options that are used
