@@ -39,8 +39,8 @@ module MiniReadline
       @options     = options
       @history     = history
       @term        = @options[:term]
-      @edit_posn   = 0
-      @edit_buffer = ""
+      @edit_buffer = @options[:initial]
+      @edit_posn   = @edit_buffer.length
       @working     = true
 
       @edit_window = EditWindow.new(@options)
@@ -60,8 +60,8 @@ module MiniReadline
     #Interact with the user
     def edit_process
       result = edit_loop
-      @history.append_history(result.chomp)
-      result
+      @history.append_history(result)
+      result + "\n"
     end
 
     #The line editor processing loop.

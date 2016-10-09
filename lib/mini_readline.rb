@@ -20,29 +20,20 @@ module MiniReadline
   private_constant :History
   private_constant :NoHistory
 
-  #The shared instance of Readline.
-  @reader = MiniReadline::Readline.new()
+  #Get the shared instance of Readline.
+  def self.get_reader
+    @reader ||= Readline.new()
+  end
 
   #The (limited) compatibility module function.
-  def self.readline(prompt = "", history = nil)
-    @reader.readline(prompt: prompt, history: history)
+  def self.readline(prompt = "", history = nil, options = {})
+    get_reader.readline(options.merge({prompt: prompt, history: history}))
   end
 
-  #A stub.
-  def self.input=(input)
-    input
-  end
+end
 
-  #A stub.
-  def self.output=(output)
-    output
-  end
-
-  #A stub.
-  def self.readline_attempted_completion_function(*_)
-    nil
-  end
-
+if defined?($force_alias_read_line_module) && $force_alias_read_line_module
+  warn "mini_readline: $force_alias_read_line_module is deprecated."
 end
 
 #Optionally: Setup the module alias for Readline

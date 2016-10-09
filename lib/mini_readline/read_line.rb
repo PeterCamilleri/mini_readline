@@ -37,10 +37,12 @@ module MiniReadline
     #* prompt - A string used to prompt the user. '>' is popular.
     #* options - A hash of options; Typically symbol: value
     def readline(options = {})
+      suppress_warnings
       initialize_parms(options)
       @edit.edit_process
     ensure
       @term.conclude
+      restore_warnings
     end
 
     #Initialize the read line process. This basically process the arguments
@@ -60,6 +62,7 @@ module MiniReadline
       @options.merge!(options)
       (@term = @options[:term]).initialize_parms
       set_prompt(@options[:prompt])
+      verify_mask(@options[:secret_mask])
     end
 
     #Set up the prompt.
@@ -78,5 +81,25 @@ module MiniReadline
         fail "Too long: #{prompt.inspect}"
       end
     end
+
+    #Verify the secret mask
+    def verify_mask(secret)
+      if secret && secret.length != 1
+        fail "Secret mask must be nil or a single character string."
+      end
+    end
+
+    #No warnings please!
+    def suppress_warnings
+      @old_stderr = $stderr
+      $stderr = File.open(File::NULL, 'w')
+    end
+
+    #Restore warnings to their typical ugliness.
+    def restore_warnings
+      $stderr.close
+      $stderr = @old_stderr
+    end
+
   end
 end

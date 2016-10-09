@@ -22,6 +22,13 @@ module MiniReadline
                   :no_blanks     => true,     #No empty lines in history.
                   :no_dups       => true,     #No duplicate lines in history.
 
+                  :secret_mask   => nil,      #No secret password mask. Use the
+                                              #string "*" to use stars or " "
+                                              #for invisible secrets.
+
+                  :initial       => "",       #The initial text for the entry.
+                                              #An empty string for none.
+
                   :term          => nil,      #Filled in by raw_term.rb
                                               #MiniReadline::RawTerm
 

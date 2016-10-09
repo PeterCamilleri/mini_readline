@@ -10,11 +10,17 @@ Gem::Specification.new do |spec|
   spec.email         = ["peter.c.camilleri@gmail.com"]
 
   spec.summary       = "A simplified replacement for readline."
-  spec.description   = "A gem for console command entry with line edit "+
-                       "and history. This gem is like the standard readline " +
-                       "gem except that it has been redesigned, simplified, " +
-                       "and extensively cleaned up. Also includes the irbm "  +
-                       "utility, which is IRB + Mini_readline."
+  spec.description   = %{A gem, for console command entry with line edit and
+                         history, inspired by the standard readline gem. Its
+                         creation was motivated by the bugs and eternal pull
+                         requests of that same gem. Further frustration was
+                         caused by the fact the the system readline gem seems
+                         to use a special load path that bypasses the normal
+                         gem protocols. Also included are four sample
+                         auto-complete agents and the irbm utility, which is
+                         irb + mini_readline and not an Intermediate Range
+                         Ballistic Missile.
+                        }.gsub(/\s+/, ' ').strip
 
   spec.homepage      = "http://teuthida-technologies.com/"
   spec.license       = "MIT"

@@ -4,7 +4,22 @@
 #
 
 require 'irb'
-$force_alias_read_line_module = true
 require 'mini_readline'
+
 puts "Starting an IRB console with mini_readline."
+puts
+
+module IRB
+  class ReadlineInputMethod < InputMethod
+
+    #Get a string from mini readline.
+    def gets
+      result = MiniReadline.readline(@prompt, true)
+      HISTORY.push(result) unless result.empty?
+      @line[@line_no += 1] = result
+    end
+
+  end
+end
+
 IRB.start

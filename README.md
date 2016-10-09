@@ -41,7 +41,7 @@ The mini_readline gem supports a simple set of editing commands. These vary
 somewhat based on the system platform. The keyboard mappings (and alias
 mappings) are listed below:
 
-Editor Action    | Windows Key                      | Other Key
+Editor Action    | Windows Key                      | Mac/Linux Key
 -----------------|----------------------------------|------------
 Enter            | Enter                            | Enter
 Left             | Left Arrow, Pad Left             | Left Arrow, Ctrl-B
@@ -61,8 +61,8 @@ Auto-complete    | Tab, Ctrl-I                      | Tab, Ctrl-I
 End of Input     | Ctrl-Z                           | Alt-z
 
 ### Notes
-* The label "Other" is an umbrella that bundles together the Linux, Mac,
-and Cygwin platforms. On systems lacking an Alt key, these sequences may be
+* The label "Mac/Linux" also includes the Cygwin platform.
+* On "Mac/Linux" systems lacking an Alt key, these sequences may be
 replaced by Escape followed by the appropriate letter.
 * References to Pad keys under Windows assume that Num Lock is not engaged.
 * Support for End of Input is controlled by the eoi_detect option. See options
@@ -101,9 +101,43 @@ also be accomplished with the command:
 
 ### Compatible Mode
 
-In this mode, mini_readline is somewhat compatible with the classic readline.
-Simply use:
+In compatible mode, mini_readline tries to be somewhat compatible with the
+classic system readline facility. This means that MiniReadline module methods
+are used to obtain user input. Here is this compatible mode in action with
+entry history enabled:
 
+```ruby
+MiniReadline.readline('>', true)
+```
+and with entry history disabled:
+```ruby
+MiniReadline.readline('>')
+```
+or
+```ruby
+MiniReadline.readline('>', false)
+```
+
+Where the string argument is the prompt seen by the user and the flag controls
+the history buffer. Use true to enable history and false to disable it.
+
+##### Extensions
+
+In addition to the standard readline arguments, additional arguments may be
+passed in to access additional features. This is done with an optional trailing
+hash argument. For example, the following bit of compatibility mode code gets
+a string with password hiding:
+```ruby
+MiniReadline.readline(">", false, secret_mask: "*")
+```
+See the section Options below for more information on the sorts of things that
+can be accomplished with these options settings.
+
+##### Module Aliasing [Deprecated]
+
+In an attempt to enhance compatibility, the mini_readline gem has the ability
+to alias itself as the readline gem. When this feature is used, compatible code
+is even more compatible looking:
 ```ruby
 Readline.readline('>', true)
 ```
@@ -112,23 +146,7 @@ or to avoid tracking command history, use:
 ```ruby
 Readline.readline('>', false)
 ```
-Where the string argument is the prompt seen by the user and the flag controls
-the history buffer. This assumes that the $no_alias_read_line_module setting
-mentioned above was *not* used. If it was, then these somewhat less compatible
-forms are required:
-```ruby
-MiniReadline.readline('>', true)
-```
-and
-```ruby
-MiniReadline.readline('>', false)
-```
-
-##### Module Aliasing
-
-For enhanced compatibility, the mini_readline gem has the ability to alias
-itself as the readline gem. This ability is subject to the following list
-of conditions.
+The aliasing of modules is subject to the following list of conditions:
 
 1) If the global variable $no_alias_read_line_module is set to true before the
 mini_readline gem is required, *no* aliasing will take place.
@@ -161,12 +179,26 @@ $force_alias_read_line_module = true
 require 'mini_readline'
 ```
 
+##### Limitations
+
+All of the measures taken to ensure some backward compatibility with the
+standard readline facility are only of limited effectiveness. Any program
+that digs into the innards of the system gem will likely need at least some
+porting to switch to the mini_readline gem.
+
+For the most part, compatible mode exists to make that porting process an
+easier one.
+
+**IMPORTANT NOTE: The module aliasing feature is now deprecated. For now there
+will be no change, soon warnings will ensue, then errors. Look for this
+feature to go away by version 0.7.0 unless some feedback is received.**
+
 ### Native Mode
 
 In native mode, instances of the Readline class are used to get user input.
 
 ```ruby
-edit = MiniReadline::Readline.new()
+edit = MiniReadline::Readline.new
 ```
 
 The constructor takes an optional argument. A hash of options that are used
@@ -239,6 +271,13 @@ BASE_OPTIONS = {
   :no_blanks     => true,     #No empty lines in history.
   :no_dups       => true,     #No duplicate lines in history.
 
+  :secret_mask   => nil,      #No secret password mask. Use the
+                              #string "*" to use stars or " "
+                              #for invisible secrets.
+
+  :initial       => "",       #The initial text for the entry.
+                              #An empty string for none.
+
   :term          => nil,      #Filled in by raw_term.rb
                               #MiniReadline::RawTerm
 
@@ -266,6 +305,13 @@ more details.
 * :eoi_detect is used to control the end of input detection logic. If disabled,
 eoi inputs are treated as unmapped. If enabled, they raise a MiniReadlineEOI
 exception.
+* :secret_mask is a masking character to be used for sensitive input like a
+password or missile launch code. This should be exactly one character long.
+Typical values are "\*" or " ". Also, any secret entries should be done with
+the history option **TURNED OFF**. Otherwise later entries will be able to
+retrieve the secret codes by just scrolling through previous entries.
+* :initial is the initial text used to prefill the readline edit area with the
+specified text. Leave as an empty string to default to the empty edit area.
 * :term is the interactive source of data, the console by default. The raw
 terminal console driver automatically adapts to the system environment
 (Windows or Other) so that correct operation is normally achieved with no
@@ -282,15 +328,31 @@ the environment and plugs in the needed object. This can be overridden where
 special io needs exist.
 
 ### Auto-Complete
-The mini readline gem comes with three auto-complete engines. These are:
-* MiniReadline::ArraySource - Make a selection from an array of choices. That
-array is found in the option :array_src. This can either be an array of
-strings or a proc (or lambda) that returns an array of strings.
-* MiniReadline::FileFolderSource - A simple, in-line auto-complete for files
-and folders that do **not** contain embedded spaces.
-* MiniReadline::QuotedFileFolderSource - A simple, in-line auto-complete for
-files and folders embedded in quotes. For example "foo bar.rb". Note that the
-file names may contain spaces. This is the default auto-complete data source.
+The mini readline gem comes with four auto-complete engines. These are:
+
+###### MiniReadline::ArraySource
+Make a selection from an array of choices. That array is found in the
+option :array_src. This can either be an array of strings or a proc (or lambda)
+that returns an array of strings. This is an excellent choice for choosing
+from a list or program generated selection of choices.
+
+###### MiniReadline::FileFolderSource
+A simple, in-line auto-complete for files and folders. This is an excellent
+choice for cases where file names are to be used by a ruby program or passed
+to a Linux/Other command line shell.
+
+###### MiniReadline::QuotedFileFolderSource
+A simple, in-line auto-complete for files and folders embedded in quotes.
+This is a good choice where the returned string is to be evaluated as ruby
+code. The enclosing quotes will ensure that file names are evaluated as
+strings. NOTE: This is the default auto-complete data source.
+
+###### MiniReadline::AutoFileSource
+This auto-complete for files and folders is designed to automatically select
+the appropriate folder separator character and use quotes when files contain
+embedded spaces. This is a good choice when building commands with files that
+will be passed to the command line processor in multi-platform, portable
+environments. Please see the Important Security Note below.
 
 ### Adding Custom Auto-Completers
 It is possible, and fairly straightforward to add application specific
@@ -343,6 +405,13 @@ options.
 <br>Note: Elsewhere in the code above there exists a require 'English'
 statement to permit the use of clearer, easier to read access to regular
 expression results.
+
+### Important Security Note
+
+It must be remembered that any time strings are passed to the command line
+processor, there are serious security concerns. Passing such strings should
+only be done in cases where the user would be trusted with access to the
+command line itself. Untrusted users should **never** be given such access!
 
 ## Demo
 A simple demo of mini_readline in action is available. To access this demo use
@@ -401,10 +470,19 @@ welcomed!!!**
 
 ## Contributing
 
-Comments, suggestions, criticisms, bug reports, and pull requests are welcome
-on GitHub at:
+#### Plan A
 
-https://github.com/PeterCamilleri/mini_readline.
+1. Fork it ( https://github.com/PeterCamilleri/mini_readline/fork )
+2. Switch to the development branch ('git branch development')
+3. Create your feature branch ('git checkout -b my-new-feature')
+4. Commit your changes ('git commit -am "Add some feature"')
+5. Push to the branch ('git push origin my-new-feature')
+6. Create new Pull Request
+
+#### Plan B
+
+Go to the GitHub repository and raise an issue calling attention to some
+aspect that could use some TLC or a suggestion or an idea.
 
 
 ## License

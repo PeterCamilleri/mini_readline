@@ -73,6 +73,53 @@ class MiniReadlineTester < Minitest::Test
     assert_equal("quit", result)
   end
 
+  def test_reading_with_a_default
+    puts
+    puts "To finish this test, enter the word: quit"
+
+    result = ''
+
+    loop do
+      result = MiniReadline.readline(">", false, initial: "qui").chomp
+      puts result.inspect
+      break unless result != "quit"
+    end
+
+    assert_equal("quit", result)
+  end
+
+  def test_reading_a_password
+    puts
+    puts "To finish this test, enter the word: password"
+
+    result = ''
+
+    loop do
+      result = MiniReadline.readline(">", false, secret_mask: "*").chomp
+      puts result.inspect
+      break unless result != "password"
+    end
+
+    assert_equal("password", result)
+  end
+
+  def test_reading_blanked
+    puts
+    puts "To finish this test, enter the word: password"
+
+    edit = MiniReadline::Readline.new
+
+    result = ''
+
+    loop do
+      result = edit.readline(prompt: ">", secret_mask: " ").chomp
+      puts result.inspect
+      break unless result != "password"
+    end
+
+    assert_equal("password", result)
+  end
+
   def test_array_complete
     puts "\nPlease select an approved fruit."
 
@@ -119,11 +166,21 @@ class MiniReadlineTester < Minitest::Test
     assert(result.is_a?(String))
   end
 
-  def test_file_quoated
+  def test_file_quoted
     puts "\nPlease select an quoted file."
 
     edit = MiniReadline::Readline.new(auto_complete: true,
                                       auto_source: MiniReadline::QuotedFileFolderSource)
+
+    result = edit.readline(prompt: "File: ")
+    assert(result.is_a?(String))
+  end
+
+  def test_file_shell
+    puts "\nPlease select an auto file."
+
+    edit = MiniReadline::Readline.new(auto_complete: true,
+                                      auto_source: MiniReadline::AutoFileSource)
 
     result = edit.readline(prompt: "File: ")
     assert(result.is_a?(String))
@@ -141,6 +198,14 @@ class MiniReadlineTester < Minitest::Test
     assert_raises(RuntimeError) {edit.readline(opts)}
   end
 
+  def test_mask_verification
+    opts = {prompt: ">", secret_mask: ""}
+    edit = MiniReadline::Readline.new()
+    assert_raises(RuntimeError) {edit.readline(opts)}
 
+    opts = {prompt: ">", secret_mask: "xx"}
+    edit = MiniReadline::Readline.new()
+    assert_raises(RuntimeError) {edit.readline(opts)}
+  end
 
 end

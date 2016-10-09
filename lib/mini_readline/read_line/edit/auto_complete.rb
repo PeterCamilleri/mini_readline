@@ -2,6 +2,7 @@
 
 require_relative 'auto_complete/auto_manager'
 require_relative 'auto_complete/file_folder_source'
+require_relative 'auto_complete/auto_file_source'
 require_relative 'auto_complete/quoted_file_folder_source'
 require_relative 'auto_complete/array_source'
 

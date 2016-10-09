@@ -35,7 +35,13 @@ module MiniReadline
 
     #Compute what should be on the screen.
     def build_screen_image(edit_buffer)
-      edit_buffer[left_margin..right_margin].ljust(active_width)
+      working_region = edit_buffer[left_margin..right_margin]
+
+      if (mask = @options[:secret_mask])
+        mask[0] * working_region.length
+      else
+        working_region
+      end.ljust(active_width)
     end
 
     #Bring the screen into agreement with the image.
