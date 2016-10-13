@@ -1,22 +1,17 @@
 # MiniReadline
 
 This gem is used to get console style input from the user, with support for
-inline editing and command history.
+inline editing, command history, and stock or customizable auto-complete.
 
 The mini readline gem is an experiment in replacing the standard readline gem
-that is part of Ruby. The mini readline will focus on the needs of Ruby programs
-as opposed to a UN*X shell program. It will also try to correct a number of
-irritating issues encountered when running under a Windows platform.
+that is part of Ruby. The mini readline project will try to focus on the needs
+of Ruby programs. It will also try to correct a number of irritating issues
+encountered when running cross platform environments.
 
-The mini_readline gem is designed for use with MRI version 1.9.3 or later.
-The original readline tried to support older versions of Ruby.
-
-**Note:** A pull request against the rb-readline project was submitted on
-April 24, 2016. This fixes the outstanding issues with windows operation with
-low risk to other platforms. However I do not much expect to come of this
-effort. There are two year old pull request languishing away, so it looks like
-support for the original rb-readline has ended. I will move forward with the
-mini_readline gem as I can at least support my own code.
+The mini_readline gem is designed for use with MRI version 1.9.3 or later. The
+long term goal is to be as portable to as many versions of ruby as is
+possible. To this end, portability usage (problem) experiences are especially
+desired. (See the Testing and Contributing sections below.)
 
 ## Installation
 
@@ -160,6 +155,10 @@ before the mini_readline gem is required, aliasing *will* take place.
 $force_alias_read_line_module = true
 require 'mini_readline'
 ```
+Note: Using the $force_alias_read_line_module setting now generates a warning.
+
+    mini_readline: $force_alias_read_line_module is deprecated.
+
 3) Else, if the readline gem is already loaded, *no* aliasing will take place.
 ```ruby
 require 'readline'
