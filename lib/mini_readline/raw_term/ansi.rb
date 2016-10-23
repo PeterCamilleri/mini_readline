@@ -1,14 +1,16 @@
 # coding: utf-8
 
 require          'io/console'
-require_relative 'other/map'
-require_relative 'other/set_posn'
+
+require_relative 'mapped_term'
+require_relative 'ansi/map'
+require_relative 'ansi/set_posn'
 
 #* raw_term/other.rb - Support for raw terminal access in non-windows systems.
 module MiniReadline
 
   #The detected platform is not windows.
-  PLATFORM = :other
+  PLATFORM = :ansi
 
   #The class used to manipulate console i/o on a low level.
   class RawTerm

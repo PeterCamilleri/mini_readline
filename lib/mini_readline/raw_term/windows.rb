@@ -1,6 +1,8 @@
 # coding: utf-8
 
 require_relative 'windows/win_32_api'
+
+require_relative 'mapped_term'
 require_relative 'windows/map'
 require_relative 'windows/set_posn'
 
