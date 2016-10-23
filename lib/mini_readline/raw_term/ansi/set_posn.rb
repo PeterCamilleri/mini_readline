@@ -11,9 +11,9 @@ module MiniReadline
       if new_posn == 0
         put_string(CARRIAGE_RETURN)
       elsif new_posn > @cursor_posn
-        print("\e[#{new_posn - @cursor_posn}C")
+        STDOUT.print("\e[#{new_posn - @cursor_posn}C")
       elsif new_posn < @cursor_posn
-        print("\e[#{@cursor_posn - new_posn}D")
+        STDOUT.print("\e[#{@cursor_posn - new_posn}D")
       end
 
       @cursor_posn = new_posn

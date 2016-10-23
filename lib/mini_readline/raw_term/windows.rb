@@ -40,7 +40,7 @@ module MiniReadline
 
     #Output a string
     def put_string(str)
-      print(str)
+      STDOUT.print(str)
     end
 
     #Home the cursor and start at a known state.
@@ -51,7 +51,7 @@ module MiniReadline
 
     #Conclude the terminal state.
     def conclude
-      print("\n")
+      STDOUT.print("\n")
     end
 
     #Sound a beep

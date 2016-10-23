@@ -24,7 +24,7 @@ module MiniReadline
     #Output a string
     def put_string(str)
       scan_string(str)
-      print(str)
+      STDOUT.print(str)
     end
 
     #Home the cursor and start at a known state.
@@ -36,15 +36,15 @@ module MiniReadline
     #Conclude the terminal state.
     def conclude
       STDIN.cooked!
-      print("\n")
+      STDOUT.print("\n")
     end
 
     #Sound a beep
     #<br>Endemic Code Smells
     #* :reek:UtilityFunction
     def beep
-      $stderr.write(BELL)
-      $stderr.flush
+      STDERR.write(BELL)
+      STDERR.flush
     end
 
     #Get a uncooked character keystroke.
