@@ -13,6 +13,7 @@ module MiniReadline
     #Get the length without ANSI sequences.
     attr_reader :length
 
+    #Create a special prompt text.
     def initialize(text)
       @text = text
       @length = text.gsub(/\x1B\[(\d|;)*[@-~]/, "").length

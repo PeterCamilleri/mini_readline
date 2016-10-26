@@ -1,14 +1,16 @@
 # coding: utf-8
 
 require          'io/console'
-require_relative 'other/map'
-require_relative 'other/set_posn'
+
+require_relative 'mapped_term'
+require_relative 'ansi/map'
+require_relative 'ansi/set_posn'
 
 #* raw_term/other.rb - Support for raw terminal access in non-windows systems.
 module MiniReadline
 
   #The detected platform is not windows.
-  PLATFORM = :other
+  PLATFORM = :ansi
 
   #The class used to manipulate console i/o on a low level.
   class RawTerm
@@ -22,7 +24,7 @@ module MiniReadline
     #Output a string
     def put_string(str)
       scan_string(str)
-      print(str)
+      STDOUT.print(str)
     end
 
     #Home the cursor and start at a known state.
@@ -32,17 +34,19 @@ module MiniReadline
     end
 
     #Conclude the terminal state.
+    #<br>Endemic Code Smells
+    #* :reek:UtilityFunction
     def conclude
       STDIN.cooked!
-      print("\n")
+      STDOUT.print("\n")
     end
 
     #Sound a beep
     #<br>Endemic Code Smells
     #* :reek:UtilityFunction
     def beep
-      $stderr.write(BELL)
-      $stderr.flush
+      STDERR.write(BELL)
+      STDERR.flush
     end
 
     #Get a uncooked character keystroke.

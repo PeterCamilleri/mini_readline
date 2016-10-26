@@ -18,6 +18,15 @@ module MiniReadline
       @map[index] = value
     end
 
+    #Map the printable ascii key codes to a command.
+    def map_ascii(command)
+      #Map the printable characters.
+      (32..126).each do |code|
+        value = [command, char = code.chr]
+        self[char] = value
+      end
+    end
+
     #Handle the preamble characters in the command sequence.
     def process_non_terminals(index)
       seq = ""

@@ -1,33 +1,37 @@
 # coding: utf-8
 
-require_relative 'raw_term/mapper'
+require 'rbconfig'
 
 #* raw_term.rb - Platform determination for raw terminal access.
 module MiniReadline
 
-  #The class used to manipulate console i/o on a low level.
-  class RawTerm
+  host_os = RbConfig::CONFIG['host_os']
 
-    #Create a mapper.
-    MAP = Mapper.new
-
-    #Map the printable characters.
-    (32..126).each do |code|
-      char = code.chr
-      MAP[char] = [:insert_text, char]
+  #What operating platform is in effect?
+  TERM_PLATFORM =
+    case host_os
+    when /mswin|msys|mingw|bccwin|wince|emc/
+      :windows
+    when /cygwin/
+      :cygwin
+    when /darwin|mac os/
+      :macosx
+    when /linux/
+      :linux
+    when /solaris|bsd/
+      :unix
+    else
+      raise "Unknown os: #{host_os.inspect}"
     end
 
-    #Get a mapped sequence.
-    def get_mapped_keystroke
-      MAP.get_mapped_keystroke {get_raw_char}
-    end
-  end
+  #Is Java present in the environment?
+  TERM_JAVA = RUBY_PLATFORM =~ /java/
 
   #Select the type of platform in use.
-  if (RUBY_PLATFORM =~ /\bcygwin\b/i) || (RUBY_PLATFORM !~ /mswin|mingw/)
-    require_relative 'raw_term/other'
-  else
+  if TERM_PLATFORM == :windows
     require_relative 'raw_term/windows'
+  else
+    require_relative 'raw_term/ansi'
   end
 
   #Get an instance of a raw terminal controller object.
