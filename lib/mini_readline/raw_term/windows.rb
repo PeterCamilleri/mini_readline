@@ -32,9 +32,24 @@ module MiniReadline
 
     #Set up the Windows Raw Terminal.
     def initialize
-      @_getch = Win32API.new("msvcrt", "_getch", [], 'I')
-      @_kbhit = Win32API.new("msvcrt", "_kbhit", [], 'I')
-      @_beep  = Win32API.new("user32", "MessageBeep", ['L'], '0')
+      getch_proc = Win32API.new("msvcrt", "_getch", [], 'I')
+
+      define_singleton_method(:getch) do
+        getch_proc.call.chr
+      end
+
+      kbhit_proc = Win32API.new("msvcrt", "_kbhit", [], 'I')
+
+      define_singleton_method(:kbhit) do
+        kbhit_proc.call
+      end
+
+      beep_proc  = Win32API.new("user32", "MessageBeep", ['L'], '0')
+
+      define_singleton_method(:beep) do
+        beep_proc.call
+      end
+
       @_set_cursor_posn = Win32API.new("kernel32", "SetConsoleCursorPosition",
                                        ['L','L'], 'L')
       @_get_screen_info = Win32API.new("kernel32", "GetConsoleScreenBufferInfo",
@@ -58,18 +73,13 @@ module MiniReadline
       STDOUT.print("\n")
     end
 
-    #Sound a beep
-    def beep
-      @_beep.call(0)
-    end
-
     #Get a uncooked character keystroke.
     def get_raw_char
-      while (@_kbhit.call == 0)
+      while (kbhit == 0)
         sleep(WAIT_SLEEP)
       end
 
-      @_getch.call.chr
+      getch
     end
   end
 end
