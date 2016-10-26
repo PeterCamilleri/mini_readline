@@ -17,8 +17,6 @@ module MiniReadline
   PLATFORM = :windows
 
   #The class used to manipulate console i/o on a low level.
-  #<br>Endemic Code Smells
-  # :reek:TooManyInstanceVariables
   class RawTerm
 
     #The sleep interval waiting for a key to be pressed.
@@ -50,27 +48,46 @@ module MiniReadline
         beep_proc.call
       end
 
-      @_set_cursor_posn = Win32API.new("kernel32", "SetConsoleCursorPosition",
-                                       ['L','L'], 'L')
-      @_get_screen_info = Win32API.new("kernel32", "GetConsoleScreenBufferInfo",
-                                       ['L','P'], 'L')
-      @_get_handle = Win32API.new("kernel32", "GetStdHandle", ['L'], 'L')
+      set_cursor_posn_proc = Win32API.new("kernel32",
+                                          "SetConsoleCursorPosition",
+                                          ['L','L'], 'L')
+
+      define_singleton_method(:set_cursor_posn) do |handle, position|
+        set_cursor_posn_proc.call(handle, position)
+      end
+
+      get_screen_info_proc = Win32API.new("kernel32",
+                                          "GetConsoleScreenBufferInfo",
+                                          ['L','P'], 'L')
+
+      define_singleton_method(:get_screen_info) do |handle, buffer|
+        get_screen_info_proc.call(handle, buffer)
+      end
+
+      get_handle_proc = Win32API.new("kernel32", "GetStdHandle", ['L'], 'L')
+
+      define_singleton_method(:get_handle) do |handle_index|
+        get_handle_proc.call(handle_index)
+      end
+
     end
 
     #Output a string
+    #<br>Endemic Code Smells
+    #* :reek:UtilityFunction
     def put_string(str)
       STDOUT.print(str)
     end
 
     #Home the cursor and start at a known state.
     def initialize_parms
-      @_out_handle = @_get_handle.call(STD_OUTPUT_HANDLE)
-      put_string CARRIAGE_RETURN
+      @_out_handle = get_handle(STD_OUTPUT_HANDLE)
+      put_string(CARRIAGE_RETURN)
     end
 
     #Conclude the terminal state.
     def conclude
-      STDOUT.print("\n")
+      put_string("\n")
     end
 
     #Get a uncooked character keystroke.
