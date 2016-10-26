@@ -34,7 +34,7 @@ module MiniReadline
     def initialize
       @_getch = Win32API.new("msvcrt", "_getch", [], 'I')
       @_kbhit = Win32API.new("msvcrt", "_kbhit", [], 'I')
-      @_beep  = Win32API.new("user32", "MessageBeep", ['L'])
+      @_beep  = Win32API.new("user32", "MessageBeep", ['L'], '0')
       @_set_cursor_posn = Win32API.new("kernel32", "SetConsoleCursorPosition",
                                        ['L','L'], 'L')
       @_get_screen_info = Win32API.new("kernel32", "GetConsoleScreenBufferInfo",
