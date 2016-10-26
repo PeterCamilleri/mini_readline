@@ -1,6 +1,10 @@
 # coding: utf-8
 
-require_relative 'windows/win_32_api'
+if MiniReadline::TERM_JAVA
+  require 'win32api'
+else
+  require_relative 'windows/win_32_api'
+end
 
 require_relative 'mapped_term'
 require_relative 'windows/map'
