@@ -31,22 +31,13 @@ module MiniReadline
     #Set up the Windows Raw Terminal.
     def initialize
       getch_proc = Win32API.new("msvcrt", "_getch", [], 'I')
-
-      define_singleton_method(:getch) do
-        getch_proc.call.chr
-      end
+      define_singleton_method(:getch) { getch_proc.call.chr }
 
       kbhit_proc = Win32API.new("msvcrt", "_kbhit", [], 'I')
-
-      define_singleton_method(:kbhit) do
-        kbhit_proc.call
-      end
+      define_singleton_method(:kbhit) { kbhit_proc.call }
 
       beep_proc  = Win32API.new("user32", "MessageBeep", ['L'], '0')
-
-      define_singleton_method(:beep) do
-        beep_proc.call
-      end
+      define_singleton_method(:beep) { beep_proc.call }
 
       set_cursor_posn_proc = Win32API.new("kernel32",
                                           "SetConsoleCursorPosition",
