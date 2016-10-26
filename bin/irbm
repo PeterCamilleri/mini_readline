@@ -6,7 +6,7 @@
 require 'irb'
 require 'mini_readline'
 
-puts "Starting an IRB console with mini_readline."
+puts "Starting an IRB console with mini_readline (#{MiniReadline::VERSION})."
 puts
 
 module IRB
