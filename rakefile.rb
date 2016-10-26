@@ -10,7 +10,7 @@ RDoc::Task.new do |rdoc|
   rdoc.rdoc_dir = "rdoc"
 
   #List out all the files to be documented.
-  rdoc.rdoc_files.include("lib/**/*.rb", "license.txt", "README.md")
+  rdoc.rdoc_files.include("lib/**/*.rb", "license.txt")
 
   #Make all access levels visible.
   rdoc.options << '--visibility' << 'private'
@@ -43,3 +43,12 @@ task :vers do |t|
   puts
   puts "mini_readline version = #{MiniReadline::VERSION}"
 end
+
+desc "What is the module load out?"
+task :vls do |t|
+  require 'vls'
+
+  puts
+  VersionLS.print_vls(/./)
+end
+

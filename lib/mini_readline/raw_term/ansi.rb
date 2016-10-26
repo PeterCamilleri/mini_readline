@@ -34,6 +34,8 @@ module MiniReadline
     end
 
     #Conclude the terminal state.
+    #<br>Endemic Code Smells
+    #* :reek:UtilityFunction
     def conclude
       STDIN.cooked!
       STDOUT.print("\n")

@@ -32,10 +32,10 @@ class MiniReadlineTester < Minitest::Test
   end
 
   def test_platform_detection
-    if (RUBY_PLATFORM =~ /\bcygwin\b/i) || (RUBY_PLATFORM !~ /mswin|mingw/)
-      assert_equal(:other, MiniReadline::PLATFORM)
-    else
+    if (MiniReadline::TERM_PLATFORM == :windows)
       assert_equal(:windows, MiniReadline::PLATFORM)
+    else
+      assert_equal(:other, MiniReadline::PLATFORM)
     end
   end
 
