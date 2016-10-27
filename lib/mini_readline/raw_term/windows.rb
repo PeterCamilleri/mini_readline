@@ -44,7 +44,7 @@ module MiniReadline
       define_singleton_method(:kbhit) { kbhit_proc.call }
 
       beep_proc  = Win32API.new("user32", "MessageBeep", ['L'], '0')
-      define_singleton_method(:beep) { beep_proc.call }
+      define_singleton_method(:beep) { beep_proc.call(0) }
 
       set_cursor_posn_proc = Win32API.new("kernel32",
                                           "SetConsoleCursorPosition",

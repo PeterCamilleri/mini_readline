@@ -17,7 +17,7 @@ Gem::Specification.new do |spec|
                          Intermediate Range Ballistic Missile.
                         }.gsub(/\s+/, ' ').strip
 
-  spec.homepage      = "http://teuthida-technologies.com/"
+  spec.homepage      = "https://github.com/PeterCamilleri/mini_readline"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
