@@ -128,69 +128,22 @@ MiniReadline.readline(">", false, secret_mask: "*")
 See the section Options below for more information on the sorts of things that
 can be accomplished with these options settings.
 
-##### Module Aliasing [Deprecated]
+##### Module Aliasing [Support Ended]
 
 In an attempt to enhance compatibility, the mini_readline gem has the ability
-to alias itself as the readline gem. When this feature is used, compatible code
-is even more compatible looking:
-```ruby
-Readline.readline('>', true)
-```
-or to avoid tracking command history, use:
+to alias itself as the readline gem. This feature was found to be unworkable
+and has been removed as of Version 0.7.0.
+
+This feature was controlled by two global variables:
 
 ```ruby
-Readline.readline('>', false)
+$force_alias_read_line_module
+$no_alias_read_line_module
 ```
-The aliasing of modules is subject to the following list of conditions:
+Note: Using these variables now generates one of these exceptions.
 
-1) If the global variable $no_alias_read_line_module is set to true before the
-mini_readline gem is required, *no* aliasing will take place.
-```ruby
-$no_alias_read_line_module = true
-require 'mini_readline'
-```
-2) Else, if the global variable $force_alias_read_line_module is set to true
-before the mini_readline gem is required, aliasing *will* take place.
-```ruby
-$force_alias_read_line_module = true
-require 'mini_readline'
-```
-Note: Using the $force_alias_read_line_module setting now generates a warning.
-
-    mini_readline: $force_alias_read_line_module is deprecated.
-
-3) Else, if the readline gem is already loaded, *no* aliasing will take place.
-```ruby
-require 'readline'
-require 'mini_readline'
-```
-4) Finally, if none of the above conditions are met, aliasing *will* take place.
-```ruby
-require 'mini_readline'
-```
-Note that if the readline gem is subsequently required after the mini_readline
-gem, it will redefine the Readline constant, generating a warning message on
-$stderr. If that is an issue, the following should ensure that the
-mini_readline gem stays in charge.
-```ruby
-require 'readline'
-$force_alias_read_line_module = true
-require 'mini_readline'
-```
-
-##### Limitations
-
-All of the measures taken to ensure some backward compatibility with the
-standard readline facility are only of limited effectiveness. Any program
-that digs into the innards of the system gem will likely need at least some
-porting to switch to the mini_readline gem.
-
-For the most part, compatible mode exists to make that porting process an
-easier one.
-
-**IMPORTANT NOTE: The module aliasing feature is now deprecated. For now there
-will be no change, soon warnings will ensue, then errors. Look for this
-feature to go away by version 0.7.0 unless some feedback is received.**
+    mini_readline: $force_alias_read_line_module is not supported.
+    mini_readline: $no_alias_read_line_module is not supported.
 
 ### Native Mode
 

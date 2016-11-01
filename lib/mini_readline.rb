@@ -29,19 +29,10 @@ module MiniReadline
 
 end
 
-if defined?($force_alias_read_line_module) && $force_alias_read_line_module
-  warn "mini_readline: $force_alias_read_line_module is deprecated."
+if defined?($force_alias_read_line_module)
+  fail "mini_readline: $force_alias_read_line_module is not supported."
 end
 
-#Optionally: Setup the module alias for Readline
-begin
-  old_stderr = $stderr
-  $stderr = File.open(File::NULL, 'w')
-
-  if !$no_alias_read_line_module && ($force_alias_read_line_module || !defined? Readline)
-    Readline = MiniReadline
-  end
-ensure
-  $stderr.close
-  $stderr = old_stderr
+if defined?($no_alias_read_line_module)
+  fail "mini_readline: $no_alias_read_line_module is not supported."
 end
