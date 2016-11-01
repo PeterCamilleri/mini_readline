@@ -31,6 +31,8 @@ else
   end
 end
 
+Readline = MiniReadline unless defined?(Readline)
+
 class Object
   #Generate the class lineage of the object.
   def classes
