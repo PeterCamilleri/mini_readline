@@ -130,7 +130,7 @@ can be accomplished with these options settings.
 
 ##### Module Aliasing [Support Ended]
 
-In an attempt to enhance compatibility, the mini_readline gem has the ability
+In an attempt to enhance compatibility, the mini_readline gem had the ability
 to alias itself as the readline gem. This feature was found to be unworkable
 and has been removed as of Version 0.7.0.
 
