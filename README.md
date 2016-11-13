@@ -417,8 +417,8 @@ support looks like:
 Ruby           | Win32   | Win64   | Cygwin  | Linux   | Mac
 ---------------|---------|---------|---------|---------|---------
 ruby 1.9.3p484 | Yes     | Yes     | ?       | ?       | ?
-ruby 2.1.6p336 | Yes     |         | ?       | ?       | ?
-ruby 2.2.3p173 | ?       |         | Yes     | ?       | ?
+ruby 2.1.6p336 | Yes     | ?       | ?       | ?       | ?
+ruby 2.2.3p173 | ?       | ?       | Yes     | ?       | ?
 jruby 9.1.5.0  | ~Yes    | ?       | Planned | Planned | Planned
 rubinius tbd   | Planned | Planned | Planned | Planned | Planned
 
