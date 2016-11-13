@@ -6,12 +6,8 @@ inline editing, command history, and stock or customizable auto-complete.
 The mini readline gem is an experiment in replacing the standard readline gem
 that is part of Ruby. The mini readline project will try to focus on the needs
 of Ruby programs. It will also try to correct a number of irritating issues
-encountered when running cross platform environments.
-
-The mini_readline gem is designed for use with MRI version 1.9.3 or later. The
-long term goal is to be as portable to as many versions of ruby as is
-possible. To this end, portability usage (problem) experiences are especially
-desired. (See the Testing and Contributing sections below.)
+encountered when running cross platform environments. See Cross Platform
+Portability Progress below for more details.
 
 ## Installation
 
@@ -411,16 +407,29 @@ system gem, use this:
 
     $ ruby sire.rb local
 
-## Testing
-To date this code has been tested under:
-* Windows 7 with ruby 1.9.3p484 (2013-11-22) [i386-mingw32]
-* Windows 7 with ruby 2.1.6p336 (2015-04-13 revision 50298) [i386-mingw32]
-* Windows 7+Cygwin with ruby 2.2.3p173 (2015-08-18 revision 51636) [i386-cygwin]
+## Cross Platform Portability Progress
 
-<br>**More testing is clearly called for and suggestions/bug reports are most
-welcomed!!!**
+The mini_readline gem was initially designed for use with MRI version 1.9.3 or
+later. The long term goal is to be as portable to as many versions of Ruby and
+on as many operating systems platforms as is possible. So far the matrix of
+support looks like:
+
+Ruby           | Win32   | Win64   | Cygwin  | Linux   | Mac
+---------------|---------|---------|---------|---------|---------
+ruby 1.9.3p484 | Yes     | Yes     | ?       | ?       | ?
+ruby 2.1.6p336 | Yes     |         | ?       | ?       | ?
+ruby 2.2.3p173 | ?       |         | Yes     | ?       | ?
+jruby 9.1.5.0  | ~Yes    | ?       | Planned | Planned | Planned
+rubinius tbd   | Planned | Planned | Planned | Planned | Planned
+
+<br>The goal of this project is a table full of 'Yes' entries. Those marked
+with a '?' _should_ work but are untested. The '~Yes' means mostly working but
+still some minor issues (See issue #7). The 'Planned' are not there yet and
+some work and much testing are needed. Clearly there's a lot of work to do.
 
 ## Contributing
+
+All participation is welcomed. There are two fabulous plans to choose from:
 
 #### Plan A
 
@@ -434,11 +443,7 @@ welcomed!!!**
 #### Plan B
 
 Go to the GitHub repository and raise an issue calling attention to some
-aspect that could use some TLC or a suggestion or an idea.
+aspect that could use some TLC or a suggestion or an idea. Please see
+( https://github.com/PeterCamilleri/mini_readline/issues )
 
-
-## License
-
-The gem is available as open source under the terms of the MIT License. Please
-see LICENSE.txt for further details.
-
+This is a low pressure environment. All are welcome!
