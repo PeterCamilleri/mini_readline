@@ -378,7 +378,7 @@ if all fails, it will load the "classic" Readline gem. Here is a typical run:
     Loaded mini_readline from the local code folder.
 
     Welcome to a Simple Interactive Ruby Environment
-    Use the command 'q' to quit.
+    Use the command 'quit' to exit.
 
     SIRE>
 Of note, the run method can be used to test for the shell process bug. For
