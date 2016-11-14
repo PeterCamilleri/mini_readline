@@ -226,10 +226,8 @@ BASE_OPTIONS = {
   :initial       => "",       #The initial text for the entry.
                               #An empty string for none.
 
-  :term          => nil,      #Filled in by raw_term.rb
+  :term          => nil}      #Filled in by raw_term.rb
                               #MiniReadline::RawTerm
-
-  :debug         => false}    #Used during development only.
 ```
 
 <br>While most of these options are self explanatory, a few could stand some
