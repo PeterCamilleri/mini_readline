@@ -3,13 +3,9 @@
 
 require 'pp'
 
-if ARGV[0] == 'old'
+if ($sire_old = (ARGV[0] == 'old'))
   require 'readline'
-  $old = true
-
-  class MiniReadlineEOI < StandardError
-  end
-
+  class MiniReadlineEOI < StandardError; end #Compatibility stub.
   puts "\nOption(old). Loaded the standard readline gem. Version #{Readline::VERSION}"
 elsif ARGV[0] == 'local'
   require './lib/mini_readline'
@@ -66,8 +62,8 @@ class SIRE
 
   #Get a mapped keystroke.
   def g
-    if $old
-      print 'Not supported by old readline.'
+    if $sire_old
+      puts 'Not supported by old readline.'
     else
       print 'Press a key:'
       MiniReadline::BASE_OPTIONS[:term].get_mapped_keystroke
@@ -101,7 +97,7 @@ class SIRE
 
   #Run the interactive session.
   def run_sire
-    unless $old
+    unless $sire_old
       MiniReadline::BASE_OPTIONS[:auto_complete] = true
       MiniReadline::BASE_OPTIONS[:eoi_detect] = true
     end
