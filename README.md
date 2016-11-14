@@ -418,12 +418,16 @@ ruby 1.9.3p484 | Yes     | Yes     | ?       | ?       | ?
 ruby 2.1.6p336 | Yes     | ?       | ?       | ?       | ?
 ruby 2.2.3p173 | ?       | ?       | Yes     | ?       | ?
 jruby 9.1.5.0  | ~Yes    | ?       | Planned | Planned | Planned
-rubinius tbd   | Planned | Planned | Planned | Planned | Planned
+rubinius tbd   | N/A     | N/A     | N/A     | Maybe   | Maybe
 
 <br>The goal of this project is a table full of 'Yes' entries. Those marked
 with a '?' _should_ work but are untested. The '~Yes' means mostly working but
 still some minor issues (See issue #7). The 'Planned' are not there yet and
-some work and much testing are needed. Clearly there's a lot of work to do.
+some work and much testing are needed. OK, now the 'N/A' entries reflect the
+fact that Rubinius does not run under Windows. The 'Maybe' entries reflect that
+I currently do my work on an elderly Windows machine and these entries will be
+very difficult for me to work on. Even without that headache, there is clearly
+a lot of work to do.
 
 ## Contributing
 
