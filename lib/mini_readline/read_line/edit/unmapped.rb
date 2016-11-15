@@ -8,10 +8,6 @@ module MiniReadline
 
     #An unmapped key was pressed. Beep!
     def unmapped(keyboard_args)
-      if @options[:debug]
-        puts keyboard_args.inspect
-      end
-
       @term.beep
     end
   end

@@ -6,12 +6,8 @@ inline editing, command history, and stock or customizable auto-complete.
 The mini readline gem is an experiment in replacing the standard readline gem
 that is part of Ruby. The mini readline project will try to focus on the needs
 of Ruby programs. It will also try to correct a number of irritating issues
-encountered when running cross platform environments.
-
-The mini_readline gem is designed for use with MRI version 1.9.3 or later. The
-long term goal is to be as portable to as many versions of ruby as is
-possible. To this end, portability usage (problem) experiences are especially
-desired. (See the Testing and Contributing sections below.)
+encountered when running cross platform environments. See Cross Platform
+Portability Progress below for more details.
 
 ## Installation
 
@@ -130,7 +126,7 @@ can be accomplished with these options settings.
 
 ##### Module Aliasing [Support Ended]
 
-In an attempt to enhance compatibility, the mini_readline gem has the ability
+In an attempt to enhance compatibility, the mini_readline gem had the ability
 to alias itself as the readline gem. This feature was found to be unworkable
 and has been removed as of Version 0.7.0.
 
@@ -230,10 +226,8 @@ BASE_OPTIONS = {
   :initial       => "",       #The initial text for the entry.
                               #An empty string for none.
 
-  :term          => nil,      #Filled in by raw_term.rb
+  :term          => nil}      #Filled in by raw_term.rb
                               #MiniReadline::RawTerm
-
-  :debug         => false}    #Used during development only.
 ```
 
 <br>While most of these options are self explanatory, a few could stand some
@@ -382,7 +376,7 @@ if all fails, it will load the "classic" Readline gem. Here is a typical run:
     Loaded mini_readline from the local code folder.
 
     Welcome to a Simple Interactive Ruby Environment
-    Use the command 'q' to quit.
+    Use the command 'quit' to exit.
 
     SIRE>
 Of note, the run method can be used to test for the shell process bug. For
@@ -411,16 +405,35 @@ system gem, use this:
 
     $ ruby sire.rb local
 
-## Testing
-To date this code has been tested under:
-* Windows 7 with ruby 1.9.3p484 (2013-11-22) [i386-mingw32]
-* Windows 7 with ruby 2.1.6p336 (2015-04-13 revision 50298) [i386-mingw32]
-* Windows 7+Cygwin with ruby 2.2.3p173 (2015-08-18 revision 51636) [i386-cygwin]
+## Cross Platform Portability Progress
 
-<br>**More testing is clearly called for and suggestions/bug reports are most
-welcomed!!!**
+The mini_readline gem was initially designed for use with MRI version 1.9.3 or
+later. The long term goal is to be as portable to as many versions of Ruby and
+on as many operating systems platforms as is possible. So far the matrix of
+support looks like:
+
+Ruby           | Win32   | Win64   | Cygwin  | Linux   | Mac
+---------------|---------|---------|---------|---------|---------
+ruby 1.9.3p484 | Yes     | Yes     | ?       | ?       | ?
+ruby 2.1.6p336 | Yes     | ?       | ?       | ?       | ?
+ruby 2.2.3p173 | ?       | ?       | Yes     | ?       | ?
+jruby 9.1.5.0  | ~Yes    | ?       | Planned | Planned | Planned
+rubinius       | N/A     | N/A     | N/A     | Maybe   | Maybe
+
+<br>Where:
+
+* 'Yes' means good to go! Coded and tested OK!
+* '~Yes' means mostly working but still some minor issues (See issue #7).
+* '?' _should_ work but are untested.
+* 'Planned' are not there yet and some work and much testing are needed.
+* 'N/A' entries reflect the fact that Rubinius does not run under Windows.
+* 'Maybe' entries are not on the radar now, but maybe later.
+
+There is clearly a lot of work to do.
 
 ## Contributing
+
+All participation is welcomed. There are two fabulous plans to choose from:
 
 #### Plan A
 
@@ -434,11 +447,7 @@ welcomed!!!**
 #### Plan B
 
 Go to the GitHub repository and raise an issue calling attention to some
-aspect that could use some TLC or a suggestion or an idea.
+aspect that could use some TLC or a suggestion or an idea. Please see
+( https://github.com/PeterCamilleri/mini_readline/issues )
 
-
-## License
-
-The gem is available as open source under the terms of the MIT License. Please
-see LICENSE.txt for further details.
-
+This is a low pressure environment. All are welcome!

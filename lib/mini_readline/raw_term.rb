@@ -5,7 +5,9 @@ require 'rbconfig'
 #* raw_term.rb - Platform determination for raw terminal access.
 module MiniReadline
 
+  # :stopdoc:
   host_os = RbConfig::CONFIG['host_os']
+  # :startdoc:
 
   #What operating platform is in effect?
   TERM_PLATFORM =
