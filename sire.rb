@@ -3,17 +3,15 @@
 
 require 'pp'
 
-$sire_done = false
-
+#Some SIRE control variables.
+$sire_done    = false
 $sire_binding = binding
+$sire_old     = (ARGV[0] == 'old') || defined?(Readline)
 
-if ($sire_old = (ARGV[0] == 'old'))
+if $sire_old
   require 'readline'
   class MiniReadlineEOI < StandardError; end #Compatibility stub.
-  puts "\nOption(old). Loaded the standard readline gem. Version #{Readline::VERSION}"
-elsif defined?(Readline)
-  class MiniReadlineEOI < StandardError; end #Compatibility stub.
-  puts "\nThe standard readline gem is already loaded. Version #{Readline::VERSION}"
+  puts "\nLoaded the standard readline gem. Version #{Readline::VERSION}"
 elsif ARGV[0] == 'local'
   require './lib/mini_readline'
   puts "\nOption(local). Loaded mini_readline from the local code folder. Version #{MiniReadline::VERSION}"
