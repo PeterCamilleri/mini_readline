@@ -73,7 +73,7 @@ There are a number of demo/test programs available for the mini_readline gem.
 These are:
 
     $ irbm
-    Starting an IRB console with mini_readline.
+    Starting an IRB console with mini_readline (0.7.2).
     irb(main):001:0>
 
 This runs against the most recently installed gem. Also available in the gem
@@ -201,8 +201,7 @@ entries.
 <br>The available options are described below:
 ```ruby
 BASE_OPTIONS = {
-  :window_width  => 79,       #The width of the edit area.
-  :scroll_step   => 12,       #The amount scrolled.
+  :scroll_step   => 12,       #The amount horizontally scrolled.
 
   :prompt        => ">",      #The default prompt.
   :alt_prompt    => "<< ",    #The prompt when scrolled.
@@ -264,6 +263,10 @@ terminal console driver automatically adapts to the system environment
 further actions on the part of the user. The terminal support class can be
 changed, to a user supplied class, to get data from another source, such as
 a serial attached terminal.
+
+Finally the :window_width option is now ignored. Screen width now automatically
+determined.
+
 
 #### Notes
 * Since the compatibility mode does not accept an options hash, the only way to
@@ -352,6 +355,9 @@ options.
 statement to permit the use of clearer, easier to read access to regular
 expression results.
 
+<br> An example of a custom auto-complete facility may be found in the mysh
+gem located at: https://github.com/PeterCamilleri/mysh/blob/master/lib/mysh/user_input/smart_source.rb
+
 ### Important Security Note
 
 It must be remembered that any time strings are passed to the command line
@@ -417,13 +423,13 @@ Ruby           | Win32   | Win64   | Cygwin  | Linux   | Mac
 ruby 1.9.3p484 | Yes     | Yes     | ?       | ?       | ?
 ruby 2.1.6p336 | Yes     | ?       | ?       | ?       | ?
 ruby 2.2.3p173 | ?       | ?       | Yes     | ?       | ?
-jruby 9.1.5.0  | ~Yes    | ?       | Planned | Planned | Planned
+jruby 9.1.5.0  | Mostly  | ?       | Planned | Planned | Planned
 rubinius       | N/A     | N/A     | N/A     | Maybe   | Maybe
 
 <br>Where:
 
 * 'Yes' means good to go! Coded and tested OK!
-* '~Yes' means mostly working but still some minor issues (See issue #7).
+* 'Mostly' is mostly working but still some minor issues (See issue #7).
 * '?' _should_ work but are untested.
 * 'Planned' are not there yet and some work and much testing are needed.
 * 'N/A' entries reflect the fact that Rubinius does not run under Windows.

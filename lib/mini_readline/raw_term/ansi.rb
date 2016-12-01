@@ -5,8 +5,9 @@ require          'io/console'
 require_relative 'mapped_term'
 require_relative 'ansi/map'
 require_relative 'ansi/set_posn'
+require_relative 'ansi/window_width'
 
-#* raw_term/other.rb - Support for raw terminal access in non-windows systems.
+#* raw_term/ansi.rb - Support for raw terminal access in non-windows systems.
 module MiniReadline
 
   #The detected platform is not windows.
