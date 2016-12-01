@@ -201,8 +201,7 @@ entries.
 <br>The available options are described below:
 ```ruby
 BASE_OPTIONS = {
-  :window_width  => 79,       #Deprecated. Width now automatically determined.
-  :scroll_step   => 12,       #The amount scrolled.
+  :scroll_step   => 12,       #The amount horizontally scrolled.
 
   :prompt        => ">",      #The default prompt.
   :alt_prompt    => "<< ",    #The prompt when scrolled.
@@ -264,6 +263,10 @@ terminal console driver automatically adapts to the system environment
 further actions on the part of the user. The terminal support class can be
 changed, to a user supplied class, to get data from another source, such as
 a serial attached terminal.
+
+Finally the :window_width option is now ignored. Screen width now automatically
+determined.
+
 
 #### Notes
 * Since the compatibility mode does not accept an options hash, the only way to
