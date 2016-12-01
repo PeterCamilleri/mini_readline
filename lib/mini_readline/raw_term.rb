@@ -29,13 +29,19 @@ module MiniReadline
   #Is Java present in the environment?
   TERM_JAVA = RUBY_PLATFORM =~ /java/
 
-  #Select the type of platform in use.
-  if TERM_PLATFORM == :windows
-    require_relative 'raw_term/windows'
-  else
-    require_relative 'raw_term/ansi'
+  #Only install a terminal if one is not already provided.
+  unless BASE_OPTIONS[:term]
+
+    #Select the type of platform in use.
+    if TERM_PLATFORM == :windows
+      require_relative 'raw_term/windows'
+    else
+      require_relative 'raw_term/ansi'
+    end
+
+    #Get an instance of a raw terminal controller object.
+    BASE_OPTIONS[:term] = RawTerm.new
+
   end
 
-  #Get an instance of a raw terminal controller object.
-  BASE_OPTIONS[:term] = RawTerm.new
 end
