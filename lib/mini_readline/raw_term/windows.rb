@@ -9,6 +9,7 @@ end
 require_relative 'mapped_term'
 require_relative 'windows/map'
 require_relative 'windows/set_posn'
+require_relative 'windows/window_width'
 
 #* raw_term/windows.rb - Support for raw terminal access in windows systems.
 module MiniReadline

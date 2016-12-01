@@ -58,9 +58,13 @@ module MiniReadline
 
     #Set up the options
     def set_options(options)
-      @options = MiniReadline::BASE_OPTIONS.merge(instance_options)
-      @options.merge!(options)
+      @options = MiniReadline::BASE_OPTIONS
+                   .merge(instance_options)
+                   .merge(options)
+
       (@term = @options[:term]).initialize_parms
+
+      @options[:window_width] = @term.window_width - 1
       set_prompt(@options[:prompt])
       verify_mask(@options[:secret_mask])
     end
