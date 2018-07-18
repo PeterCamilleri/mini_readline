@@ -9,6 +9,12 @@ of Ruby programs. It will also try to correct a number of irritating issues
 encountered when running cross platform environments. See Cross Platform
 Portability Progress below for more details.
 
+Finally, I know this code must seem to give off a sort of angry birds vibe
+against the original rb-readline gem. This sort of thing is not good. I owe
+a great debt of gratitude to the authors and maintainers of that vital code.
+Their getting around the whole Win32API, dl obsolescence debacle saved me so
+much time and frustration that words do not suffice. Thanks!
+
 ## Installation
 
 Add this line to your application's Gemfile:
