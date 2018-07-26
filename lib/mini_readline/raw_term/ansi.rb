@@ -16,10 +16,7 @@ module MiniReadline
   #The class used to manipulate console i/o on a low level.
   class RawTerm
 
-    #Carriage return
     CARRIAGE_RETURN = "\x0D"
-
-    #Bell
     BELL = "\x07"
 
     #Output a string

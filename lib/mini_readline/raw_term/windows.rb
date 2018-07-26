@@ -23,7 +23,6 @@ module MiniReadline
     #The sleep interval waiting for a key to be pressed.
     WAIT_SLEEP      = 0.02
 
-    #Carriage return
     CARRIAGE_RETURN = "\x0D"
 
     #The magic number for standard out.
