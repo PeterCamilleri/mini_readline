@@ -3,7 +3,7 @@
 #* read_line/window/edit/cancel.rb - Process :cancel
 module MiniReadline
 
-  #* read_line/window/edit/cancel.rb - Process :cancel
+  #* read_line/window/edit/cancel.rb - Process :cancel - delete all text.
   class Edit
 
     #All right! Scrap all of this and start over!
