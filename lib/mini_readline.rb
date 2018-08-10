@@ -28,11 +28,3 @@ module MiniReadline
   end
 
 end
-
-if defined?($force_alias_read_line_module)
-  fail "mini_readline: $force_alias_read_line_module is not supported."
-end
-
-if defined?($no_alias_read_line_module)
-  fail "mini_readline: $no_alias_read_line_module is not supported."
-end
