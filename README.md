@@ -142,10 +142,7 @@ This feature was controlled by two global variables:
 $force_alias_read_line_module
 $no_alias_read_line_module
 ```
-Note: Using these variables now generates one of these exceptions.
-
-    mini_readline: $force_alias_read_line_module is not supported.
-    mini_readline: $no_alias_read_line_module is not supported.
+Note: Using these variables now has no effect whatsoever.
 
 ### Native Mode
 
@@ -429,6 +426,7 @@ Ruby           | Win32   | Win64   | Cygwin  | Linux   | Mac
 ruby 1.9.3p484 | Yes     | Yes     | ?       | ?       | ?
 ruby 2.1.6p336 | Yes     | ?       | ?       | ?       | ?
 ruby 2.2.3p173 | ?       | ?       | Yes     | ?       | ?
+ruby 2.3.3p222 | ?       | Yes     | ?       | ?       | ?
 jruby 9.1.5.0  | Mostly  | ?       | Planned | Planned | Planned
 rubinius       | N/A     | N/A     | N/A     | Maybe   | Maybe
 
