@@ -14,7 +14,7 @@ module MiniReadline
     #Add a map entry
     def []=(index, value)
       process_non_terminals(index)
-      fail "Duplicate entry #{index.inspect}" if @map.has_key?(index)
+      fail MiniReadlineKME, "Duplicate entry #{index.inspect}" if @map.has_key?(index)
       @map[index] = value
     end
 
@@ -33,7 +33,7 @@ module MiniReadline
 
       index.chop.chars.each do |char|
         seq << char
-        fail "Ambiguous entry #{index.inspect}" if @map.has_key?(seq) && @map[seq]
+        fail MiniReadlineKME, "Ambiguous entry #{index.inspect}" if @map.has_key?(seq) && @map[seq]
         @map[seq] = false
       end
     end

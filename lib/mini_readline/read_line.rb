@@ -82,14 +82,14 @@ module MiniReadline
     def verify_prompt(prompt)
       unless (@options[:window_width] - prompt.length) >
              (@options[:scroll_step] * 2)
-        fail "Too long: #{prompt.inspect}"
+        fail MiniReadlinePLE, "Too long: #{prompt.inspect}"
       end
     end
 
     #Verify the secret mask
     def verify_mask(secret)
       if secret && secret.length != 1
-        fail "Secret mask must be nil or a single character string."
+        fail MiniReadlineSME, "Secret mask must be nil or a single character string."
       end
     end
 

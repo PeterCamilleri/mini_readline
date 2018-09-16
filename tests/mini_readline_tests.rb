@@ -27,8 +27,8 @@ class MiniReadlineTester < Minitest::Test
   def test_mapper_checking
     MiniReadline::RawTerm::MAP["\xC0test"] = [:go_left]
 
-    assert_raises { MiniReadline::RawTerm::MAP["\xC0t"]    = [:go_left] }
-    assert_raises { MiniReadline::RawTerm::MAP["\xC0test"] = [:go_left] }
+    assert_raises(MiniReadlineKME) { MiniReadline::RawTerm::MAP["\xC0t"]    = [:go_left] }
+    assert_raises(MiniReadlineKME) { MiniReadline::RawTerm::MAP["\xC0test"] = [:go_left] }
   end
 
   def test_platform_detection
@@ -195,17 +195,17 @@ class MiniReadlineTester < Minitest::Test
   def test_prompt_verification
     opts = {prompt: ">"*70}
     edit = MiniReadline::Readline.new()
-    assert_raises(RuntimeError) {edit.readline(opts)}
+    assert_raises(MiniReadlinePLE) {edit.readline(opts)}
   end
 
   def test_mask_verification
     opts = {prompt: ">", secret_mask: ""}
     edit = MiniReadline::Readline.new()
-    assert_raises(RuntimeError) {edit.readline(opts)}
+    assert_raises(MiniReadlineSME) {edit.readline(opts)}
 
     opts = {prompt: ">", secret_mask: "xx"}
     edit = MiniReadline::Readline.new()
-    assert_raises(RuntimeError) {edit.readline(opts)}
+    assert_raises(MiniReadlineSME) {edit.readline(opts)}
   end
 
 end
