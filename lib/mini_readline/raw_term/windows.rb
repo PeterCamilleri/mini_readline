@@ -68,6 +68,7 @@ module MiniReadline
         get_handle_proc.call(handle_index)
       end
 
+      @_out_handle = get_handle(STD_OUTPUT_HANDLE)
     end
 
     #Output a string

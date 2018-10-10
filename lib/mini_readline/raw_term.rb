@@ -44,4 +44,9 @@ module MiniReadline
 
   end
 
+  # Get terminal column*row counts.
+  def self.term_info
+    BASE_OPTIONS[:term].term_info
+  end
+
 end
