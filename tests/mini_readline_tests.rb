@@ -23,6 +23,15 @@ class MiniReadlineTester < Minitest::Test
     assert_equal(Class,  MiniReadline::Readline.class)
   end
 
+  def test_that_it_has_terminfo
+    info = MiniReadline.term_info
+
+    assert(info.is_a?(Array))
+    assert_equal(2, info.length)
+    assert(info[0].is_a?(Integer))
+    assert(info[1].is_a?(Integer))
+  end
+
   def test_for_storage_of_options
     assert_equal(Hash, MiniReadline::BASE_OPTIONS.class)
     edit = MiniReadline::Readline.new()
