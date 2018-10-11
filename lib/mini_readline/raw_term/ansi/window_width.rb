@@ -13,5 +13,10 @@ module MiniReadline
       IO.console.winsize[1]
     end
 
+    # Determine the console size [rows, columns]
+    def term_info
+      IO.console.winsize
+    end
+
   end
 end
