@@ -351,15 +351,22 @@ To enable the use of a custom auto-completer, three things must be done:
 * The option[:auto_source] must be set to the class name of the new completer.
 * Any optional, additional options required by the completer must be set.
 
-<br> See the section Options above for more details on setting/controlling
+<br>See the section Options above for more details on setting/controlling
 options.
 
 <br>Note: Elsewhere in the code above there exists a require 'English'
 statement to permit the use of clearer, easier to read access to regular
 expression results.
 
-<br> An example of a custom auto-complete facility may be found in the mysh
+<br>An example of a custom auto-complete facility may be found in the mysh
 gem located at: https://github.com/PeterCamilleri/mysh/blob/master/lib/mysh/user_input/smart_source.rb
+
+### Other APIs
+
+The module method MiniReadline#term_info can be used to obtain information
+about the dimensions of the console. The value returned is an array with
+[ rows, columns ] for the console. Note that if the console window is resized,
+this data may change.
 
 ### Important Security Note
 
