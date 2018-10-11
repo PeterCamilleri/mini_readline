@@ -7,13 +7,13 @@ module MiniReadline
   class RawTerm
 
     #Determine the available screen width.
-    #<br>Endemic Code Smells
-    #* :reek:UtilityFunction
     def window_width
-      IO.console.winsize[1]
+      term_info[1]
     end
 
     # Determine the console size [rows, columns]
+    #<br>Endemic Code Smells
+    #* :reek:UtilityFunction
     def term_info
       IO.console.winsize
     end
