@@ -30,7 +30,7 @@ class MiniReadlineTester < Minitest::Test
     assert_equal(2, info.length)
     assert(info[0].is_a?(Integer))
     assert(info[1].is_a?(Integer))
-    assert_equal([80,32], info)
+    #assert_equal([80,32], info)
   end
 
   def test_for_storage_of_options
