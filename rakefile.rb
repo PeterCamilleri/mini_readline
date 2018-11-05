@@ -26,3 +26,14 @@ task :vers do |t|
   puts
   puts "mini_readline version = #{MiniReadline::VERSION}"
 end
+
+desc "Alternative test procedure."
+task :alt_test do |t, args|
+  here  = File.dirname(__FILE__)
+  target = "#{here}/tests/*.rb"
+
+  block = "{|file| require file if File.basename(file) =~ /test/}"
+  code  = "Dir['#{target}'].each #{block}"
+
+  system "ruby -e\"#{code}\""
+end
