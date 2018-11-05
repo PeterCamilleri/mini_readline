@@ -1,12 +1,12 @@
 # coding: utf-8
 
-#* read_line/window/sync_window.rb - Keeping the screen in sync.
+# Keeping the screen in sync.
 module MiniReadline
 
-  #* read_line/window/sync_window.rb - Keeping the screen in sync.
+  # Keeping the screen in sync.
   class EditWindow
 
-    #Keep the edit window in sync!
+    # Keep the edit window in sync!
     def sync_window(edit_buffer, edit_posn)
       unless check_margins(edit_buffer.length, edit_posn)
         window_buffer.clear
@@ -18,7 +18,7 @@ module MiniReadline
       @window_buffer = image
     end
 
-    #Verify/update the window margins. Returns true if they're fine.
+    # Verify/update the window margins. Returns true if they're fine.
     def check_margins(length, edit_posn)
       old_margins = [left_margin, right_margin]
 
@@ -33,7 +33,7 @@ module MiniReadline
       old_margins == [left_margin, right_margin]
     end
 
-    #Compute what should be on the screen.
+    # Compute what should be on the screen.
     def build_screen_image(edit_buffer)
       working_region = edit_buffer[left_margin..right_margin]
 
@@ -44,7 +44,7 @@ module MiniReadline
       end.ljust(active_width)
     end
 
-    #Bring the screen into agreement with the image.
+    # Bring the screen into agreement with the image.
     def update_screen(image)
       if @show_prompt
         MiniTerm.print("\r#{prompt.text}\r")

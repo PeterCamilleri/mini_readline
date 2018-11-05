@@ -3,10 +3,10 @@
 require_relative 'edit_window/sync_window'
 require_relative 'edit_window/sync_cursor'
 
-#* read_line/edit_window.rb - Edit window support.
+# Edit window support.
 module MiniReadline
 
-  #* read_line/edit_window.rb - Support for the edit window.
+  # Support for the edit window.
   class EditWindow
 
     #Determine the edit window limits.
@@ -68,9 +68,8 @@ module MiniReadline
     end
 
     #Set the right margin
-    #<br>Notes
-    #* If the right_margin is being set, then we must be scrolling. That is
-    #  why the scroll_width is used instead of active_width here.
+    # If the right_margin is being set, then we must be scrolling. That is
+    # why the scroll_width is used instead of active_width here.
     def set_right_margin(value)
       @left_margin = value - scroll_width + 1
     end

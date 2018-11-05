@@ -1,9 +1,9 @@
 # coding: utf-8
 
-#* read_line/window/edit/insert_text.rb - Process :insert_text
+# Process :insert_text
 module MiniReadline
 
-  #* read_line/window/edit/insert_text.rb - Process :insert_text
+  # Process :insert_text
   class Edit
 
     #The insert_text command

@@ -6,13 +6,13 @@ require_relative 'auto_complete/auto_file_source'
 require_relative 'auto_complete/quoted_file_folder_source'
 require_relative 'auto_complete/array_source'
 
-#* read_line/window/edit/auto_complete.rb - Process :auto_complete
+# Process :auto_complete
 module MiniReadline
 
-  #Set up the default auto-complete data source.
+  # Set up the default auto-complete data source.
   BASE_OPTIONS[:auto_source] = QuotedFileFolderSource
 
-  #* read_line/window/edit/auto_complete.rb - Process :auto_complete
+  # Process :auto_complete
   class Edit
 
     #The auto-complete command.

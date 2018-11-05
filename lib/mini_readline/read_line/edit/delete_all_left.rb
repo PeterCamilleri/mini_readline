@@ -1,9 +1,9 @@
 # coding: utf-8
 
-#* read_line/window/edit/delete_left.rb - Process :delete_left
+# Process :delete_left
 module MiniReadline
 
-  #* read_line/window/edit/delete_all_left.rb - Process :delete_all_left
+  # Process :delete_all_left
   class Edit
 
     #The delete to the left command

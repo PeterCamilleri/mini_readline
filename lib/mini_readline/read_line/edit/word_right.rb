@@ -1,9 +1,9 @@
 # coding: utf-8
 
-#* read_line/window/edit/word_right.rb - Process :word_right
+# Process :word_right
 module MiniReadline
 
-  #* read_line/window/edit/word_right.rb - Process :word_right
+  # Process :word_right
   class Edit
 
     #A little more to the right please!

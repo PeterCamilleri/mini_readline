@@ -1,9 +1,9 @@
 # coding: utf-8
 
-#* read_line/window/edit/go_left.rb - Process :go_left
+# Process :go_left
 module MiniReadline
 
-  #* read_line/window/edit/go_left.rb - Process :go_left
+  # Process :go_left
   class Edit
 
     #A little to the left please!

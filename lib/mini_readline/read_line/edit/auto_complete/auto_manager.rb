@@ -1,18 +1,18 @@
 # coding: utf-8
 
-#* auto_manager.rb - The controller for auto-complete.
+# The controller for auto-complete.
 module MiniReadline
 
-  #* auto_manager.rb - The controller for auto-complete.
+  # The controller for auto-complete.
   class AutoManager
 
-    #Create a new auto-complete manager.
+    # Create a new auto-complete manager.
     def initialize(&block)
       @_block = block
       @active = nil
     end
 
-    #Get the next buffer string
+    # Get the next buffer string
     def next(buffer)
       unless @active && @old_buffer == buffer
         @active = source.rebuild(buffer)
@@ -25,7 +25,7 @@ module MiniReadline
       end
     end
 
-    #Get the data source
+    # Get the data source
     def source
       @_source ||= @_block.call
     end

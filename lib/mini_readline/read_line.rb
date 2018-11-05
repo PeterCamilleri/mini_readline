@@ -18,8 +18,6 @@ module MiniReadline
     attr_reader :instance_options
 
     #Setup the instance of the mini line editor.
-    #<br>Parameters:
-    #* instance_options - A hash of options owned by this \Readline instance.
     def initialize(instance_options={})
       @instance_options = instance_options
       log = (@instance_options[:log] || BASE_OPTIONS[:log] || []).clone
@@ -33,9 +31,6 @@ module MiniReadline
     end
 
     #Read a line from the console with edit and history.
-    #<br>Parameters:
-    #* prompt - A string used to prompt the user. '>' is popular.
-    #* options - A hash of options; Typically symbol: value
     def readline(options = {})
       suppress_warnings
       initialize_parms(options)

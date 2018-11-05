@@ -1,9 +1,9 @@
 # coding: utf-8
 
-#* read_line/window/edit/next_history.rb - Process :next_history
+# Process :next_history
 module MiniReadline
 
-  #* read_line/window/edit/next_history.rb - Process :next_history
+  # Process :next_history
   class Edit
 
     #The insert_text command. We are DONE!

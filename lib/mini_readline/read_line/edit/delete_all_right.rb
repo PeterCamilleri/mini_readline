@@ -1,9 +1,9 @@
 # coding: utf-8
 
-#* read_line/window/edit/delete_all_right.rb - Process :delete_all_right
+# Process :delete_all_right
 module MiniReadline
 
-  #* read_line/window/edit/delete_right.rb - Process :delete_right
+  # Process :delete_right
   class Edit
 
     #The delete to the right

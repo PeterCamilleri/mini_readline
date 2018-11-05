@@ -1,9 +1,9 @@
 # coding: utf-8
 
-#* read_line/window/edit/enter.rb - Process :enter
+# Process :enter
 module MiniReadline
 
-  #* read_line/window/edit/enter.rb - Process :enter
+  # Process :enter
   class Edit
 
     #The insert_text command. We are DONE!
