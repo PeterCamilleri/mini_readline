@@ -6,7 +6,7 @@ module MiniReadline
   # Process :enter
   class Edit
 
-    #The insert_text command. We are DONE!
+    # The insert_text command.
     def enter(_keyboard_args)
       @working = false
     end

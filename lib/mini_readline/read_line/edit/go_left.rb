@@ -6,7 +6,7 @@ module MiniReadline
   # Process :go_left
   class Edit
 
-    #A little to the left please!
+    # A little to the left please!
     def go_left(_keyboard_args)
       if @edit_posn > 0
         @edit_posn -= 1

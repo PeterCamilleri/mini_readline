@@ -6,7 +6,7 @@ module MiniReadline
   # Process :unmapped
   class Edit
 
-    #An unmapped key was pressed. Beep!
+    # An unmapped key was pressed. Beep!
     def unmapped(_keyboard_args)
       MiniTerm.beep
     end

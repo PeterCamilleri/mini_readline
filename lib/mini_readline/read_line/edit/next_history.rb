@@ -6,7 +6,7 @@ module MiniReadline
   # Process :next_history
   class Edit
 
-    #The insert_text command. We are DONE!
+    # The insert_text command. We are DONE!
     def next_history(_keyboard_args)
       if (temp = @history.get_next_history)
         @edit_buffer = temp

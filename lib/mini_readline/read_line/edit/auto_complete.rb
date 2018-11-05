@@ -15,7 +15,7 @@ module MiniReadline
   # Process :auto_complete
   class Edit
 
-    #The auto-complete command.
+    # The auto-complete command.
     def auto_complete(_keyboard_args)
       if @options[:auto_complete] && (new_buffer = auto_manager.next(auto_trim))
         @edit_buffer = new_buffer
@@ -25,12 +25,12 @@ module MiniReadline
       end
     end
 
-    #Get the base part of the edit buffer.
+    # Get the base part of the edit buffer.
     def auto_trim
       @edit_buffer[0...(@edit_posn)]
     end
 
-    #Get the auto-complete manager
+    # Get the auto-complete manager
     def auto_manager
       @_auto_manager ||= AutoManager.new{@options[:auto_source].new(@options)}
     end

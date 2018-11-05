@@ -11,7 +11,7 @@ require_relative "mini_readline/exceptions"
 require_relative "mini_readline/options"
 require_relative "mini_readline/read_line"
 
-#The MiniReadline main module.
+# The MiniReadline main module.
 module MiniReadline
 
   private_constant :Prompt
@@ -20,14 +20,14 @@ module MiniReadline
   private_constant :History
   private_constant :NoHistory
 
-  #The (limited) compatibility module function.
+  # The (limited) compatibility module function.
   def self.readline(prompt = "", history = nil, options = {})
     get_reader.readline(options.merge({prompt: prompt, history: history}))
   end
 
 private
 
-  #Get the shared instance of Readline.
+  # Get the shared instance of Readline.
   def self.get_reader
     @reader ||= Readline.new()
   end

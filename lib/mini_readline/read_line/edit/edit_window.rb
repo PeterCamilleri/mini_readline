@@ -9,7 +9,7 @@ module MiniReadline
   # Support for the edit window.
   class EditWindow
 
-    #Determine the edit window limits.
+    # Determine the edit window limits.
     def initialize(options)
       @options      = options
       @base_width   = window_width - @options[:base_prompt].length
@@ -18,56 +18,56 @@ module MiniReadline
       @left_margin, @window_buffer, @show_prompt = 0, "", true
     end
 
-    #What is the offset of the window's left margin?
+    # What is the offset of the window's left margin?
     attr_reader :left_margin
 
-    #What is the offset of the window's right margin?
+    # What is the offset of the window's right margin?
     def right_margin
       left_margin + active_width - 1
     end
 
-    #Is the window currently in the scrolled state?
+    # Is the window currently in the scrolled state?
     def window_scrolled?
       left_margin > 0
     end
 
-    #The shadow copy of what is actually on the screen?
+    # The shadow copy of what is actually on the screen?
     attr_reader :window_buffer
 
-    #The width of the window with the base prompt
+    # The width of the window with the base prompt
     attr_reader :base_width
 
-    #The width of the window with the alternate prompt
+    # The width of the window with the alternate prompt
     attr_reader :scroll_width
 
-    #What is the full window width?
+    # What is the full window width?
     def window_width
       @options[:window_width]
     end
 
-    #How wide is the active region of the window now?
+    # How wide is the active region of the window now?
     def active_width
       window_scrolled? ? scroll_width : base_width
     end
 
-    #What is the current prompt?
+    # What is the current prompt?
     def prompt
       window_scrolled? ? @options[:scroll_prompt] : @options[:base_prompt]
     end
 
-    #What is the scroll step?
+    # What is the scroll step?
     def scroll_step
        @options[:scroll_step]
     end
 
     private
 
-    #Set the left margin
+    # Set the left margin
     def set_left_margin(value)
       @left_margin = value
     end
 
-    #Set the right margin
+    # Set the right margin
     # If the right_margin is being set, then we must be scrolling. That is
     # why the scroll_width is used instead of active_width here.
     def set_right_margin(value)

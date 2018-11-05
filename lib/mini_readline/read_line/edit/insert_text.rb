@@ -6,7 +6,7 @@ module MiniReadline
   # Process :insert_text
   class Edit
 
-    #The insert_text command
+    # The insert_text command
     def insert_text(keyboard_args)
       @edit_buffer = @edit_buffer[0...@edit_posn] +
                      keyboard_args[1] +

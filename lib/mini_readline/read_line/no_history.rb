@@ -1,34 +1,34 @@
 # coding: utf-8
 
-#* read_line/no_history.rb - Support for the edit without history.
+# Support for the edit without history.
 module MiniReadline
 
-  #* read_line/no_history.rb - Support for the edit without history.
+  # Support for the edit without history.
   class NoHistory
 
-    #Get the history object ready for the next read line operation. NOP
+    # Get the history object ready for the next read line operation. NOP
     def initialize_parms(_options)
     end
 
-    #Go to the end of the history array. NOP
+    # Go to the end of the history array. NOP
     def goto_end_of_history
     end
 
-    #Get the previous history string. NOP
+    # Get the previous history string. NOP
     def get_previous_history
       false
     end
 
-    #Get the next history string. NOP
+    # Get the next history string. NOP
     def get_next_history
       false
     end
 
-    #Append a string to the history buffer if enabled. NOP
+    # Append a string to the history buffer if enabled. NOP
     def append_history(_str)
     end
 
-    #Get the history buffer associated with this instance. Empty
+    # Get the history buffer associated with this instance. Empty
     def history
       []
     end
