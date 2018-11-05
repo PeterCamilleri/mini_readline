@@ -37,20 +37,6 @@ class MiniReadlineTester < Minitest::Test
     refute_equal(MiniReadline::BASE_OPTIONS, edit.instance_options)
   end
 
-  def test_mapper_checking
-    MiniReadline::RawTerm::MAP["\xC0test"] = [:go_left]
-
-    assert_raises(MiniReadlineKME) { MiniReadline::RawTerm::MAP["\xC0t"]    = [:go_left] }
-    assert_raises(MiniReadlineKME) { MiniReadline::RawTerm::MAP["\xC0test"] = [:go_left] }
-  end
-
-  def test_platform_detection
-    if (MiniReadline::TERM_PLATFORM == :windows)
-      assert_equal(:windows, MiniReadline::PLATFORM)
-    else
-      assert_equal(:other, MiniReadline::PLATFORM)
-    end
-  end
 
   def test_reading_a_line
     puts
