@@ -404,29 +404,14 @@ system gem, use this:
 ## Cross Platform Portability Progress
 
 The mini_readline gem was initially designed for use with MRI version 1.9.3 or
-later. The long term goal is to be as portable to as many versions of Ruby and
-on as many operating systems platforms as is possible. So far the matrix of
-support looks like:
+later. With version 0.9.0, the internal raw_term code is replaced with the new
+mini_term gem. That gem requires Ruby 2.0.0 or greater and now so does
+mini_readline.
 
-Ruby           | Win32   | Win64   | Cygwin  | Linux   | Mac
----------------|---------|---------|---------|---------|---------
-ruby 1.9.3p484 | Yes     | Yes     | ?       | ?       | ?
-ruby 2.1.6p336 | Yes     | ?       | ?       | ?       | ?
-ruby 2.2.3p173 | ?       | ?       | Yes     | ?       | ?
-ruby 2.3.3p222 | ?       | Yes     | ?       | ?       | ?
-jruby 9.1.5.0  | Mostly  | ?       | Planned | Planned | Planned
-rubinius       | N/A     | N/A     | N/A     | Maybe   | Maybe
-
-<br>Where:
-
-* 'Yes' means good to go! Coded and tested OK!
-* 'Mostly' is mostly working but still some minor issues (See issue #7).
-* '?' _should_ work but are untested.
-* 'Planned' are not there yet and some work and much testing are needed.
-* 'N/A' entries reflect the fact that Rubinius does not run under Windows.
-* 'Maybe' entries are not on the radar now, but maybe later.
-
-There is clearly a lot of work to do.
+As almost all of the platform specific responsibility has be moved to the
+mini_term gem, the tracking of portability progress issues now resides there
+as well. Please see [mini_term](https://github.com/PeterCamilleri/mini_term)
+for more information.
 
 ## Contributing
 
