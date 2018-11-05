@@ -32,7 +32,7 @@ module MiniReadline
     #<br>Singleton Methods Added:
     #* getch - Low-level get char.
     #* kbhit - Low-level keyboard hit test.
-    #* beep - Low-level beep.
+    #* beep  - Low-level beep.
     #* set_cursor_posn - Set the cursor position given coordinates (y*65536+x).
     #* get_screen_info - Get info about the console.
     #* get_handle - Get the internal handle associated with a file index.
