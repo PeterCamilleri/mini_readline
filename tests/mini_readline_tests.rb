@@ -11,6 +11,19 @@ class MiniReadlineTester < Minitest::Test
   #Track mini-test progress.
   include MinitestVisible
 
+  def test_that_it_has_a_version_number
+    refute_nil ::MiniReadline::VERSION
+    assert(::MiniReadline::VERSION.frozen?)
+    assert(::MiniReadline::VERSION.is_a?(String))
+    assert(/\A\d+\.\d+\.\d+/ =~ ::MiniReadline::VERSION)
+  end
+
+  def test_that_it_has_a_description
+    refute_nil ::MiniReadline::DESCRIPTION
+    assert(::MiniReadline::DESCRIPTION.frozen?)
+    assert(::MiniReadline::DESCRIPTION.is_a?(String))
+  end
+
   def test_that_module_entities_exists
     assert_equal(Module, MiniReadline.class)
     assert_equal(String, MiniReadline::VERSION.class)
@@ -24,20 +37,6 @@ class MiniReadlineTester < Minitest::Test
     refute_equal(MiniReadline::BASE_OPTIONS, edit.instance_options)
   end
 
-  def test_mapper_checking
-    MiniReadline::RawTerm::MAP["\xC0test"] = [:go_left]
-
-    assert_raises(MiniReadlineKME) { MiniReadline::RawTerm::MAP["\xC0t"]    = [:go_left] }
-    assert_raises(MiniReadlineKME) { MiniReadline::RawTerm::MAP["\xC0test"] = [:go_left] }
-  end
-
-  def test_platform_detection
-    if (MiniReadline::TERM_PLATFORM == :windows)
-      assert_equal(:windows, MiniReadline::PLATFORM)
-    else
-      assert_equal(:other, MiniReadline::PLATFORM)
-    end
-  end
 
   def test_reading_a_line
     puts

@@ -1,14 +1,14 @@
 # coding: utf-8
 
-#* read_line/window/edit/unmapped.rb - Process :unmapped
+# Process :unmapped
 module MiniReadline
 
-  #* read_line/window/edit/unmapped.rb - Process :unmapped
+  # Process :unmapped
   class Edit
 
-    #An unmapped key was pressed. Beep!
+    # An unmapped key was pressed. Beep!
     def unmapped(_keyboard_args)
-      @term.beep
+      MiniTerm.beep
     end
   end
 end

@@ -66,7 +66,7 @@ class Object
       puts 'Not supported by old readline.'
     else
       print 'Press a key:'
-      MiniReadline::BASE_OPTIONS[:term].get_mapped_keystroke
+      MiniTerm.get_mapped_char
     end
   end
 

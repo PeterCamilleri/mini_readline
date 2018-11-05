@@ -2,24 +2,7 @@
 # coding: utf-8
 
 require 'rake/testtask'
-require 'rdoc/task'
 require "bundler/gem_tasks"
-
-#Generate internal documentation with rdoc.
-RDoc::Task.new do |rdoc|
-  rdoc.rdoc_dir = "rdoc"
-
-  #List out all the files to be documented.
-  rdoc.rdoc_files.include("lib/**/*.rb", "license.txt")
-
-  #Make all access levels visible.
-  rdoc.options << '--visibility' << 'private'
-  #rdoc.options << '--verbose'
-  #rdoc.options << '--coverage-report'
-
-  #Set a title.
-  rdoc.options << '--title' << 'Mini Readline Gem'
-end
 
 #Run the mini_readline unit test suite.
 Rake::TestTask.new do |t|
@@ -44,11 +27,13 @@ task :vers do |t|
   puts "mini_readline version = #{MiniReadline::VERSION}"
 end
 
-desc "What is the module load out?"
-task :vls do |t|
-  require 'vls'
+desc "Alternative test procedure."
+task :alt_test do |t, args|
+  here  = File.dirname(__FILE__)
+  target = "#{here}/tests/*.rb"
 
-  puts
-  VersionLS.print_vls(/./)
+  block = "{|file| require file if File.basename(file) =~ /test/}"
+  code  = "Dir['#{target}'].each #{block}"
+
+  system "ruby -e\"#{code}\""
 end
-

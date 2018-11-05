@@ -1,9 +1,9 @@
 # coding: utf-8
 
-#* options.rb - Options selection, control, and access
+# Options selection, control, and access
 module MiniReadline
 
-  #The base options shared by all instances.
+  # The base options shared by all instances.
   BASE_OPTIONS = {:scroll_step   => 12,       #The amount scrolled.
 
                   :prompt        => ">",      #The default prompt.
@@ -25,10 +25,6 @@ module MiniReadline
                                               #string "*" to use stars or " "
                                               #for invisible secrets.
 
-                  :initial       => "",       #The initial text for the entry.
+                  :initial       => ""}       #The initial text for the entry.
                                               #An empty string for none.
-
-                  :term          => nil}      #Filled in by raw_term.rb
-                                              #MiniReadline::RawTerm
-
 end

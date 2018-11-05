@@ -225,11 +225,8 @@ BASE_OPTIONS = {
                               #string "*" to use stars or " "
                               #for invisible secrets.
 
-  :initial       => "",       #The initial text for the entry.
+  :initial       => ""}       #The initial text for the entry.
                               #An empty string for none.
-
-  :term          => nil}      #Filled in by raw_term.rb
-                              #MiniReadline::RawTerm
 ```
 
 <br>While most of these options are self explanatory, a few could stand some
@@ -260,12 +257,6 @@ the history option **TURNED OFF**. Otherwise later entries will be able to
 retrieve the secret codes by just scrolling through previous entries.
 * :initial is the initial text used to prefill the readline edit area with the
 specified text. Leave as an empty string to default to the empty edit area.
-* :term is the interactive source of data, the console by default. The raw
-terminal console driver automatically adapts to the system environment
-(Windows or Other) so that correct operation is normally achieved with no
-further actions on the part of the user. The terminal support class can be
-changed, to a user supplied class, to get data from another source, such as
-a serial attached terminal.
 
 Finally the :window_width option is now ignored. Screen width now automatically
 determined.
@@ -274,10 +265,6 @@ determined.
 #### Notes
 * Since the compatibility mode does not accept an options hash, the only way to
 affect options in this case is to modify the MiniReadline::BASE_OPTIONS hash.
-* The :term option is the low level console io object used to get data
-from the user and control what is displayed. This gem automatically adapts to
-the environment and plugs in the needed object. This can be overridden where
-special io needs exist.
 
 ### Auto-Complete
 The mini readline gem comes with four auto-complete engines. These are:
@@ -417,29 +404,14 @@ system gem, use this:
 ## Cross Platform Portability Progress
 
 The mini_readline gem was initially designed for use with MRI version 1.9.3 or
-later. The long term goal is to be as portable to as many versions of Ruby and
-on as many operating systems platforms as is possible. So far the matrix of
-support looks like:
+later. With version 0.9.0, the internal raw_term code is replaced with the new
+mini_term gem. That gem requires Ruby 2.0.0 or greater and now so does
+mini_readline.
 
-Ruby           | Win32   | Win64   | Cygwin  | Linux   | Mac
----------------|---------|---------|---------|---------|---------
-ruby 1.9.3p484 | Yes     | Yes     | ?       | ?       | ?
-ruby 2.1.6p336 | Yes     | ?       | ?       | ?       | ?
-ruby 2.2.3p173 | ?       | ?       | Yes     | ?       | ?
-ruby 2.3.3p222 | ?       | Yes     | ?       | ?       | ?
-jruby 9.1.5.0  | Mostly  | ?       | Planned | Planned | Planned
-rubinius       | N/A     | N/A     | N/A     | Maybe   | Maybe
-
-<br>Where:
-
-* 'Yes' means good to go! Coded and tested OK!
-* 'Mostly' is mostly working but still some minor issues (See issue #7).
-* '?' _should_ work but are untested.
-* 'Planned' are not there yet and some work and much testing are needed.
-* 'N/A' entries reflect the fact that Rubinius does not run under Windows.
-* 'Maybe' entries are not on the radar now, but maybe later.
-
-There is clearly a lot of work to do.
+As almost all of the platform specific responsibility has been moved to the
+mini_term gem, the tracking of portability progress issues now resides there
+as well. Please see [mini_term](https://github.com/PeterCamilleri/mini_term)
+for more information.
 
 ## Contributing
 

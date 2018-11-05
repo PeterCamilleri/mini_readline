@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Peter Camilleri"]
   spec.email         = ["peter.c.camilleri@gmail.com"]
 
-  spec.summary       = "A simplified replacement for readline."
+  spec.summary       = "Get console input with edit, history, and auto-complete."
   spec.description   = %{A gem, for console command entry with line edit and
                          history, inspired by the standard readline gem. Also
                          included are four sample auto-complete agents and the
@@ -25,13 +25,14 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.required_ruby_version = '>=1.9.3'
+  spec.required_ruby_version = '>= 2.0'
+
+  spec.add_runtime_dependency     'mini_term', "~> 0.1.0"
 
   spec.add_development_dependency "rake", "~> 12.0"
   spec.add_development_dependency "bundler", "~> 1.11"
   spec.add_development_dependency 'minitest', "~> 5.7"
   spec.add_development_dependency 'minitest_visible', "~> 0.1"
-  spec.add_development_dependency 'rdoc', "~> 5.0"
-  spec.add_development_dependency 'reek', "~> 4.5"
+  spec.add_development_dependency 'reek', ">= 5.0.2"
 
 end

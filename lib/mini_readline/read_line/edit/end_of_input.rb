@@ -1,17 +1,17 @@
 # coding: utf-8
 
-#* read_line/window/edit/end_of_input.rb - Process :end_of_input
+# Process :end_of_input
 module MiniReadline
 
-  #* read_line/window/edit/end_of_input.rb - Process :end_of_input
+  # Process :end_of_input
   class Edit
 
-    #The insert_text command. We are DONE!
+    # We are DONE!
     def end_of_input(_keyboard_args)
       if @options[:eoi_detect]
         raise MiniReadlineEOI, "End of input detected."
       else
-        @term.beep
+        MiniTerm.beep
       end
     end
   end
