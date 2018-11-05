@@ -8,7 +8,7 @@ module MiniReadline
 
     #Keep the cursor in sync!
     def sync_cursor(edit_posn)
-      @term.set_posn(edit_posn - left_margin + prompt.length)
+      MiniTerm.set_posn(column: edit_posn - left_margin + prompt.length)
     end
 
   end

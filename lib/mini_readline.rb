@@ -1,14 +1,16 @@
 # coding: utf-8
 
-require          "English"
+require "English"
+
+require "mini_term"
+MiniTerm.open(quiet: true, pass_ctrl_s: true)
+
 require_relative "mini_readline/version"
 require_relative "mini_readline/exceptions"
 require_relative "mini_readline/options"
-require_relative "mini_readline/raw_term"
 require_relative "mini_readline/read_line"
 
-#The \MiniReadline module.
-#* mini_readline.rb - The root file that gathers up all the system's parts.
+#The MiniReadline main module.
 module MiniReadline
 
   private_constant :Prompt

@@ -12,7 +12,7 @@ module MiniReadline
         @edit_buffer = @edit_buffer[0...(@edit_posn)] +
                        @edit_buffer[@edit_posn+1..-1]
       else
-        @term.beep
+        MiniTerm.beep
       end
     end
   end

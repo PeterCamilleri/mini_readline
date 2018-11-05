@@ -11,7 +11,7 @@ module MiniReadline
       if @edit_posn < edit_buffer.length
         @edit_posn += 1
       else
-        @term.beep
+        MiniTerm.beep
       end
     end
   end

@@ -25,10 +25,6 @@ module MiniReadline
                                               #string "*" to use stars or " "
                                               #for invisible secrets.
 
-                  :initial       => "",       #The initial text for the entry.
+                  :initial       => ""}       #The initial text for the entry.
                                               #An empty string for none.
-
-                  :term          => nil}      #Filled in by raw_term.rb
-                                              #MiniReadline::RawTerm
-
 end

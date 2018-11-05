@@ -8,7 +8,7 @@ module MiniReadline
 
     #An unmapped key was pressed. Beep!
     def unmapped(_keyboard_args)
-      @term.beep
+      MiniTerm.beep
     end
   end
 end

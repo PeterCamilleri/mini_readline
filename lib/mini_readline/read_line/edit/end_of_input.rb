@@ -11,7 +11,7 @@ module MiniReadline
       if @options[:eoi_detect]
         raise MiniReadlineEOI, "End of input detected."
       else
-        @term.beep
+        MiniTerm.beep
       end
     end
   end

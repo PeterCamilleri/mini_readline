@@ -14,7 +14,7 @@ module MiniReadline
 
         @edit_posn -= 1
       else
-        @term.beep
+        MiniTerm.beep
       end
     end
   end

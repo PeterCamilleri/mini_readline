@@ -39,9 +39,8 @@ module MiniReadline
     def readline(options = {})
       suppress_warnings
       initialize_parms(options)
-      @edit.edit_process
+      MiniTerm.raw { @edit.edit_process }
     ensure
-      @term.conclude
       restore_warnings
     end
 
@@ -62,9 +61,7 @@ module MiniReadline
                    .merge(instance_options)
                    .merge(options)
 
-      (@term = @options[:term]).initialize_parms
-
-      @options[:window_width] = @term.window_width - 1
+      @options[:window_width] = MiniTerm.width - 1
       set_prompt(@options[:prompt])
       verify_mask(@options[:secret_mask])
     end

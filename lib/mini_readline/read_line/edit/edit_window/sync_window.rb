@@ -47,14 +47,14 @@ module MiniReadline
     #Bring the screen into agreement with the image.
     def update_screen(image)
       if @show_prompt
-        @term.put_string("\r#{prompt.text}\r")
+        MiniTerm.print("\r#{prompt.text}\r")
         @show_prompt = false
       end
 
       (0...active_width).each do |index|
         if (image_char = image[index]) != window_buffer[index]
-          @term.set_posn(prompt.length + index)
-          @term.put_string(image_char)
+          MiniTerm.set_posn(column: prompt.length + index)
+          MiniTerm.print(image_char)
         end
       end
     end

@@ -12,7 +12,7 @@ module MiniReadline
         right = @edit_buffer[(@edit_posn+1)..-1]
         @edit_posn = (posn = right.index(/\s\S/)) ? @edit_posn+posn+2 : length
       else
-        @term.beep
+        MiniTerm.beep
       end
     end
   end

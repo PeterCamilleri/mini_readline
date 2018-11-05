@@ -38,7 +38,6 @@ module MiniReadline
     def initialize(history, options)
       @options     = options
       @history     = history
-      @term        = @options[:term]
       @edit_buffer = @options[:initial]
       @edit_posn   = @edit_buffer.length
       @working     = true

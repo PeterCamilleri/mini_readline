@@ -14,7 +14,6 @@ module MiniReadline
       @options      = options
       @base_width   = window_width - @options[:base_prompt].length
       @scroll_width = window_width - @options[:scroll_prompt].length
-      @term         = @options[:term]
 
       @left_margin, @window_buffer, @show_prompt = 0, "", true
     end
