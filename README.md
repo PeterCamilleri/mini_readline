@@ -408,7 +408,7 @@ later. With version 0.9.0, the internal raw_term code is replaced with the new
 mini_term gem. That gem requires Ruby 2.0.0 or greater and now so does
 mini_readline.
 
-As almost all of the platform specific responsibility has be moved to the
+As almost all of the platform specific responsibility has been moved to the
 mini_term gem, the tracking of portability progress issues now resides there
 as well. Please see [mini_term](https://github.com/PeterCamilleri/mini_term)
 for more information.
