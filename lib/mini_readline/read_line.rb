@@ -42,6 +42,7 @@ module MiniReadline
       MiniTerm.raw { @edit.edit_process }
     ensure
       restore_warnings
+      puts
     end
 
     #Initialize the read line process. This basically process the arguments

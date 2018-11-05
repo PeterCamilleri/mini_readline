@@ -5,6 +5,7 @@ require "English"
 require "mini_term"
 MiniTerm.open(quiet: true, pass_ctrl_s: true)
 
+require_relative "mini_readline/maps"
 require_relative "mini_readline/version"
 require_relative "mini_readline/exceptions"
 require_relative "mini_readline/options"
