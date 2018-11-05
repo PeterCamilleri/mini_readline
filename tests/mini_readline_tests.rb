@@ -11,6 +11,19 @@ class MiniReadlineTester < Minitest::Test
   #Track mini-test progress.
   include MinitestVisible
 
+  def test_that_it_has_a_version_number
+    refute_nil ::MiniReadline::VERSION
+    assert(::MiniReadline::VERSION.frozen?)
+    assert(::MiniReadline::VERSION.is_a?(String))
+    assert(/\A\d+\.\d+\.\d+/ =~ ::MiniReadline::VERSION)
+  end
+
+  def test_that_it_has_a_description
+    refute_nil ::MiniReadline::DESCRIPTION
+    assert(::MiniReadline::DESCRIPTION.frozen?)
+    assert(::MiniReadline::DESCRIPTION.is_a?(String))
+  end
+
   def test_that_module_entities_exists
     assert_equal(Module, MiniReadline.class)
     assert_equal(String, MiniReadline::VERSION.class)
