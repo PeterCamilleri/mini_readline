@@ -26,12 +26,3 @@ task :vers do |t|
   puts
   puts "mini_readline version = #{MiniReadline::VERSION}"
 end
-
-desc "What is the module load out?"
-task :vls do |t|
-  require 'vls'
-
-  puts
-  VersionLS.print_vls(/./)
-end
-
