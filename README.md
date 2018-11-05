@@ -225,11 +225,8 @@ BASE_OPTIONS = {
                               #string "*" to use stars or " "
                               #for invisible secrets.
 
-  :initial       => "",       #The initial text for the entry.
+  :initial       => ""}       #The initial text for the entry.
                               #An empty string for none.
-
-  :term          => nil}      #Filled in by raw_term.rb
-                              #MiniReadline::RawTerm
 ```
 
 <br>While most of these options are self explanatory, a few could stand some
@@ -260,12 +257,6 @@ the history option **TURNED OFF**. Otherwise later entries will be able to
 retrieve the secret codes by just scrolling through previous entries.
 * :initial is the initial text used to prefill the readline edit area with the
 specified text. Leave as an empty string to default to the empty edit area.
-* :term is the interactive source of data, the console by default. The raw
-terminal console driver automatically adapts to the system environment
-(Windows or Other) so that correct operation is normally achieved with no
-further actions on the part of the user. The terminal support class can be
-changed, to a user supplied class, to get data from another source, such as
-a serial attached terminal.
 
 Finally the :window_width option is now ignored. Screen width now automatically
 determined.
@@ -274,10 +265,6 @@ determined.
 #### Notes
 * Since the compatibility mode does not accept an options hash, the only way to
 affect options in this case is to modify the MiniReadline::BASE_OPTIONS hash.
-* The :term option is the low level console io object used to get data
-from the user and control what is displayed. This gem automatically adapts to
-the environment and plugs in the needed object. This can be overridden where
-special io needs exist.
 
 ### Auto-Complete
 The mini readline gem comes with four auto-complete engines. These are:

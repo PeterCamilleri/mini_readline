@@ -68,7 +68,7 @@ module MiniReadline
       while @working
         @edit_window.sync_window(edit_buffer, edit_posn)
         @edit_window.sync_cursor(edit_posn)
-        process_keystroke(@term.get_mapped_keystroke)
+        process_keystroke(MiniTerm.get_mapped_char)
       end
 
       edit_buffer
