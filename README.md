@@ -9,8 +9,14 @@ of Ruby programs. It will also try to correct a number of irritating issues
 encountered when running cross platform environments. See Cross Platform
 Portability Progress below for more details.
 
-Finally, I know this code must seem to give off a sort of angry birds vibe
-against the original rb-readline gem. This sort of thing is not good. I owe
+Further, while spread out over a much larger number of smaller, manageable
+files, mini readline has only 1232 lines of code. In fact, only two files have
+more than 100 lines in total. The rb-readline gem has a much larger 9480 lines
+of code with 8920 of them in a single, monster file. While the smaller files do
+have some downsides, bloated files are, in my opinion, worse.
+
+Finally, I know this whole effort must seem to give off a sort of angry birds
+vibe against the original rb-readline gem. That is not my intent at all. I owe
 a great debt of gratitude to the authors and maintainers of that vital code.
 Their getting around the whole Win32API, dl obsolescence debacle saved me so
 much time and frustration that words do not suffice. Thanks!
