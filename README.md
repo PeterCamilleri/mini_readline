@@ -267,11 +267,6 @@ specified text. Leave as an empty string to default to the empty edit area.
 Finally the :window_width option is now ignored. Screen width now automatically
 determined.
 
-
-#### Notes
-* Since the compatibility mode does not accept an options hash, the only way to
-affect options in this case is to modify the MiniReadline::BASE_OPTIONS hash.
-
 ### Auto-Complete
 The mini readline gem comes with four auto-complete engines. These are:
 
