@@ -5,7 +5,7 @@ gem              'minitest'
 require          'minitest/autorun'
 require          'minitest_visible'
 
-class MiniReadlineTester < Minitest::Test
+class SomeHistoryTester < Minitest::Test
 
   #Track mini-test progress.
   include MinitestVisible
