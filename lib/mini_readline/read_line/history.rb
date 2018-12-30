@@ -49,16 +49,13 @@ module MiniReadline
 
       if history[str]
         if @options[:no_dups]
-          unless @options[:no_move]
-            history.delete(str)
-            history << str
-          end
-        else
-          history << str
+          return if @options[:no_move]
+
+          history.delete(str)
         end
-      else
-        history << str
       end
+
+      history << str
     end
 
     # Get the history buffer associated with this instance.
