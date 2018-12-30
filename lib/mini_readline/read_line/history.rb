@@ -47,7 +47,7 @@ module MiniReadline
     def append_history(str)
       return if @options[:no_blanks] && str.strip.empty?
 
-      if history[str]
+      if history.include?(str)
         if @options[:no_dups]
           return if @options[:no_move]
 
