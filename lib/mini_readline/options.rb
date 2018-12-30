@@ -20,6 +20,7 @@ module MiniReadline
                   :log           => [],       #Default is no previous history
                   :no_blanks     => true,     #No empty lines in history.
                   :no_dups       => true,     #No duplicate lines in history.
+                  :no_move       => false,    #Don't move history entries.
 
                   :secret_mask   => nil,      #No secret password mask. Use the
                                               #string "*" to use stars or " "

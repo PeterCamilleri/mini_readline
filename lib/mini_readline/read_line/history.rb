@@ -45,10 +45,20 @@ module MiniReadline
 
     # Append a string to the history buffer if enabled.
     def append_history(str)
-      return              if @options[:no_blanks] && str.strip.empty?
-      history.delete(str) if @options[:no_dups]
+      return if @options[:no_blanks] && str.strip.empty?
 
-      history << str
+      if history[str]
+        if @options[:no_dups]
+          unless @options[:no_move]
+            history.delete(str)
+            history << str
+          end
+        else
+          history << str
+        end
+      else
+        history << str
+      end
     end
 
     # Get the history buffer associated with this instance.
