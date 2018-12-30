@@ -5,7 +5,6 @@ gem              'minitest'
 require          'minitest/autorun'
 require          'minitest_visible'
 
-#Test the monkey patches applied to the Object class.
 class MiniReadlineTester < Minitest::Test
 
   #Track mini-test progress.
