@@ -32,6 +32,7 @@ require_relative 'edit/unmapped'
 module MiniReadline
 
   # The line editor.
+  # :reek:TooManyInstanceVariables  -- Yes and it needs them!
   class Edit
 
     # Set up the edit instance.

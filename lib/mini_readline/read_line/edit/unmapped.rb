@@ -7,6 +7,7 @@ module MiniReadline
   class Edit
 
     # An unmapped key was pressed. Beep!
+    # :reek:UtilityFunction  -- Does not depend on state.
     def unmapped(_keyboard_args)
       MiniTerm.beep
     end
