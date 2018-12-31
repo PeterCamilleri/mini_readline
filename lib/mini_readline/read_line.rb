@@ -8,9 +8,10 @@ require_relative 'read_line/no_history'
 # The ReadLine class that does the actual work.
 module MiniReadline
 
-  #The Readline class that does the actual work of getting lines from the
-  #user. Note that each instance of this class maintains its own copy of
-  #the optional command history.
+  # The Readline class that does the actual work of getting lines from the
+  # user. Note that each instance of this class maintains its own copy of
+  # the optional command history.
+  # :reek:TooManyInstanceVariables  -- Yes and it needs them!
   class Readline
 
     # The options specifically associated with this instance.

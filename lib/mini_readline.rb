@@ -14,12 +14,6 @@ require_relative "mini_readline/read_line"
 # The MiniReadline main module.
 module MiniReadline
 
-  private_constant :Prompt
-  private_constant :Edit
-  private_constant :EditWindow
-  private_constant :History
-  private_constant :NoHistory
-
   # The (limited) compatibility module function.
   def self.readline(prompt = "", history = nil, options = {})
     get_reader.readline(options.merge({prompt: prompt, history: history}))

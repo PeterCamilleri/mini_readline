@@ -7,6 +7,7 @@ require_relative 'edit_window/sync_cursor'
 module MiniReadline
 
   # Support for the edit window.
+  # :reek:TooManyInstanceVariables  -- Yes and it needs them!
   class EditWindow
 
     # Determine the edit window limits.

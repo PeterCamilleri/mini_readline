@@ -32,6 +32,7 @@ require_relative 'edit/unmapped'
 module MiniReadline
 
   # The line editor.
+  # :reek:TooManyInstanceVariables  -- Yes and it needs them!
   class Edit
 
     # Set up the edit instance.
@@ -60,7 +61,7 @@ module MiniReadline
     def edit_process
       result = edit_loop
       @history.append_history(result)
-      result + "\n"
+      result + (@options[:chomp] ? "" : "\n")
     end
 
     # The line editor processing loop.

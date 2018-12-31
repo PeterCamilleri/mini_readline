@@ -9,12 +9,13 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Peter Camilleri"]
   spec.email         = ["peter.c.camilleri@gmail.com"]
 
-  spec.summary       = "Get console input with edit, history, and auto-complete."
-  spec.description   = %{A gem, for console command entry with line edit and
-                         history, inspired by the standard readline gem. Also
-                         included are four sample auto-complete agents and the
-                         irbm utility, which is irb + mini_readline and not an
-                         Intermediate Range Ballistic Missile.
+  spec.summary       = "mini_readline: Get console input with edit, history, and auto-complete."
+  spec.description   = %{mini_readline: A compact, little gem for console
+                         command entry with line edit and history, inspired by
+                         the standard readline gem. Also included are four
+                         sample auto-complete agents and the irbm utility,
+                         which is irb + mini_readline and not an Intermediate
+                         Range Ballistic Missile.
                         }.gsub(/\s+/, ' ').strip
 
   spec.homepage      = "https://github.com/PeterCamilleri/mini_readline"

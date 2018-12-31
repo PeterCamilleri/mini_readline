@@ -47,7 +47,7 @@ class MiniReadlineTester < Minitest::Test
     result = ''
 
     loop do
-      result = edit.readline(prompt: ">", history: true).chomp
+      result = edit.readline(prompt: ">", chomp: true, history: true)
       puts result.inspect
       break unless result != "quit"
     end
@@ -64,12 +64,12 @@ class MiniReadlineTester < Minitest::Test
     result = ''
 
     loop do
-      result = edit.readline(prompt: ">").chomp
+      result = edit.readline(prompt: ">")
       puts result.inspect
-      break unless result != "quit"
+      break unless result != "quit\n"
     end
 
-    assert_equal("quit", result)
+    assert_equal("quit\n", result)
   end
 
   def test_reading_with_a_default

@@ -6,11 +6,18 @@ inline editing, command history, and stock or customizable auto-complete.
 The mini readline gem is an experiment in replacing the standard readline gem
 that is part of Ruby. The mini readline project will try to focus on the needs
 of Ruby programs. It will also try to correct a number of irritating issues
-encountered when running cross platform environments. See Cross Platform
-Portability Progress below for more details.
+encountered when running cross platform environments. This is achieved through
+the use of the mini_term gem that deals with the mess of getting proper access
+to the low-level "terminal".
+
+While the standard readline gem tries its best to be compatible with the GNU
+Readline library written in "C", mini_readline does not. Instead it takes on
+the goal of being best suited to the needs of Ruby programmers. While this
+makes it much less useful to those porting over Unix/Linux utilities, it makes
+it more useful to Ruby programmers creating CLI utilities in that language.
 
 Further, while spread out over a much larger number of smaller, manageable
-files, mini readline has only 1232 lines of code. In fact, only two files have
+files, mini readline has only 1238 lines of code. In fact, only two files have
 more than 100 lines in total. The rb-readline gem has a much larger 9480 lines
 of code with 8920 of them in a single, monster file. While the smaller files do
 have some downsides, bloated files are, in my opinion, worse.
@@ -209,30 +216,35 @@ entries.
 
 <br>The available options are described below:
 ```ruby
+# The base options shared by all instances.
 BASE_OPTIONS = {
-  :scroll_step   => 12,       #The amount horizontally scrolled.
+  :scroll_step   => 12,       # The amount scrolled.
 
-  :prompt        => ">",      #The default prompt.
-  :alt_prompt    => "<< ",    #The prompt when scrolled.
-                              #Set to nil for no alt prompt.
+  :prompt        => ">",      # The default prompt.
+  :alt_prompt    => "<< ",    # The prompt when scrolled.
+                              # Set to nil to use main prompt.
 
-  :auto_complete => false,    #Is auto complete enabled?
-  :auto_source   => nil,      #Filled in by auto_complete.rb
-                              #MiniReadline::QuotedFileFolderSource
+  :auto_complete => false,    # Is auto complete enabled?
+  :auto_source   => nil,      # Filled in by auto_complete.rb
+                              # MiniReadline::QuotedFileFolderSource
 
-  :eoi_detect    => false,    #Is end of input detection enabled?
+  :chomp         => false,    # Remove the trailing new-line?
 
-  :history       => false,    #Is the history buffer enabled?
-  :log           => [],       #Default is no previous history
-  :no_blanks     => true,     #No empty lines in history.
-  :no_dups       => true,     #No duplicate lines in history.
+  :eoi_detect    => false,    # Is end of input detection enabled?
 
-  :secret_mask   => nil,      #No secret password mask. Use the
-                              #string "*" to use stars or " "
-                              #for invisible secrets.
+  :history       => false,    # Is the history buffer enabled?
+  :log           => [],       # Default is no previous history
+  :no_blanks     => true,     # No empty lines in history.
+  :no_dups       => true,     # No duplicate lines in history.
+  :no_move       => false,    # Don't move history entries.
 
-  :initial       => ""}       #The initial text for the entry.
-                              #An empty string for none.
+  :secret_mask   => nil,      # No secret password mask. Use the
+                              # string "*" to use stars or " "
+                              # for invisible secrets.
+
+  :initial       => ""        # The initial text for the entry.
+                              # An empty string for none.
+}
 ```
 
 <br>While most of these options are self explanatory, a few could stand some
@@ -253,9 +265,17 @@ MiniReadline::BASE_OPTION[:auto_complete] = true
 this is MiniReadline::QuotedFileFolderSource. This option can be changed up to
 get auto-complete data other than files and folders. See Auto-Compete below for
 more details.
+* :chomp is used to remove the trailing new-line character that garnishes the
+text from the user. Set to true for clean text, and to false for parsley to
+throw out.
 * :eoi_detect is used to control the end of input detection logic. If disabled,
 eoi inputs are treated as unmapped. If enabled, they raise a MiniReadlineEOI
 exception.
+* A few options control the history buffer. With the history option on, lines
+entered are retained in a buffer. Otherwise, no record is kept of entered text.
+When no_blanks is set, blank lines are not saved. When no_dups is set,
+duplicate lines are not saved. If so, when duplicates do occur, the no_move
+option keeps the older copy. Otherwise the newer copy is retained.
 * :secret_mask is a masking character to be used for sensitive input like a
 password or missile launch code. This should be exactly one character long.
 Typical values are "\*" or " ". Also, any secret entries should be done with
