@@ -61,7 +61,7 @@ module MiniReadline
     def edit_process
       result = edit_loop
       @history.append_history(result)
-      result + "\n"
+      result + (@options[:chomp] ? "" : "\n")
     end
 
     # The line editor processing loop.

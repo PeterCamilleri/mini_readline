@@ -228,6 +228,8 @@ BASE_OPTIONS = {
   :auto_source   => nil,      # Filled in by auto_complete.rb
                               # MiniReadline::QuotedFileFolderSource
 
+  :chomp         => false,    # Remove the trailing new-line?
+
   :eoi_detect    => false,    # Is end of input detection enabled?
 
   :history       => false,    # Is the history buffer enabled?
@@ -263,6 +265,9 @@ MiniReadline::BASE_OPTION[:auto_complete] = true
 this is MiniReadline::QuotedFileFolderSource. This option can be changed up to
 get auto-complete data other than files and folders. See Auto-Compete below for
 more details.
+* :chomp is used to remove the trailing new-line character that garnishes the
+text from the user. Set to true for clean text, and to false for parsley to
+throw out.
 * :eoi_detect is used to control the end of input detection logic. If disabled,
 eoi inputs are treated as unmapped. If enabled, they raise a MiniReadlineEOI
 exception.

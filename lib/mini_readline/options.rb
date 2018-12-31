@@ -15,6 +15,8 @@ module MiniReadline
     :auto_source   => nil,      # Filled in by auto_complete.rb
                                 # MiniReadline::QuotedFileFolderSource
 
+    :chomp         => false,    # Remove the trailing new-line?
+
     :eoi_detect    => false,    # Is end of input detection enabled?
 
     :history       => false,    # Is the history buffer enabled?
