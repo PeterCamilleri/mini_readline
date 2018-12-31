@@ -257,6 +257,11 @@ more details.
 * :eoi_detect is used to control the end of input detection logic. If disabled,
 eoi inputs are treated as unmapped. If enabled, they raise a MiniReadlineEOI
 exception.
+* A few options control the history buffer. With the history option on, lines
+entered are retained in a buffer. Otherwise, no record is kept of entered text.
+When no_blanks is set, blank lines are not saved. When no_dups is set,
+duplicate lines are not saved. If so, when duplicates do occur, the no_move
+option keeps the older copy. Otherwise the newer copy is retained.
 * :secret_mask is a masking character to be used for sensitive input like a
 password or missile launch code. This should be exactly one character long.
 Typical values are "\*" or " ". Also, any secret entries should be done with
