@@ -6,11 +6,18 @@ inline editing, command history, and stock or customizable auto-complete.
 The mini readline gem is an experiment in replacing the standard readline gem
 that is part of Ruby. The mini readline project will try to focus on the needs
 of Ruby programs. It will also try to correct a number of irritating issues
-encountered when running cross platform environments. See Cross Platform
-Portability Progress below for more details.
+encountered when running cross platform environments. This is achieved through
+the use of the mini_term gem that deals with the mess of getting proper access
+to the low-level "terminal".
+
+While the standard readline gem tries its best to be compatible with the GNU 
+Readline library written in "C", mini_readline does not. Instead it takes on
+the goal of being best suited to the needs of Ruby programmers. While this
+makes it less useful to those porting over Un*x utilities, it makes it more
+useful to Ruby programmers creating CLI utilities in that language.
 
 Further, while spread out over a much larger number of smaller, manageable
-files, mini readline has only 1232 lines of code. In fact, only two files have
+files, mini readline has only 1238 lines of code. In fact, only two files have
 more than 100 lines in total. The rb-readline gem has a much larger 9480 lines
 of code with 8920 of them in a single, monster file. While the smaller files do
 have some downsides, bloated files are, in my opinion, worse.
