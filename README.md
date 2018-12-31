@@ -10,11 +10,11 @@ encountered when running cross platform environments. This is achieved through
 the use of the mini_term gem that deals with the mess of getting proper access
 to the low-level "terminal".
 
-While the standard readline gem tries its best to be compatible with the GNU 
+While the standard readline gem tries its best to be compatible with the GNU
 Readline library written in "C", mini_readline does not. Instead it takes on
 the goal of being best suited to the needs of Ruby programmers. While this
-makes it less useful to those porting over Un*x utilities, it makes it more
-useful to Ruby programmers creating CLI utilities in that language.
+makes it much less useful to those porting over Unix/Linux utilities, it makes
+it more useful to Ruby programmers creating CLI utilities in that language.
 
 Further, while spread out over a much larger number of smaller, manageable
 files, mini readline has only 1238 lines of code. In fact, only two files have
