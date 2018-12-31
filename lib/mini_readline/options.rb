@@ -29,5 +29,5 @@ module MiniReadline
 
     :initial       => ""        # The initial text for the entry.
                                 # An empty string for none.
-   }
+  }
 end
