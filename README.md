@@ -367,7 +367,7 @@ statement to permit the use of clearer, easier to read access to regular
 expression results.
 
 <br> An example of a custom auto-complete facility may be found in the mysh
-gem located at: https://github.com/PeterCamilleri/mysh/blob/master/lib/mysh/user_input/smart_source.rb
+gem located at: https://github.com/PeterCamilleri/mysh/blob/master/lib/mysh/sources/smart_auto_complete.rb
 
 ### Important Security Note
 
