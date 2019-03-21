@@ -153,15 +153,11 @@ module SIRE
     pp result unless line.length == 0
 
   rescue Interrupt => e
-    puts "\nExecution Interrupted!"
-    puts "\n#{e.class} detected: #{e}\n"
-    puts e.backtrace
-    puts "\n"
+    puts "", "Execution Interrupted!"
+    puts "", "#{e.class} detected: #{e}", ""
 
   rescue StandardError, ScriptError => e
-    puts "\n#{e.class} detected: #{e}\n"
-    puts e.backtrace
-    puts
+    puts "", "#{e.class} detected: #{e}", ""
   end
 
 end
