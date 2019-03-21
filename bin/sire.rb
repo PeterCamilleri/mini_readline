@@ -15,16 +15,30 @@ valid_options = {'local' => :reader,
 
 options = {reader: 'gem'}
 
-ARGV.each do |arg|
-  key = valid_options[arg]
+# Display help for SIRE and exit.
+def display_help(error=nil)
+  puts "SIRE: a Simple Interactive Ruby Environment\n"
 
-  unless key
-    puts "Invalid option: #{arg}"
-    exit
+  if error
+    puts "Invalid option: #{error}"
   end
 
+  puts "", "Usage: sire <options>"
+  puts "  local       Use the local mini_readline code."
+  puts "  gem         Use the mini_readline installed gem."
+  puts "  old         Use the standard readline gem."
+  puts "  help  -?    Display this help and exit."
+
+  exit
+end
+
+ARGV.each do |arg|
+  key = valid_options[arg]
+  display_help(arg) unless key
   options[key] = arg
 end
+
+display_help if options[:help]
 
 case options[:reader]
 when 'local'
@@ -76,7 +90,7 @@ class Object
     end
   end
 
-  #Test spawning a process. This breaks the regular readline gem.
+  # Test spawning a process. This breaks the regular readline gem.
   def run(command)
     IO.popen(command, "r+") do |io|
       io.close_write
@@ -93,7 +107,7 @@ end
 #The SIRE module contains a simplistic R.E.P.L. to test out mini_readline.
 module SIRE
 
-  #Run the interactive session.
+  # Run the interactive session.
   def self.run_sire(evaluator)
     @evaluator = evaluator
 
@@ -118,13 +132,13 @@ module SIRE
 
   private
 
-  #Get a line of input from the user.
+  # Get a line of input from the user.
   def self.get_line
     initial_input = MiniReadline.readline("SIRE>", true)
     get_extra_input(initial_input)
   end
 
-  #Get any continuations of the inputs
+  # Get any continuations of the inputs
   def self.get_extra_input(str)
     if /\\\s*$/ =~ str
       get_extra_input($PREMATCH + "\n" + MiniReadline.readline("SIRE\\", true))
@@ -133,7 +147,7 @@ module SIRE
     end
   end
 
-  #Execute a single line.
+  # Execute a single line.
   def self.exec_line(line)
     result = @evaluator.eval(line)
     pp result unless line.length == 0
