@@ -3,39 +3,46 @@
 
 require 'pp'
 
-#Some SIRE control variables.
-$sire_done    = false
-$sire_binding = binding
-$sire_old     = (ARGV[0] == 'old') || defined?(Readline)
+# Capture a binding for code evaluation.
+sire_binding = binding
 
-if $sire_old
-  require 'readline'
-  class MiniReadlineEOI < StandardError; end #Compatibility stub.
-  puts "\nLoaded the standard readline gem. Version #{Readline::VERSION}"
-elsif ARGV[0] == 'local'
-  require './lib/mini_readline'
-  puts "\nOption(local). Loaded mini_readline from the local code folder. Version #{MiniReadline::VERSION}"
-elsif defined?(MiniReadline)
-  puts "\nThe mini_readline gem is already loaded. Version #{MiniReadline::VERSION}"
-else
-  begin
-    require 'mini_readline'
-    puts "\nLoaded mini_readline from the system gem. Version #{MiniReadline::VERSION}"
-  rescue LoadError
-    begin
-      require './lib/mini_readline'
-      puts "\nLoaded mini_readline from the local code folder. Version #{MiniReadline::VERSION}"
-    rescue LoadError
-      require 'readline'
-      puts "\nLoaded the standard readline gem. Version #{Readline::VERSION}"
-    end
+# Process command line arguments.
+valid_options = {'local' => :reader,
+                 'gem'   => :reader,
+                 'old'   => :reader,
+                 'help'  => :help,
+                 '?'     => :help}
+
+options = {reader: 'gem'}
+
+ARGV.each do |arg|
+  key = valid_options[arg]
+
+  unless key
+    puts "Invalid option: #{arg}"
+    exit
   end
+
+  options[key] = arg
 end
 
-Readline = MiniReadline unless defined?(Readline)
+case options[:reader]
+when 'local'
+  require_relative '../lib/mini_readline'
+  puts "", "Option(local). Loaded mini_readline from the local code folder. Version #{MiniReadline::VERSION}"
+when 'gem'
+  require 'mini_readline'
+  puts "", "Loaded mini_readline from the system gem. Version #{MiniReadline::VERSION}"
+when 'old'
+  require 'readline'
+  class MiniReadlineEOI < StandardError; end #Compatibility stub.
+  puts "", "Loaded the standard readline gem. Version #{Readline::VERSION}"
+end
+
+MiniReadline = Readline unless defined?(MiniReadline)
 
 class Object
-  #Generate the class lineage of the object.
+  # Generate the class lineage of the object.
   def classes
     begin
       result = ""
@@ -53,16 +60,15 @@ class Object
 
   private
 
-  #Quit the interactive session.
+  # Quit the interactive session.
   def quit
-    $sire_done = true
-    puts
-    "Quit command."
+    puts "Quit command.", ""
+    exit
   end
 
-  #Get a mapped keystroke.
+  # Get a mapped keystroke.
   def get_mapped
-    if $sire_old
+    if old?
       puts 'Not supported by old readline.'
     else
       print 'Press a key:'
@@ -78,14 +84,20 @@ class Object
     end
   end
 
+  def old?
+    defined?(Readline)
+  end
+
 end
 
 #The SIRE module contains a simplistic R.E.P.L. to test out mini_readline.
 module SIRE
 
   #Run the interactive session.
-  def self.run_sire
-    unless $sire_old
+  def self.run_sire(evaluator)
+    @evaluator = evaluator
+
+    unless old?
       MiniReadline::BASE_OPTIONS[:auto_complete] = true
       MiniReadline::BASE_OPTIONS[:eoi_detect] = true
     end
@@ -94,7 +106,7 @@ module SIRE
     puts "Welcome to a Simple Interactive Ruby Environment\n"
     puts "Use the command 'quit' to exit.\n\n"
 
-    until $sire_done
+    loop do
       exec_line(get_line)
     end
 
@@ -108,14 +120,14 @@ module SIRE
 
   #Get a line of input from the user.
   def self.get_line
-    initial_input = Readline.readline("SIRE>", true)
+    initial_input = MiniReadline.readline("SIRE>", true)
     get_extra_input(initial_input)
   end
 
   #Get any continuations of the inputs
   def self.get_extra_input(str)
     if /\\\s*$/ =~ str
-      get_extra_input($PREMATCH + "\n" + Readline.readline("SIRE\\", true))
+      get_extra_input($PREMATCH + "\n" + MiniReadline.readline("SIRE\\", true))
     else
       str
     end
@@ -123,7 +135,7 @@ module SIRE
 
   #Execute a single line.
   def self.exec_line(line)
-    result = $sire_binding.eval(line)
+    result = @evaluator.eval(line)
     pp result unless line.length == 0
 
   rescue Interrupt => e
@@ -140,5 +152,4 @@ module SIRE
 
 end
 
-
-SIRE.run_sire
+SIRE.run_sire(sire_binding)
