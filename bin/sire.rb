@@ -71,10 +71,8 @@ class Object
     if old?
       puts 'Not supported by old readline.'
     else
-      print 'Press a key:'
-      result = MiniTerm.get_mapped_char
-      puts
-      result
+      print 'Press a key: '
+      MiniTerm.get_mapped_char
     end
   end
 
