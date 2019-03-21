@@ -132,7 +132,7 @@ module SIRE
     puts e.backtrace
     puts "\n"
 
-  rescue Exception => e
+  rescue StandardError, ScriptError => e
     puts "\n#{e.class} detected: #{e}\n"
     puts e.backtrace
     puts
