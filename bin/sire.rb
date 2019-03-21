@@ -10,6 +10,7 @@ sire_binding = binding
 valid_options = {'local' => :reader,
                  'gem'   => :reader,
                  'old'   => :reader,
+                 'map1'  => :map,
                  'help'  => :help,
                  '?'     => :help}
 
@@ -54,6 +55,46 @@ when 'old'
 end
 
 MiniReadline = Readline unless defined?(MiniReadline)
+
+if options[:map] == 'map1'
+  MiniTerm.add_map(:windows) do |map|
+    map[" ".."~"] = :insert_text
+
+    #Left Arrows
+    map["\x13"]  = :go_left
+    map["\x01"]  = :word_left
+
+    #Right Arrows
+    map["\x04"]  = :go_right
+    map["\x06"]  = :word_right
+
+    #Up Arrows
+    map["\x05"]  = :previous_history
+
+    #Down Arrows
+    map["\x18"]  = :next_history
+
+    #The Home and End keys
+    map["\x17"]  = :go_home
+    map["\x12"]  = :go_end
+
+    #The Backspace and Delete keys
+    map["\x08"]  = :delete_left
+    map["\x7F"]  = :delete_right
+
+    #Auto-completion.
+    map["\t"]    = :auto_complete
+
+    #The Enter key
+    map["\x0D"]  = :enter
+
+    #The Escape key
+    map["\e"]    = :cancel
+
+    #End of Input
+    map["\x1A"]  = :end_of_input
+  end
+end
 
 class Object
   # Generate the class lineage of the object.
