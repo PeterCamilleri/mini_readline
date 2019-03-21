@@ -80,11 +80,11 @@ class Object
 
 end
 
-#The SIRE class contains the simplistic R.E.P.L.
-class SIRE
+#The SIRE module contains a simplistic R.E.P.L. to test out mini_readline.
+module SIRE
 
   #Run the interactive session.
-  def run_sire
+  def self.run_sire
     unless $sire_old
       MiniReadline::BASE_OPTIONS[:auto_complete] = true
       MiniReadline::BASE_OPTIONS[:eoi_detect] = true
@@ -107,13 +107,13 @@ class SIRE
   private
 
   #Get a line of input from the user.
-  def get_line
+  def self.get_line
     initial_input = Readline.readline("SIRE>", true)
     get_extra_input(initial_input)
   end
 
   #Get any continuations of the inputs
-  def get_extra_input(str)
+  def self.get_extra_input(str)
     if /\\\s*$/ =~ str
       get_extra_input($PREMATCH + "\n" + Readline.readline("SIRE\\", true))
     else
@@ -122,7 +122,7 @@ class SIRE
   end
 
   #Execute a single line.
-  def exec_line(line)
+  def self.exec_line(line)
     result = $sire_binding.eval(line)
     pp result unless line.length == 0
 
@@ -140,6 +140,5 @@ class SIRE
 
 end
 
-if __FILE__ == $0
-  SIRE.new.run_sire
-end
+
+SIRE.run_sire
