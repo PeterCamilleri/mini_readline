@@ -72,7 +72,9 @@ class Object
       puts 'Not supported by old readline.'
     else
       print 'Press a key:'
-      MiniTerm.get_mapped_char
+      result = MiniTerm.get_mapped_char
+      puts
+      result
     end
   end
 
