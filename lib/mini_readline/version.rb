@@ -3,7 +3,7 @@
 # Version info for the gem.
 module MiniReadline
   #The current version of the mini_readline gem.
-  VERSION = "0.9.1".freeze
+  VERSION = "0.9.2".freeze
 
   # A brief description.
   DESCRIPTION = "mini_readline: Get console input with edit, history, and auto-complete.".freeze

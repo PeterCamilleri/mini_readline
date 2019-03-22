@@ -77,6 +77,8 @@ replaced by Escape followed by the appropriate letter.
 * References to Pad keys under Windows assume that Num Lock is not engaged.
 * Support for End of Input is controlled by the eoi_detect option. See options
 below.
+* These keyboard mappings are the standard ones included with mini_readline.
+See the section Adding Custom Key Maps below for more info.
 
 ## Usage
 
@@ -369,6 +371,54 @@ expression results.
 <br> An example of a custom auto-complete facility may be found in the mysh
 gem located at: https://github.com/PeterCamilleri/mysh/blob/master/lib/mysh/sources/smart_auto_complete.rb
 
+### Adding Custom Key Maps
+It is possible to override the default keyboard maps used by the mini_readline
+gem. The following shows the installation of a retro, WordStar(TM) inspired
+keyboard mapping for a Windows system:
+
+```ruby
+MiniTerm.add_map(:windows) do |map|
+  map[" ".."~"] = :insert_text
+
+  #Left Arrows
+  map["\x13"]  = :go_left
+  map["\x01"]  = :word_left
+
+  #Right Arrows
+  map["\x04"]  = :go_right
+  map["\x06"]  = :word_right
+
+  #Up Arrows
+  map["\x05"]  = :previous_history
+
+  #Down Arrows
+  map["\x18"]  = :next_history
+
+  #The Home and End keys
+  map["\x17"]  = :go_home
+  map["\x12"]  = :go_end
+
+  #The Backspace and Delete keys
+  map["\x08"]  = :delete_left
+  map["\x7F"]  = :delete_right
+  map["\x11\x13"] = :delete_all_left
+  map["\x11\x04"] = :delete_all_right
+
+  #Auto-completion.
+  map["\t"]    = :auto_complete
+
+  #The Enter key
+  map["\x0D"]  = :enter
+
+  #The Escape key
+  map["\e"]    = :cancel
+
+  #End of Input
+  map["\x1A"]  = :end_of_input
+end
+```
+
+
 ### Important Security Note
 
 It must be remembered that any time strings are passed to the command line
@@ -378,24 +428,25 @@ command line itself. Untrusted users should **never** be given such access!
 
 ## Demo
 A simple demo of mini_readline in action is available. To access this demo use
-the following from the mini_readline root folder:
+the following:
 
-    $ ruby sire.rb
+    $ sire
 
 This will launch SIRE, a Simple Interactive Ruby Environment, a sort of
-simple minded irb knock-off. This starts off by requiring the mini
-readline gem from either the system gem library or the local lib folder or
-if all fails, it will load the "classic" Readline gem. Here is a typical run:
+simple minded irb knock-off. The utility supports a number of options that
+allow the behaviour of the gem to be explored. These are:
 
-    C:\Sites\mini_readline>ruby sire.rb
+Option | Effect
+-------|-------
+local  | Use the mini_readline in the lib folder. For testing.
+gem    | Use the mini_readline installed as a gem. The default.
+old    | Use the old readline facility.
+map1   | Install a Wordstar keyboard map.
+help   | Display usage info and exit.
+-?     | Same thing.
 
+#### Testing Shell Out Bugs
 
-    Loaded mini_readline from the local code folder.
-
-    Welcome to a Simple Interactive Ruby Environment
-    Use the command 'quit' to exit.
-
-    SIRE>
 Of note, the run method can be used to test for the shell process bug. For
 example:
 
@@ -412,15 +463,12 @@ example:
      "sire.rb",
      "tests"]
     SIRE>
+    
 After this command is run, the program should continue to operate correctly
-and not go bannanas. To test the behavior of the standard readline library, use:
+and not go bannanas. To test the behavior of the (currently broken) standard 
+readline library, use:
 
-    $ ruby sire.rb old
-
-To test the local copy of mini_readline in the lib folder instead of the
-system gem, use this:
-
-    $ ruby sire.rb local
+    $ sire.rb old
 
 ## Cross Platform Portability Progress
 
