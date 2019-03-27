@@ -463,9 +463,9 @@ example:
      "sire.rb",
      "tests"]
     SIRE>
-    
+
 After this command is run, the program should continue to operate correctly
-and not go bannanas. To test the behavior of the (currently broken) standard 
+and not go bannanas. To test the behavior of the (currently broken) standard
 readline library, use:
 
     $ sire.rb old
@@ -502,3 +502,14 @@ aspect that could use some TLC or a suggestion or an idea. Please see
 ( https://github.com/PeterCamilleri/mini_readline/issues )
 
 This is a low pressure environment. All are welcome!
+
+## License
+
+The gem is available as open source under the terms of the
+[MIT License](./LICENSE.txt).
+
+## Code of Conduct
+
+Everyone interacting in the fully_freeze project’s codebases, issue trackers,
+chat rooms and mailing lists is expected to follow the
+[code of conduct](./CODE_OF_CONDUCT.md).
