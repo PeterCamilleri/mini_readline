@@ -373,7 +373,7 @@ gem located at: https://github.com/PeterCamilleri/mysh/blob/master/lib/mysh/sour
 
 ### Adding Custom Key Maps
 It is possible to override the default keyboard maps used by the mini_readline
-gem. The following shows the installation of a retro, WordStar(TM) inspired
+gem. The following shows the installation of a retro, WordStar&#8482; inspired
 keyboard mapping for a Windows system:
 
 ```ruby
