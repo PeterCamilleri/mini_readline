@@ -3,12 +3,8 @@
 require_relative '../lib/mini_readline'
 gem              'minitest'
 require          'minitest/autorun'
-require          'minitest_visible'
 
 class SomeHistoryTester < Minitest::Test
-
-  #Track mini-test progress.
-  include MinitestVisible
 
   def test_some_history_options
     buffer = ["one", "two", "three"]
