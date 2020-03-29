@@ -22,16 +22,14 @@ options = {reader: 'gem'}
 def display_help(error=nil)
   puts "SIRE: a Simple Interactive Ruby Environment\n"
 
-  if error
-    puts "Invalid option: #{error}"
-  end
+  puts "Invalid option: #{error}" if error
 
-  puts "", "Usage: sire <options>"
-  puts "  local       Use the local mini_readline code."
-  puts "  gem         Use the mini_readline installed gem."
-  puts "  old         Use the standard readline gem."
-  puts "  map1        Use the alternate key mapping in Windows."
-  puts "  help  -?    Display this help and exit."
+  puts "", "Usage: sire <options>",
+       "  local       Use the local mini_readline code.",
+       "  gem         Use the mini_readline installed gem.",
+       "  old         Use the standard readline gem.",
+       "  map1        Use the alternate key mapping in Windows.",
+       "  help  -?    Display this help and exit."
 
   exit
 end
@@ -87,7 +85,7 @@ class Object
   # Get a mapped keystroke.
   def get_mapped
     if old?
-      puts 'Not supported by old readline.'
+      puts 'The get_mapped method is not supported by old readline.'
     else
       print 'Press a key: '
       MiniTerm.get_mapped_char
@@ -110,9 +108,11 @@ end
 
 if options[:map] == 'map1'
   if old?
-    puts 'An option is not supported by old readline.'
+    puts 'Remapping is not supported by old readline.'
     exit
   end
+
+  puts "Remapping keyboard to WordStar(TM)."
 
   [:windows, :ansi].each do |target|
     MiniTerm.add_map(target) do |map|
@@ -206,8 +206,8 @@ module SIRE
     pp result unless line.length == 0
 
   rescue Interrupt => e
-    puts "", "Execution Interrupted!"
-    puts "", "#{e.class} detected: #{e}", ""
+    puts "", "Execution Interrupted!",
+         "", "#{e.class} detected: #{e}", ""
 
   rescue StandardError, ScriptError => e
     puts "", "#{e.class} detected: #{e}", ""
